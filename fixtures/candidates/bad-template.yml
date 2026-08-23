@@ -1,0 +1,63 @@
+id: bad-saas-template
+name: Bad SaaS Template
+type: framer-template
+metadata:
+  author: Fixture
+  version: "0.1"
+  auditedAt: "2026-08-23"
+  notes: Intentionally poor candidate with mobile overflow and missing assets.
+pages: [Home, Pricing]
+breakpoints: [desktop, mobile]
+components: [Button, Navbar]
+cms:
+  used: false
+  collections: []
+assets:
+  total: 18
+  missingRequired: 3
+flags:
+  criticalOverflow: true
+  missingRequiredAssets: true
+  marketplaceReady: false
+evaluations:
+  visual:
+    hierarchy: { score: 62, source: manual, notes: Hero and pricing compete for attention. }
+    typography: { score: 58, source: manual, notes: Mobile heading wraps into six lines. }
+    spacing: { score: 64, source: manual }
+    polish: { score: 55, source: manual }
+  technical:
+    structure: { score: 60, source: imported }
+    components: { score: 52, source: imported }
+    performance: { score: 68, source: automated }
+    accessibilitySeo: { score: 57, source: automated }
+  responsive:
+    mobile: { score: 48, source: automated, notes: Horizontal overflow at 390px. }
+    tablet: { score: 61, source: manual }
+    navigation: { score: 66, source: manual }
+    contentFlow: { score: 62, source: manual }
+  customization:
+    brandSwap: { score: 50, source: manual }
+    contentEditing: { score: 55, source: manual }
+    cmsReadiness: { score: 45, source: manual }
+    sectionFlexibility: { score: 52, source: manual }
+  originality:
+    differentiation: { score: 60, source: manual }
+    similarityRisk: { score: 58, source: manual }
+  packaging:
+    pageCompleteness: { score: 45, source: manual }
+    documentation: { score: 30, source: manual }
+    demoContent: { score: 48, source: manual }
+findings:
+  - id: mobile-hero-overflow
+    criterion: responsive.mobile
+    severity: critical
+    message: Mobile hero uses fixed desktop width and creates horizontal overflow at 390px.
+    evidence: 390px viewport test reports body scrollWidth above viewport width.
+    suggestedFix: Replace fixed hero frame width with responsive constraints and reduce display type size on mobile.
+    source: automated
+  - id: missing-demo-assets
+    criterion: technical.performance
+    severity: critical
+    message: Three required testimonial images are missing.
+    suggestedFix: Replace missing asset references or remove dependent components.
+    source: automated

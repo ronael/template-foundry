@@ -1,0 +1,196 @@
+id: golden-framer-v1
+version: 1
+name: Golden Framer Standard
+scope: Sellable Framer templates evaluated through structured candidate data.
+metadata:
+  createdAt: "2026-08-23"
+  updatedAt: "2026-08-23"
+  notes: V0 standard derived from public Framer template expectations and internal quality gates; it stores criteria, not third-party template content.
+thresholds:
+  rejectedBelow: 75
+  needsWorkBelow: 85
+  readyBelow: 93
+  premiumAtLeast: 93
+axes:
+  - id: visual
+    name: Visual Quality
+    weight: 0.3
+    minimum: 70
+    criteria:
+      - id: hierarchy
+        name: Hierarchy
+        weight: 0.25
+        minimum: 70
+        description: Clarify page hierarchy, visual rhythm, and section contrast.
+      - id: typography
+        name: Typography
+        weight: 0.25
+        minimum: 70
+        description: Improve type scale, line height, pairing, and mobile text behavior.
+      - id: spacing
+        name: Spacing
+        weight: 0.25
+        minimum: 70
+        description: Normalize spacing tokens and reduce inconsistent section density.
+      - id: polish
+        name: Polish
+        weight: 0.25
+        minimum: 70
+        description: Raise detail quality through imagery, motion restraint, states, and visual finish.
+  - id: technical
+    name: Technical Quality
+    weight: 0.25
+    minimum: 72
+    criteria:
+      - id: structure
+        name: Structure
+        weight: 0.25
+        minimum: 70
+        description: Simplify page structure and make sections/components consistently reusable.
+      - id: components
+        name: Component Reuse
+        weight: 0.25
+        minimum: 70
+        description: Extract repeated patterns into named editable components.
+      - id: performance
+        name: Performance
+        weight: 0.25
+        minimum: 70
+        description: Compress assets, reduce heavy effects, and avoid unnecessary embeds.
+      - id: accessibilitySeo
+        name: Accessibility and SEO
+        weight: 0.25
+        minimum: 70
+        description: Fix headings, labels, alt text, contrast, metadata, and link semantics.
+  - id: responsive
+    name: UX / Responsive
+    weight: 0.15
+    minimum: 72
+    criteria:
+      - id: mobile
+        name: Mobile Quality
+        weight: 0.4
+        minimum: 72
+        description: Fix mobile layout, text wrapping, tap targets, and overflow.
+      - id: tablet
+        name: Tablet Quality
+        weight: 0.2
+        minimum: 68
+        description: Audit intermediate viewport behavior rather than only desktop/mobile.
+      - id: navigation
+        name: Navigation
+        weight: 0.2
+        minimum: 70
+        description: Make navigation predictable, reachable, and consistent across pages.
+      - id: contentFlow
+        name: Content Flow
+        weight: 0.2
+        minimum: 70
+        description: Ensure content order and CTA flow support realistic buyer use cases.
+  - id: customization
+    name: Ease of Customization
+    weight: 0.15
+    minimum: 72
+    criteria:
+      - id: brandSwap
+        name: Brand Swap
+        weight: 0.3
+        minimum: 72
+        description: Expose styles/tokens so brand, color, type, and CTA changes are straightforward.
+      - id: contentEditing
+        name: Content Editing
+        weight: 0.25
+        minimum: 70
+        description: Make demo copy, images, and repeated content easy to locate and replace.
+      - id: cmsReadiness
+        name: CMS Readiness
+        weight: 0.2
+        minimum: 65
+        description: Use CMS only where it improves template editing and document the model.
+      - id: sectionFlexibility
+        name: Section Flexibility
+        weight: 0.25
+        minimum: 70
+        description: Allow section removal, rearrangement, and reuse without breaking layout.
+  - id: originality
+    name: Originality
+    weight: 0.1
+    minimum: 65
+    criteria:
+      - id: differentiation
+        name: Differentiation
+        weight: 0.5
+        minimum: 65
+        description: Strengthen distinctive composition and reduce generic template patterns.
+      - id: similarityRisk
+        name: Similarity Risk
+        weight: 0.5
+        minimum: 65
+        description: Reduce direct resemblance to specific references while preserving quality.
+  - id: packaging
+    name: Packaging / Documentation
+    weight: 0.05
+    minimum: 65
+    criteria:
+      - id: pageCompleteness
+        name: Page Completeness
+        weight: 0.35
+        minimum: 65
+        description: Include expected pages and states, including 404 where relevant.
+      - id: documentation
+        name: Documentation
+        weight: 0.35
+        minimum: 65
+        description: Document setup, customization, CMS usage, and support expectations.
+      - id: demoContent
+        name: Demo Content
+        weight: 0.3
+        minimum: 65
+        description: Keep demo content coherent, non-placeholder, and commercially plausible.
+gates:
+  - id: no-critical-overflow
+    name: No critical overflow
+    description: Candidate must not report critical viewport overflow.
+    status: automated
+    severity: error
+    condition:
+      kind: candidateFlag
+      path: criticalOverflow
+      expected: false
+  - id: no-critical-missing-assets
+    name: No critical missing assets
+    description: Candidate must not have required missing assets.
+    status: automated
+    severity: critical
+    condition:
+      kind: candidateFlag
+      path: missingRequiredAssets
+      expected: false
+  - id: mobile-quality-minimum
+    name: Mobile quality minimum
+    description: Mobile quality cannot be hidden by the weighted average.
+    status: automated
+    severity: error
+    condition:
+      kind: criterionMinimum
+      axis: responsive
+      criterion: mobile
+      minimum: 72
+  - id: buyer-test-minimum
+    name: Buyer test minimum
+    description: Template must pass a minimum customization buyer test.
+    status: automated
+    severity: error
+    condition:
+      kind: axisMinimum
+      axis: customization
+      minimum: 72
+  - id: manual-marketplace-readiness
+    name: Manual marketplace readiness
+    description: Human reviewer confirms no licensing, support, or marketplace policy issue remains.
+    status: manual
+    severity: warning
+    condition:
+      kind: candidateFlag
+      path: marketplaceReady
+      expected: true

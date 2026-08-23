@@ -1,0 +1,55 @@
+id: premium-saas-template
+name: Premium SaaS Template
+type: framer-template
+metadata:
+  author: Fixture
+  version: "1.0"
+  auditedAt: "2026-08-23"
+  notes: Quasi-premium fixture with strong visual quality, customization, and packaging.
+pages: [Home, Product, Pricing, Customers, Blog, Blog Detail, Changelog, Legal, "404"]
+breakpoints: [desktop, tablet, mobile]
+components: [Navbar, Footer, Button, CTASection, PricingCard, TestimonialCard, FeatureGrid, BlogCard, ChangelogItem]
+cms:
+  used: true
+  collections: [Blog, Changelog, Customers]
+assets:
+  total: 76
+  missingRequired: 0
+flags:
+  criticalOverflow: false
+  missingRequiredAssets: false
+  marketplaceReady: true
+evaluations:
+  visual:
+    hierarchy: { score: 95, source: manual }
+    typography: { score: 94, source: manual }
+    spacing: { score: 93, source: manual }
+    polish: { score: 95, source: manual }
+  technical:
+    structure: { score: 94, source: imported }
+    components: { score: 96, source: imported }
+    performance: { score: 91, source: automated }
+    accessibilitySeo: { score: 93, source: automated }
+  responsive:
+    mobile: { score: 93, source: automated }
+    tablet: { score: 94, source: manual }
+    navigation: { score: 95, source: manual }
+    contentFlow: { score: 94, source: manual }
+  customization:
+    brandSwap: { score: 95, source: manual }
+    contentEditing: { score: 94, source: manual }
+    cmsReadiness: { score: 93, source: manual }
+    sectionFlexibility: { score: 94, source: manual }
+  originality:
+    differentiation: { score: 92, source: manual }
+    similarityRisk: { score: 95, source: manual }
+  packaging:
+    pageCompleteness: { score: 94, source: manual }
+    documentation: { score: 93, source: manual }
+    demoContent: { score: 95, source: manual }
+findings:
+  - id: premium-polish-note
+    criterion: packaging.documentation
+    severity: info
+    message: Documentation includes a buyer test and CMS editing map.
+    source: manual

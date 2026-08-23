@@ -1,0 +1,41 @@
+{
+  "name": "template-foundry",
+  "version": "0.1.0",
+  "description": "Local quality engine and CLI for auditing sellable digital templates, starting with Framer.",
+  "type": "module",
+  "bin": {
+    "tfoundry": "./dist/cli/index.js"
+  },
+  "files": [
+    "dist",
+    "standards",
+    "fixtures",
+    "README.md",
+    "docs"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "pnpm build && vitest run",
+    "type-check": "tsc --noEmit",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "dev": "tsx src/cli/index.ts",
+    "smoke": "pnpm build && vitest run tests/e2e/smoke.test.ts"
+  },
+  "engines": {
+    "node": ">=22.12"
+  },
+  "dependencies": {
+    "commander": "^15.0.0",
+    "yaml": "^2.8.4",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.0",
+    "@types/node": "^24.3.0",
+    "tsx": "^4.20.4",
+    "typescript": "^5.9.2",
+    "vitest": "^4.1.7"
+  },
+  "packageManager": "pnpm@10.6.5"
+}

@@ -1,0 +1,17 @@
+id: framer-public-benchmark-notes-v0
+name: Public Framer ecosystem benchmark notes
+source: Public pages reviewed on 2026-08-23
+type: mixed
+url: https://www.framer.com/marketplace/
+tags:
+  - framer
+  - marketplace
+  - public-reference
+licenseOrUsage: Analysis-only. Do not copy or redistribute third-party template code, design assets, or proprietary content.
+analyzedAt: "2026-08-23"
+notes: Public Framer help and marketplace pages describe templates as customizable complete website projects. Damas and Rivero public pages were used only to confirm free/remix positioning and common expectations such as responsive behavior, editable sections, CMS where useful, and buyer-friendly customization.
+derivedCriteria:
+  - Templates should be complete enough to launch quickly, not isolated visual sections.
+  - Buyer customization should cover brand, colors, content, images, and CTA swaps.
+  - Free references can inform criteria but must not be bundled as copied assets.
+  - CMS and reusable components count as quality only when they improve editing clarity.

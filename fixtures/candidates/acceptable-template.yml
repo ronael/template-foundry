@@ -1,0 +1,56 @@
+id: acceptable-saas-template
+name: Acceptable SaaS Template
+type: framer-template
+metadata:
+  author: Fixture
+  version: "0.8"
+  auditedAt: "2026-08-23"
+  notes: Sellable skeleton with work remaining before premium positioning.
+pages: [Home, Pricing, Blog, Blog Detail, "404"]
+breakpoints: [desktop, tablet, mobile]
+components: [Navbar, Footer, Button, PricingCard, TestimonialCard, BlogCard]
+cms:
+  used: true
+  collections: [Blog]
+assets:
+  total: 42
+  missingRequired: 0
+flags:
+  criticalOverflow: false
+  missingRequiredAssets: false
+  marketplaceReady: false
+evaluations:
+  visual:
+    hierarchy: { score: 86, source: manual }
+    typography: { score: 84, source: manual }
+    spacing: { score: 85, source: manual }
+    polish: { score: 82, source: manual }
+  technical:
+    structure: { score: 86, source: imported }
+    components: { score: 88, source: imported }
+    performance: { score: 83, source: automated }
+    accessibilitySeo: { score: 84, source: automated }
+  responsive:
+    mobile: { score: 80, source: automated }
+    tablet: { score: 83, source: manual }
+    navigation: { score: 86, source: manual }
+    contentFlow: { score: 85, source: manual }
+  customization:
+    brandSwap: { score: 86, source: manual }
+    contentEditing: { score: 85, source: manual }
+    cmsReadiness: { score: 82, source: manual }
+    sectionFlexibility: { score: 84, source: manual }
+  originality:
+    differentiation: { score: 82, source: manual }
+    similarityRisk: { score: 84, source: manual }
+  packaging:
+    pageCompleteness: { score: 82, source: manual }
+    documentation: { score: 78, source: manual }
+    demoContent: { score: 81, source: manual }
+findings:
+  - id: docs-too-thin
+    criterion: packaging.documentation
+    severity: warning
+    message: Documentation explains colors and CMS but does not show a complete brand swap workflow.
+    suggestedFix: Add a short buyer checklist for changing brand, colors, CTA text, images, and blog entries.
+    source: manual

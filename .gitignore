@@ -1,0 +1,6 @@
+node_modules/
+dist/
+coverage/
+.template-foundry/
+.DS_Store
+*.log
