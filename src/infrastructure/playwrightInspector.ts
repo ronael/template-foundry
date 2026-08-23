@@ -148,7 +148,8 @@ export async function inspectUrl(
       }
     }
 
-    const linkFindings = await inspectLinks(page, finalUrl, maxInternalLinks);
+    const linkInspection = await inspectLinks(page, finalUrl, maxInternalLinks);
+    const linkFindings = linkInspection.findings;
     findings.push(...linkFindings);
     await scrollThroughPage(page);
     findings.push(...(await detectBrokenImages(page)));
@@ -249,9 +250,7 @@ export async function inspectUrl(
       },
       viewports: viewportResults,
       checks: {
-        linksChecked: linkFindings.filter(
-          (item) => item.provenance?.check === "internal-link",
-        ).length,
+        linksChecked: linkInspection.checked,
         brokenInternalLinks: linkFindings.filter((item) =>
           item.id.startsWith("broken-internal-link"),
         ).length,
@@ -383,7 +382,7 @@ async function inspectLinks(
   page: Page,
   finalUrl: string,
   maxInternalLinks: number,
-): Promise<AuditFinding[]> {
+): Promise<{ findings: AuditFinding[]; checked: number }> {
   const links = (await page.$$eval("a", (elements) =>
     elements.map((element) => ({
       href: element.getAttribute("href"),
@@ -452,7 +451,7 @@ async function inspectLinks(
       );
     }
   }
-  return findings;
+  return { findings, checked: internal.length };
 }
 
 async function detectBrokenImages(page: Page): Promise<AuditFinding[]> {
@@ -491,6 +490,19 @@ async function scrollThroughPage(page: Page): Promise<void> {
     .catch(() => undefined);
 }
 
+const checkConfidence: Record<string, number> = {
+  navigation: 0.95,
+  "horizontal-overflow": 0.98,
+  "touch-target": 0.7,
+  "internal-link": 0.9,
+  "broken-image": 0.95,
+  "page-error": 0.95,
+  "console-error": 0.9,
+  "network-failure": 0.9,
+  "http-response": 0.9,
+  "axe-core": 0.85,
+};
+
 function finding(
   id: string,
   severity: Severity,
@@ -506,6 +518,7 @@ function finding(
     message,
     evidence,
     source: `automated:playwright:${check}`,
+    confidence: checkConfidence[check],
     provenance: {
       kind: "observed",
       provider: "playwright",
@@ -568,13 +581,13 @@ function isRelevantResponse(response: Response): boolean {
 }
 
 function isLikelyThirdPartyNoise(url: string): boolean {
-  return /google-analytics|googletagmanager|facebook\.com\/tr|doubleclick|hotjar|plausible|vercel-insights/i.test(
+  return /google-analytics|googletagmanager|facebook\.com\/tr|doubleclick|hotjar|plausible|vercel-insights|edit\.framer\.com/i.test(
     url,
   );
 }
 
 function isBrowserResourceConsoleNoise(text: string): boolean {
-  return /favicon\.ico|Failed to load resource/i.test(text);
+  return /favicon\.ico|Failed to load resource|edit\.framer\.com/i.test(text);
 }
 
 function networkSeverity(resourceType: string): Severity {

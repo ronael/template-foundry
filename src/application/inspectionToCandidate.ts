@@ -35,7 +35,7 @@ export function inspectionToCandidate(
     metadata: {
       auditedAt: inspection.createdAt,
       notes:
-        "Generated from rendered-site inspection. Visual, originality, and buyer-editability scores are conservative placeholders until dedicated evaluators exist.",
+        "Generated from rendered-site inspection. Criteria that a rendered URL cannot prove (visual, originality, buyer editability) are marked not-evaluated and excluded from scoring.",
     },
     pages: [inspection.target.finalUrl ?? inspection.target.inputUrl],
     breakpoints: inspection.viewports.map((viewport) => viewport.id),
@@ -53,35 +53,35 @@ export function inspectionToCandidate(
     evaluations: {
       visual: {
         hierarchy: {
-          score: 75,
-          source: "imported",
+          score: 0,
+          source: "not-evaluated",
           notes: "Not evaluated by rendered-site V1.",
         },
         typography: {
-          score: 75,
-          source: "imported",
+          score: 0,
+          source: "not-evaluated",
           notes: "Not evaluated by rendered-site V1.",
         },
         spacing: {
-          score: 75,
-          source: "imported",
+          score: 0,
+          source: "not-evaluated",
           notes: "Not evaluated by rendered-site V1.",
         },
         polish: {
-          score: 75,
-          source: "imported",
+          score: 0,
+          source: "not-evaluated",
           notes: "Not evaluated by rendered-site V1.",
         },
       },
       technical: {
         structure: {
-          score: 78,
-          source: "automated",
+          score: 0,
+          source: "not-evaluated",
           notes: "Rendered page only; editable structure not inspected.",
         },
         components: {
-          score: 75,
-          source: "imported",
+          score: 0,
+          source: "not-evaluated",
           notes: "Component reuse requires editable-template access.",
         },
         performance: { score: technicalReliability, source: "automated" },
@@ -107,54 +107,55 @@ export function inspectionToCandidate(
           source: "automated",
         },
         contentFlow: {
-          score: responsiveMobile < 75 ? 72 : 82,
-          source: "inferred",
+          score: 0,
+          source: "not-evaluated",
+          notes: "Content flow requires human or LLM review.",
         },
       },
       customization: {
         brandSwap: {
-          score: 72,
-          source: "imported",
+          score: 0,
+          source: "not-evaluated",
           notes: "Requires buyer test in editor.",
         },
         contentEditing: {
-          score: 72,
-          source: "imported",
+          score: 0,
+          source: "not-evaluated",
           notes: "Requires buyer test in editor.",
         },
         cmsReadiness: {
-          score: 70,
-          source: "imported",
+          score: 0,
+          source: "not-evaluated",
           notes: "Rendered URL cannot prove CMS editability.",
         },
         sectionFlexibility: {
-          score: 72,
-          source: "imported",
+          score: 0,
+          source: "not-evaluated",
           notes: "Requires buyer test in editor.",
         },
       },
       originality: {
         differentiation: {
-          score: 75,
-          source: "imported",
+          score: 0,
+          source: "not-evaluated",
           notes: "Not evaluated by rendered-site V1.",
         },
         similarityRisk: {
-          score: 75,
-          source: "imported",
+          score: 0,
+          source: "not-evaluated",
           notes: "Not evaluated by rendered-site V1.",
         },
       },
       packaging: {
         pageCompleteness: { score: packagingCompleteness, source: "automated" },
         documentation: {
-          score: 70,
-          source: "imported",
+          score: 0,
+          source: "not-evaluated",
           notes: "Documentation is not discoverable from rendered URL.",
         },
         demoContent: {
-          score: 75,
-          source: "imported",
+          score: 0,
+          source: "not-evaluated",
           notes: "Demo content quality needs human or LLM review.",
         },
       },

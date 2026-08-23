@@ -2,7 +2,10 @@ import type { AuditResult } from "../domain/audit.js";
 
 export function renderTerminalReport(result: AuditResult): string {
   const axisLines = result.axes
-    .map((axis) => `${axis.name.padEnd(18)} ${axis.score.toFixed(1)}`)
+    .map(
+      (axis) =>
+        `${axis.name.padEnd(18)} ${axis.evaluated ? axis.score.toFixed(1) : "n/e"}`,
+    )
     .join("\n");
   const gateLines = result.gates
     .map((gate) => `${gate.status.padEnd(13)} ${gate.id} - ${gate.message}`)
@@ -37,7 +40,7 @@ export function renderMarkdownReport(result: AuditResult): string {
   const axisRows = result.axes
     .map(
       (axis) =>
-        `| ${axis.name} | ${axis.score.toFixed(1)} | ${axis.weightedScore.toFixed(1)} |`,
+        `| ${axis.name} | ${axis.evaluated ? axis.score.toFixed(1) : "n/e"} | ${axis.evaluated ? axis.weightedScore.toFixed(1) : "n/e"} |`,
     )
     .join("\n");
   const gateRows = result.gates

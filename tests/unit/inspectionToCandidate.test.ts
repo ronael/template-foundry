@@ -59,5 +59,12 @@ describe("inspectionToCandidate", () => {
       80,
     );
     expect(candidate.findings).toHaveLength(1);
+    expect(candidate.evaluations.visual.hierarchy.source).toBe("not-evaluated");
+    expect(candidate.evaluations.customization.brandSwap.source).toBe(
+      "not-evaluated",
+    );
+    expect(candidate.evaluations.technical.performance.source).toBe(
+      "automated",
+    );
   });
 });

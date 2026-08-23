@@ -24,6 +24,7 @@ export type CriterionScore = {
   score: number;
   weightedScore: number;
   source: string;
+  evaluated: boolean;
 };
 
 export type AxisScore = {
@@ -31,6 +32,7 @@ export type AxisScore = {
   name: string;
   score: number;
   weightedScore: number;
+  evaluated: boolean;
   criteria: CriterionScore[];
 };
 
@@ -65,29 +67,49 @@ export function auditCandidate(
       if (!evaluation) {
         throw new Error(`Missing evaluation ${axis.id}.${criterion.id}`);
       }
+      const evaluated = evaluation.source !== "not-evaluated";
       return {
         id: criterion.id,
         name: criterion.name,
         score: round(evaluation.score),
         weightedScore: round(evaluation.score * criterion.weight),
         source: evaluation.source,
+        evaluated,
       };
     });
-    const score = criteria.reduce(
-      (total, criterion) => total + criterion.weightedScore,
-      0,
+    const evaluatedCriteria = criteria.filter(
+      (criterion) => criterion.evaluated,
     );
+    const evaluatedWeight = axis.criteria
+      .filter((criterion) =>
+        evaluatedCriteria.some((score) => score.id === criterion.id),
+      )
+      .reduce((total, criterion) => total + criterion.weight, 0);
+    const score =
+      evaluatedWeight > 0
+        ? evaluatedCriteria.reduce(
+            (total, criterion) => total + criterion.weightedScore,
+            0,
+          ) / evaluatedWeight
+        : 0;
     return {
       id: axis.id,
       name: axis.name,
       score: round(score),
       weightedScore: round(score * axis.weight),
+      evaluated: evaluatedCriteria.length > 0,
       criteria,
     };
   });
 
+  const evaluatedAxisWeight = standard.axes
+    .filter((axis) => axes.find((score) => score.id === axis.id)?.evaluated)
+    .reduce((total, axis) => total + axis.weight, 0);
   const overallScore = round(
-    axes.reduce((total, axis) => total + axis.weightedScore, 0),
+    evaluatedAxisWeight > 0
+      ? axes.reduce((total, axis) => total + axis.weightedScore, 0) /
+          evaluatedAxisWeight
+      : 0,
   );
   const gates = standard.gates.map((gate) =>
     evaluateGate(gate, candidate, axes),
@@ -150,6 +172,15 @@ function evaluateGate(
   if (condition.kind === "axisMinimum") {
     const axis = axes.find((item) => item.id === condition.axis);
     const minimum = condition.minimum ?? 0;
+    if (axis && !axis.evaluated) {
+      return {
+        id: gate.id,
+        name: gate.name,
+        status: "NOT_EVALUATED",
+        severity: gate.severity,
+        message: `${condition.axis} has no evaluated criteria; gate skipped.`,
+      };
+    }
     return gateResult(
       gate,
       Boolean(axis && axis.score >= minimum),
@@ -161,6 +192,15 @@ function evaluateGate(
     (item) => item.id === condition.criterion,
   );
   const minimum = condition.minimum ?? 0;
+  if (criterion && !criterion.evaluated) {
+    return {
+      id: gate.id,
+      name: gate.name,
+      status: "NOT_EVALUATED",
+      severity: gate.severity,
+      message: `${condition.axis}.${condition.criterion} is not evaluated; gate skipped.`,
+    };
+  }
   return gateResult(
     gate,
     Boolean(criterion && criterion.score >= minimum),
@@ -194,7 +234,7 @@ function deriveFindings(
     const axisScore = axes.find((item) => item.id === axis.id);
     if (
       axis.minimum !== undefined &&
-      axisScore &&
+      axisScore?.evaluated &&
       axisScore.score < axis.minimum
     ) {
       findings.push({
@@ -212,7 +252,7 @@ function deriveFindings(
       );
       if (
         criterion.minimum !== undefined &&
-        criterionScore &&
+        criterionScore?.evaluated &&
         criterionScore.score < criterion.minimum
       ) {
         findings.push({
@@ -254,6 +294,11 @@ function decideVerdict(
   if (findings.some((finding) => finding.severity === "critical")) {
     return "REJECTED";
   }
+  // Known error-severity defects (console errors, serious accessibility
+  // violations, broken links) must be fixed before a template is sellable.
+  if (findings.some((finding) => finding.severity === "error")) {
+    return "NEEDS_WORK";
+  }
   if (
     gates.some(
       (gate) =>
@@ -262,7 +307,7 @@ function decideVerdict(
   ) {
     return "NEEDS_WORK";
   }
-  if (axes.some((axis) => axis.score < 70)) {
+  if (axes.some((axis) => axis.evaluated && axis.score < 70)) {
     return "NEEDS_WORK";
   }
   const thresholds = standard.thresholds;

@@ -1,0 +1,76 @@
+id: framer-like-problematic
+name: Framer-like Problematic Template
+type: framer-template
+metadata:
+  author: Fixture
+  version: "1.0"
+  auditedAt: "2026-08-23"
+  notes: >-
+    Deterministic stand-in for a rendered Framer template inspection with
+    real defects: hydration page errors, console errors, and serious
+    accessibility violations. Mirrors observed inspection outcomes.
+pages: [Home]
+breakpoints: [desktop, tablet, mobile]
+components: []
+cms:
+  used: false
+  collections: []
+assets:
+  total: 0
+  missingRequired: 0
+flags:
+  criticalOverflow: false
+  missingRequiredAssets: false
+  marketplaceReady: false
+evaluations:
+  visual:
+    hierarchy: { score: 0, source: not-evaluated }
+    typography: { score: 0, source: not-evaluated }
+    spacing: { score: 0, source: not-evaluated }
+    polish: { score: 0, source: not-evaluated }
+  technical:
+    structure: { score: 0, source: not-evaluated }
+    components: { score: 0, source: not-evaluated }
+    performance: { score: 38, source: automated }
+    accessibilitySeo: { score: 0, source: automated }
+  responsive:
+    mobile: { score: 97, source: automated }
+    tablet: { score: 84, source: automated }
+    navigation: { score: 88, source: automated }
+    contentFlow: { score: 0, source: not-evaluated }
+  customization:
+    brandSwap: { score: 0, source: not-evaluated }
+    contentEditing: { score: 0, source: not-evaluated }
+    cmsReadiness: { score: 0, source: not-evaluated }
+    sectionFlexibility: { score: 0, source: not-evaluated }
+  originality:
+    differentiation: { score: 0, source: not-evaluated }
+    similarityRisk: { score: 0, source: not-evaluated }
+  packaging:
+    pageCompleteness: { score: 82, source: automated }
+    documentation: { score: 0, source: not-evaluated }
+    demoContent: { score: 0, source: not-evaluated }
+findings:
+  - id: page-error-1
+    criterion: technical.performance
+    severity: error
+    message: Unhandled page exception.
+    evidence: Minified React error #418 (hydration mismatch).
+    suggestedFix: Fix server/client markup mismatch so hydration does not throw.
+    source: automated:playwright:page-error
+    confidence: 0.95
+  - id: console-error-1
+    criterion: technical.performance
+    severity: error
+    message: Console error detected.
+    evidence: "TypeError: Failed to fetch dynamically imported module."
+    suggestedFix: Remove or guard the failing dynamic import.
+    source: automated:playwright:console-error
+    confidence: 0.9
+  - id: axe-color-contrast
+    criterion: technical.accessibilitySeo
+    severity: error
+    message: "Accessibility violation: Elements must meet minimum color contrast ratio thresholds."
+    suggestedFix: Raise text/background contrast to at least WCAG AA ratios.
+    source: automated:playwright:axe-core
+    confidence: 0.85

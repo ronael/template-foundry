@@ -5,7 +5,13 @@ scope: Sellable Framer templates evaluated through structured candidate data.
 metadata:
   createdAt: "2026-08-23"
   updatedAt: "2026-08-23"
-  notes: V0 standard derived from public Framer template expectations and internal quality gates; it stores criteria, not third-party template content.
+  notes: >-
+    V0 standard derived from public Framer template expectations and internal
+    quality gates; it stores criteria, not third-party template content.
+    Calibrated 2026-08-23 against four public rendered Framer templates:
+    criteria a rendered URL cannot prove are scored as not-evaluated and are
+    excluded from weighted scores, minimums, and gates rather than padded with
+    placeholder numbers.
 thresholds:
   rejectedBelow: 75
   needsWorkBelow: 85

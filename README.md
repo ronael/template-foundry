@@ -56,6 +56,22 @@ Candidate files provide structured facts and evaluations. Scores may come from `
 
 Inspection artifacts are reusable JSON files created from rendered URLs. They store page metadata, console and network evidence, 3 viewport screenshots, objective findings, and provenance. Auditing an inspection does not relaunch the browser.
 
+## Real-Template Workflow
+
+```text
+framer template URL -> inspect -> inspection.json -> audit -> report -> human review -> standard tuning
+```
+
+```bash
+pnpm dev -- inspect https://<template>.framer.website --out .template-foundry/inspections
+pnpm dev -- audit .template-foundry/inspections/<inspection-id>/inspection.json --standard standards/golden-framer-v1.yml --out .template-foundry/reports
+pnpm dev -- report .template-foundry/reports/<inspection-id>-audit.json
+```
+
+What a rendered URL can prove (console/page errors, broken links and images, horizontal overflow, touch targets, axe-core accessibility) is scored from evidence. What it cannot prove (visual quality, originality, buyer editability, documentation) is reported as `n/e` — those criteria are excluded from scoring and gates instead of being padded with placeholder scores. Any `critical` finding rejects the template; any `error` finding caps the verdict at `NEEDS_WORK`.
+
+`fixtures/candidates/framer-like-*.yml` keep deterministic stand-ins of real inspection outcomes so tests never depend on the network.
+
 ## Development
 
 ```bash

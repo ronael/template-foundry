@@ -1,0 +1,53 @@
+id: framer-like-premium
+name: Framer-like Premium Template
+type: framer-template
+metadata:
+  author: Fixture
+  version: "1.0"
+  auditedAt: "2026-08-23"
+  notes: >-
+    Deterministic stand-in for a clean rendered Framer template inspection.
+    Criteria a rendered URL cannot prove are not-evaluated, exactly as
+    inspectionToCandidate produces.
+pages: [Home]
+breakpoints: [desktop, tablet, mobile]
+components: []
+cms:
+  used: false
+  collections: []
+assets:
+  total: 0
+  missingRequired: 0
+flags:
+  criticalOverflow: false
+  missingRequiredAssets: false
+  marketplaceReady: false
+evaluations:
+  visual:
+    hierarchy: { score: 0, source: not-evaluated }
+    typography: { score: 0, source: not-evaluated }
+    spacing: { score: 0, source: not-evaluated }
+    polish: { score: 0, source: not-evaluated }
+  technical:
+    structure: { score: 0, source: not-evaluated }
+    components: { score: 0, source: not-evaluated }
+    performance: { score: 96, source: automated }
+    accessibilitySeo: { score: 96, source: automated }
+  responsive:
+    mobile: { score: 100, source: automated }
+    tablet: { score: 84, source: automated }
+    navigation: { score: 88, source: automated }
+    contentFlow: { score: 0, source: not-evaluated }
+  customization:
+    brandSwap: { score: 0, source: not-evaluated }
+    contentEditing: { score: 0, source: not-evaluated }
+    cmsReadiness: { score: 0, source: not-evaluated }
+    sectionFlexibility: { score: 0, source: not-evaluated }
+  originality:
+    differentiation: { score: 0, source: not-evaluated }
+    similarityRisk: { score: 0, source: not-evaluated }
+  packaging:
+    pageCompleteness: { score: 82, source: automated }
+    documentation: { score: 0, source: not-evaluated }
+    demoContent: { score: 0, source: not-evaluated }
+findings: []

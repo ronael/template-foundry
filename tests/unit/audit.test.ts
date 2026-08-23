@@ -105,4 +105,80 @@ describe("auditCandidate", () => {
 
     expect(result.verdict).toBe("REJECTED");
   });
+
+  it("caps the verdict at NEEDS_WORK while error findings remain", () => {
+    const result = auditCandidate(
+      candidate({
+        findings: [
+          {
+            id: "console-error-1",
+            severity: "error",
+            message: "Console error detected.",
+          },
+        ],
+      }),
+      defaultStandard,
+    );
+
+    expect(result.overallScore).toBe(90);
+    expect(result.verdict).toBe("NEEDS_WORK");
+  });
+
+  it("excludes not-evaluated criteria from scores, minimums, and gates", () => {
+    const notEvaluated = (
+      evaluations: Record<string, { score: number; source: string }>,
+    ) =>
+      Object.fromEntries(
+        Object.keys(evaluations).map((id) => [
+          id,
+          { score: 0, source: "not-evaluated" as const },
+        ]),
+      );
+
+    const result = auditCandidate(
+      candidate({
+        evaluations: {
+          ...baseEvaluations,
+          customization: notEvaluated(baseEvaluations.customization),
+          originality: notEvaluated(baseEvaluations.originality),
+        },
+      }),
+      defaultStandard,
+    );
+
+    const customization = result.axes.find(
+      (axis) => axis.id === "customization",
+    );
+    expect(customization?.evaluated).toBe(false);
+    expect(
+      result.gates.find((gate) => gate.id === "buyer-test-minimum")?.status,
+    ).toBe("NOT_EVALUATED");
+    // Overall score stays 90: the not-evaluated axes are renormalized out.
+    expect(result.overallScore).toBe(90);
+    // No below-minimum findings for skipped axes or their criteria.
+    expect(
+      result.findings.filter((finding) =>
+        finding.id.startsWith("customization"),
+      ),
+    ).toHaveLength(0);
+  });
+
+  it("skips criterionMinimum gates whose criterion is not evaluated", () => {
+    const result = auditCandidate(
+      candidate({
+        evaluations: {
+          ...baseEvaluations,
+          responsive: {
+            ...baseEvaluations.responsive,
+            mobile: { score: 0, source: "not-evaluated" },
+          },
+        },
+      }),
+      defaultStandard,
+    );
+
+    expect(
+      result.gates.find((gate) => gate.id === "mobile-quality-minimum")?.status,
+    ).toBe("NOT_EVALUATED");
+  });
 });

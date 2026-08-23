@@ -27,6 +27,7 @@ export const scoreSourceSchema = z.enum([
   "llm",
   "imported",
   "inferred",
+  "not-evaluated",
 ]);
 
 const scoreSchema = z.number().min(0).max(100);
@@ -95,6 +96,7 @@ export const findingSchema = z.object({
   evidence: z.string().min(1).optional(),
   suggestedFix: z.string().min(1).optional(),
   source: z.string().min(1).optional(),
+  confidence: z.number().min(0).max(1).optional(),
   provenance: z
     .object({
       kind: z.enum(["observed", "inferred", "subjective", "manual"]),
