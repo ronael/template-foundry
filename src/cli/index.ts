@@ -11,8 +11,10 @@ import {
 import { initWorkspace } from "../application/workspace.js";
 import { auditCandidate } from "../domain/audit.js";
 import {
+  defaultSiteBudget,
   defaultViewports,
   inspectionArtifactSchema,
+  siteInspectionArtifactSchema,
 } from "../domain/inspection.js";
 import {
   benchmarkReferenceSchema,
@@ -23,7 +25,10 @@ import {
   assertValidStandard,
   DomainValidationError,
 } from "../domain/validation.js";
-import { inspectUrl } from "../infrastructure/playwrightInspector.js";
+import {
+  inspectSite,
+  inspectUrl,
+} from "../infrastructure/playwrightInspector.js";
 import {
   readStructuredFile,
   writeJsonFile,
@@ -111,7 +116,12 @@ program
   )
   .option(
     "--max-internal-links <count>",
-    "maximum internal links to verify",
+    "maximum internal links to verify per page",
+    parseInteger,
+  )
+  .option(
+    "--max-pages <count>",
+    "maximum pages to inspect (1 = single-page artifact)",
     parseInteger,
   )
   .option("--json", "print full inspection JSON to stdout")
@@ -122,6 +132,7 @@ program
         out: string;
         timeout?: number;
         maxInternalLinks?: number;
+        maxPages?: number;
         json?: boolean;
       },
     ) => {
@@ -134,17 +145,32 @@ program
             ? { maxInternalLinks: options.maxInternalLinks }
             : {}),
         };
-        const inspection = await inspectUrl(url, inspectOptions);
-        const path = join(
-          resolve(options.out),
-          inspection.id,
-          "inspection.json",
-        );
-        await writeJsonFile(path, inspection);
+        const maxPages = options.maxPages ?? defaultSiteBudget.maxPages;
+        if (maxPages === 1) {
+          const inspection = await inspectUrl(url, inspectOptions);
+          const path = join(
+            resolve(options.out),
+            inspection.id,
+            "inspection.json",
+          );
+          await writeJsonFile(path, inspection);
+          if (options.json) {
+            console.log(JSON.stringify(inspection, null, 2));
+          } else {
+            console.log(renderInspectionSummary(inspection, path));
+          }
+          return;
+        }
+        const site = await inspectSite(url, {
+          ...inspectOptions,
+          budget: { maxPages },
+        });
+        const path = join(resolve(options.out), site.id, "site.json");
+        await writeJsonFile(path, site);
         if (options.json) {
-          console.log(JSON.stringify(inspection, null, 2));
+          console.log(JSON.stringify(site, null, 2));
         } else {
-          console.log(renderInspectionSummary(inspection, path));
+          console.log(renderSiteSummary(site, path));
         }
       });
     },
@@ -221,8 +247,34 @@ await program.parseAsync(process.argv);
 async function readCandidateOrInspection(path: string) {
   const raw = await readStructuredFile(path, candidateSchema).catch(() => null);
   if (raw) return raw;
+  const site = await readStructuredFile(
+    path,
+    siteInspectionArtifactSchema,
+  ).catch(() => null);
+  if (site) return inspectionToCandidate(site);
   const inspection = await readStructuredFile(path, inspectionArtifactSchema);
   return inspectionToCandidate(inspection);
+}
+
+function renderSiteSummary(
+  site: Awaited<ReturnType<typeof inspectSite>>,
+  path: string,
+): string {
+  return [
+    `Site inspection: ${site.id}`,
+    `Target: ${site.target.inputUrl}`,
+    `Final URL: ${site.target.finalUrl ?? "unknown"}`,
+    `Budget: maxPages=${site.budget.maxPages} maxDepth=${site.budget.maxDepth} maxLinksPerPage=${site.budget.maxLinksPerPage}`,
+    "",
+    `Pages (${site.pages.length}):`,
+    ...site.pages.map(
+      (page) =>
+        `- ${page.path} [${page.status}]${page.error ? ` ${page.error}` : ""}`,
+    ),
+    "",
+    `Findings: ${site.findings.length}`,
+    `Wrote: ${path}`,
+  ].join("\n");
 }
 
 function renderInspectionSummary(

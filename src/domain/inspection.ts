@@ -89,3 +89,96 @@ export type InspectOptions = {
   maxInternalLinks?: number;
   touchTargetMinimum?: number;
 };
+
+export const siteBudgetSchema = z.object({
+  maxPages: z.number().int().positive(),
+  maxDepth: z.number().int().nonnegative(),
+  maxLinksPerPage: z.number().int().positive(),
+  timeoutMsPerPage: z.number().int().positive(),
+});
+export type SiteBudget = z.infer<typeof siteBudgetSchema>;
+
+export const defaultSiteBudget: SiteBudget = {
+  maxPages: 5,
+  maxDepth: 1,
+  maxLinksPerPage: 20,
+  timeoutMsPerPage: 15_000,
+};
+
+/**
+ * Routes that carry the most commercial weight in a sellable template.
+ * Discovery never assumes they exist; it only prioritizes them when found.
+ */
+export const priorityRoutes = [
+  "/pricing",
+  "/about",
+  "/contact",
+  "/blog",
+  "/services",
+  "/work",
+  "/portfolio",
+];
+
+/**
+ * Pick which same-origin paths to inspect from the links discovered on the
+ * root page. Pure and deterministic: dedupe, drop the root itself, rank
+ * priority routes first (then shortest paths), cap at maxPages - 1 because
+ * the root page is always inspected.
+ */
+export function selectRoutes(
+  discoveredPaths: string[],
+  budget: Pick<SiteBudget, "maxPages">,
+): string[] {
+  const unique = [...new Set(discoveredPaths)].filter(
+    (path) => path !== "/" && path.length > 1,
+  );
+  const rank = (path: string) => {
+    const priority = priorityRoutes.indexOf(path);
+    return priority === -1 ? priorityRoutes.length : priority;
+  };
+  return unique
+    .sort(
+      (a, b) => rank(a) - rank(b) || a.length - b.length || a.localeCompare(b),
+    )
+    .slice(0, Math.max(0, budget.maxPages - 1));
+}
+
+export const sitePageSchema = z.object({
+  slug: z.string().min(1),
+  path: z.string().min(1),
+  url: z.string().url(),
+  status: z.enum(["inspected", "failed"]),
+  artifactPath: z.string().min(1).optional(),
+  error: z.string().min(1).optional(),
+});
+export type SitePage = z.infer<typeof sitePageSchema>;
+
+export const siteInspectionArtifactSchema = z.object({
+  version: z.literal(2),
+  id: z.string().min(1),
+  createdAt: z.string().min(1),
+  target: z.object({
+    inputUrl: z.string().url(),
+    finalUrl: z.string().url().optional(),
+  }),
+  title: z.string().default(""),
+  provider: z.object({
+    name: z.string().min(1),
+    version: z.string().min(1).optional(),
+  }),
+  budget: siteBudgetSchema,
+  discovery: z.object({
+    considered: z.number().int().nonnegative(),
+    selected: z.array(z.string().min(1)),
+  }),
+  pages: z.array(sitePageSchema).min(1),
+  checks: inspectionArtifactSchema.shape.checks,
+  findings: z.array(findingSchema),
+});
+export type SiteInspectionArtifact = z.infer<
+  typeof siteInspectionArtifactSchema
+>;
+
+export type SiteInspectOptions = InspectOptions & {
+  budget?: Partial<SiteBudget>;
+};

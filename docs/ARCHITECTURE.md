@@ -24,10 +24,20 @@ The domain does not depend on the filesystem, CLI framework, browser automation,
 Browser automation is infrastructure. The audit domain remains browser-provider agnostic:
 
 ```text
-PlaywrightInspector -> InspectionArtifact -> inspectionToCandidate -> auditCandidate
+PlaywrightInspector -> InspectionArtifact (v1, one page)
+                    -> SiteInspectionArtifact (v2, bounded multi-page)
+                    -> inspectionToCandidate -> auditCandidate
 ```
 
-`inspection.json` can be audited repeatedly against different standards without relaunching a browser.
+`inspection.json` (v1) and `site.json` (v2) can both be audited repeatedly against different standards without relaunching a browser. Version 2 is a superset: per-page artifacts live under `pages/<slug>.json`, findings carry their origin `page`, and `site.json` aggregates checks.
+
+## Multi-Page Discovery
+
+`inspect` discovers routes from the root page's same-origin links only (depth 1 — no recursion, no crawler). `selectRoutes` dedupes discovered paths, ranks commercially important routes first (`/pricing`, `/about`, `/contact`, `/blog`, `/services`, `/work`, `/portfolio`), and caps the run by an explicit budget: `maxPages` (5), `maxDepth` (1), `maxLinksPerPage` (20), `timeoutMsPerPage` (15s). All are CLI-configurable.
+
+## Score Aggregation
+
+Per-criterion site score = `0.7 * mean(pages) + 0.3 * worst(page)`. A single broken page (a broken pricing page, an overflowing about page) cannot hide behind a polished homepage, while one weak outlier does not dominate the whole product. Page completeness rewards real route coverage and penalizes pages that failed to load.
 
 ## Extension Points
 

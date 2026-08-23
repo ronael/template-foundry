@@ -97,6 +97,7 @@ export const findingSchema = z.object({
   suggestedFix: z.string().min(1).optional(),
   source: z.string().min(1).optional(),
   confidence: z.number().min(0).max(1).optional(),
+  page: z.string().min(1).optional(),
   provenance: z
     .object({
       kind: z.enum(["observed", "inferred", "subjective", "manual"]),

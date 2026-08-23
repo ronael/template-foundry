@@ -56,6 +56,25 @@ Candidate files provide structured facts and evaluations. Scores may come from `
 
 Inspection artifacts are reusable JSON files created from rendered URLs. They store page metadata, console and network evidence, 3 viewport screenshots, objective findings, and provenance. Auditing an inspection does not relaunch the browser.
 
+## Multi-Page Inspection
+
+A template is a product, not a homepage. `inspect` discovers same-origin routes from the root page (depth 1, no crawling), prioritizes commercially important routes (`/pricing`, `/about`, `/contact`, `/blog`, …), and inspects up to `--max-pages` pages (default 5, `1` keeps the single-page v1 artifact):
+
+```text
+inspections/<site-id>/
+  site.json                  aggregated artifact (version 2)
+  pages/home.json            per-page artifacts (version 1)
+  pages/pricing.json
+  screenshots/home-desktop.png, pricing-mobile.png, …
+```
+
+Every finding carries its origin `page`. Site scores aggregate as `70% mean + 30% worst page`, so a broken pricing page cannot hide behind a polished homepage. Old single-page `inspection.json` artifacts remain auditable.
+
+```bash
+pnpm dev -- inspect https://<template>.framer.website --max-pages 5
+pnpm dev -- audit .template-foundry/inspections/<site-id>/site.json --standard standards/golden-framer-v1.yml
+```
+
 ## Real-Template Workflow
 
 ```text

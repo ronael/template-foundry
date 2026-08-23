@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About - Multisite Fixture</title>
+    <style>
+      body { margin: 0; font-family: Arial, sans-serif; color: #111; }
+      main { padding: 24px; }
+      .mobile-overflow {
+        width: 620px;
+        padding: 16px;
+        background: #f2f2f2;
+      }
+      @media (min-width: 700px) {
+        .mobile-overflow { width: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>About</h1>
+      <div class="mobile-overflow" data-testid="overflow-block">
+        This block intentionally overflows narrow mobile viewports.
+      </div>
+    </main>
+  </body>
+</html>

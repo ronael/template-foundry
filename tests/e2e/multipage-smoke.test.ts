@@ -1,5 +1,5 @@
 import { execFile } from "node:child_process";
-import { mkdtemp, readFile, stat } from "node:fs/promises";
+import { mkdtemp, readFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { promisify } from "node:util";
@@ -13,12 +13,12 @@ const execFileAsync = promisify(execFile);
 const cli = join(process.cwd(), "dist/cli/index.js");
 const standard = join(process.cwd(), "standards/golden-framer-v1.yml");
 
-describe("browser inspection smoke workflow", () => {
+describe("multi-page inspection smoke workflow", () => {
   let server: FixtureServer;
 
   beforeAll(async () => {
     server = await startFixtureServer(
-      join(process.cwd(), "tests/fixtures/site"),
+      join(process.cwd(), "tests/fixtures/multisite"),
     );
   });
 
@@ -26,9 +26,9 @@ describe("browser inspection smoke workflow", () => {
     await server.close();
   });
 
-  it("inspects a URL, writes screenshots, and audits the reusable artifact", async () => {
+  it("inspects a whole template site and audits the aggregated artifact", async () => {
     const workspace = await mkdtemp(
-      join(tmpdir(), "template-foundry-browser-"),
+      join(tmpdir(), "template-foundry-multipage-"),
     );
     const inspectResult = await execFileAsync("node", [
       cli,
@@ -36,26 +36,21 @@ describe("browser inspection smoke workflow", () => {
       server.url,
       "--out",
       join(workspace, "inspections"),
-      "--max-pages",
-      "1",
     ]);
-    expect(inspectResult.stdout).toContain("Findings:");
+    expect(inspectResult.stdout).toContain("Site inspection:");
+    expect(inspectResult.stdout).toContain("/pricing.html");
 
-    const match = inspectResult.stdout.match(/Wrote: (.+inspection\.json)/);
+    const match = inspectResult.stdout.match(/Wrote: (.+site\.json)/);
     expect(match?.[1]).toBeTruthy();
-    const inspectionPath = match?.[1] ?? "";
-    const inspection = JSON.parse(await readFile(inspectionPath, "utf8"));
-    expect(inspection.checks.brokenImages).toBeGreaterThan(0);
-    await expect(
-      stat(
-        join(workspace, "inspections", inspection.id, "screenshots/mobile.png"),
-      ),
-    ).resolves.toBeTruthy();
+    const sitePath = match?.[1] ?? "";
+    const site = JSON.parse(await readFile(sitePath, "utf8"));
+    expect(site.version).toBe(2);
+    expect(site.pages.length).toBeGreaterThanOrEqual(4);
 
     const audit = await execFileAsync("node", [
       cli,
       "audit",
-      inspectionPath,
+      sitePath,
       "--standard",
       standard,
       "--out",
@@ -63,6 +58,7 @@ describe("browser inspection smoke workflow", () => {
     ]).catch((error: { stdout: string; code: number }) => error);
 
     expect(audit.stdout).toContain("Verdict:");
+    // The pricing page carries a broken image (critical finding).
     expect(audit.stdout).toContain("REJECTED");
-  }, 40_000);
+  }, 90_000);
 });
