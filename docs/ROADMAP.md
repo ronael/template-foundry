@@ -2,15 +2,15 @@
 
 ## Now
 
-- Stabilize the V0 CLI quality engine.
-- Improve candidate schemas based on real Framer template audits.
-- Add more benchmark notes without copying third-party assets.
+- Stabilize V1 rendered-site inspection on real Framer preview URLs.
+- Tune inspection-to-candidate scoring with more controlled fixtures.
+- Keep screenshots ready for future visual/originality evaluators.
 
 ## Next
 
-- Add optional Playwright adapter for local preview checks.
-- Add screenshot capture contracts for desktop, tablet, and mobile.
 - Add richer buyer-test templates.
+- Add an editable-template buyer test workflow when a robust Framer/editor path exists.
+- Add optional visual evaluation over screenshots.
 
 ## Later
 

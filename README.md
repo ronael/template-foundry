@@ -17,7 +17,9 @@ pnpm build
 pnpm dev -- init ./demo-workspace
 pnpm dev -- standard validate standards/golden-framer-v1.yml
 pnpm dev -- benchmark validate fixtures/benchmarks/framer-public-benchmark-notes.yml
+pnpm dev -- inspect https://example.framer.website --out .template-foundry/inspections
 pnpm dev -- audit fixtures/candidates/acceptable-template.yml --standard standards/golden-framer-v1.yml --out .template-foundry/reports
+pnpm dev -- audit .template-foundry/inspections/<inspection-id>/inspection.json --standard standards/golden-framer-v1.yml
 pnpm dev -- report .template-foundry/reports/acceptable-saas-template-audit.json
 ```
 
@@ -50,7 +52,9 @@ The Golden Standard is human-editable YAML in `standards/golden-framer-v1.yml`. 
 - verdict thresholds;
 - automated, manual, and not-evaluated quality gates.
 
-Candidate files provide structured facts and evaluations. Scores may come from `manual`, `automated`, `llm`, or `imported` sources; the domain engine only cares about validated evidence.
+Candidate files provide structured facts and evaluations. Scores may come from `manual`, `automated`, `llm`, `imported`, or `inferred` sources; the domain engine only cares about validated evidence.
+
+Inspection artifacts are reusable JSON files created from rendered URLs. They store page metadata, console and network evidence, 3 viewport screenshots, objective findings, and provenance. Auditing an inspection does not relaunch the browser.
 
 ## Development
 
@@ -59,6 +63,7 @@ pnpm type-check
 pnpm test
 pnpm lint
 pnpm smoke
+pnpm smoke:browser
 ```
 
 Core behavior lives in `src/domain`. Filesystem, YAML, and CLI concerns stay outside the domain so future Playwright or LLM evaluators can plug in through adapters.

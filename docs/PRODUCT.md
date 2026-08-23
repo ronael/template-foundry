@@ -23,6 +23,18 @@ The V0 is a local CLI that can:
 
 The V0 does not automate Framer, scrape marketplaces, generate products, publish templates, or process payments.
 
+## V1 Rendered Inspection
+
+V1 adds deterministic inspection of a rendered URL:
+
+```text
+URL -> browser inspection -> inspection.json -> Candidate projection -> existing audit engine
+```
+
+The browser inspection captures page load metadata, desktop/tablet/mobile screenshots, horizontal overflow, console and page errors, relevant network failures, broken internal links, broken anchors, broken images, small mobile touch targets, and basic accessibility findings through axe-core.
+
+Rendered-site inspection is not the same as an editable-template buyer test. It can prove what the published site does in a browser, but it cannot prove that a Framer buyer can easily swap branding, CMS entries, components, or sections. Buyer tests remain a future editor/template-structure workflow.
+
 ## Golden Standard
 
 The standard is a versioned YAML file. It separates quality into:

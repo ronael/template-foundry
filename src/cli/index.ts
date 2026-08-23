@@ -3,12 +3,17 @@ import { writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { Command } from "commander";
 import { ZodError } from "zod";
+import { inspectionToCandidate } from "../application/inspectionToCandidate.js";
 import {
   renderMarkdownReport,
   renderTerminalReport,
 } from "../application/report.js";
 import { initWorkspace } from "../application/workspace.js";
 import { auditCandidate } from "../domain/audit.js";
+import {
+  defaultViewports,
+  inspectionArtifactSchema,
+} from "../domain/inspection.js";
 import {
   benchmarkReferenceSchema,
   candidateSchema,
@@ -18,6 +23,7 @@ import {
   assertValidStandard,
   DomainValidationError,
 } from "../domain/validation.js";
+import { inspectUrl } from "../infrastructure/playwrightInspector.js";
 import {
   readStructuredFile,
   writeJsonFile,
@@ -88,22 +94,78 @@ benchmarkCommand
   });
 
 program
+  .command("inspect")
+  .description(
+    "Inspect a rendered template/site URL and write a reusable inspection artifact.",
+  )
+  .argument("<url>", "URL to inspect")
+  .option(
+    "-o, --out <directory>",
+    "inspection output directory",
+    ".template-foundry/inspections",
+  )
+  .option(
+    "--timeout <ms>",
+    "navigation and check timeout in milliseconds",
+    parseInteger,
+  )
+  .option(
+    "--max-internal-links <count>",
+    "maximum internal links to verify",
+    parseInteger,
+  )
+  .option("--json", "print full inspection JSON to stdout")
+  .action(
+    async (
+      url: string,
+      options: {
+        out: string;
+        timeout?: number;
+        maxInternalLinks?: number;
+        json?: boolean;
+      },
+    ) => {
+      await run(async () => {
+        const inspectOptions = {
+          outputDir: resolve(options.out),
+          viewports: defaultViewports,
+          ...(options.timeout ? { timeoutMs: options.timeout } : {}),
+          ...(options.maxInternalLinks
+            ? { maxInternalLinks: options.maxInternalLinks }
+            : {}),
+        };
+        const inspection = await inspectUrl(url, inspectOptions);
+        const path = join(
+          resolve(options.out),
+          inspection.id,
+          "inspection.json",
+        );
+        await writeJsonFile(path, inspection);
+        if (options.json) {
+          console.log(JSON.stringify(inspection, null, 2));
+        } else {
+          console.log(renderInspectionSummary(inspection, path));
+        }
+      });
+    },
+  );
+
+program
   .command("audit")
-  .description("Audit a candidate template against a Golden Standard.")
-  .argument("<candidate>", "candidate YAML or JSON file")
+  .description(
+    "Audit a candidate or inspection artifact against a Golden Standard.",
+  )
+  .argument("<input>", "candidate or inspection YAML/JSON file")
   .requiredOption("-s, --standard <path>", "standard YAML or JSON file")
   .option("-o, --out <directory>", "directory for JSON and Markdown reports")
   .option("--json", "print full JSON audit result to stdout")
   .action(
     async (
-      candidatePath: string,
+      inputPath: string,
       options: { standard: string; out?: string; json?: boolean },
     ) => {
       await run(async () => {
-        const candidate = await readStructuredFile(
-          resolve(candidatePath),
-          candidateSchema,
-        );
+        const candidate = await readCandidateOrInspection(resolve(inputPath));
         const standard = await readStructuredFile(
           resolve(options.standard),
           standardSchema,
@@ -155,6 +217,44 @@ program
   });
 
 await program.parseAsync(process.argv);
+
+async function readCandidateOrInspection(path: string) {
+  const raw = await readStructuredFile(path, candidateSchema).catch(() => null);
+  if (raw) return raw;
+  const inspection = await readStructuredFile(path, inspectionArtifactSchema);
+  return inspectionToCandidate(inspection);
+}
+
+function renderInspectionSummary(
+  inspection: Awaited<ReturnType<typeof inspectUrl>>,
+  path: string,
+): string {
+  return [
+    `Inspection: ${inspection.id}`,
+    `Target: ${inspection.target.inputUrl}`,
+    `Final URL: ${inspection.target.finalUrl ?? "unknown"}`,
+    `Title: ${inspection.page.title || "(empty)"}`,
+    `Status: ${inspection.page.status ?? "unknown"}`,
+    `Navigation: ${inspection.page.navigationMs}ms`,
+    "",
+    "Viewports:",
+    ...inspection.viewports.map(
+      (viewport) =>
+        `- ${viewport.id} ${viewport.width}x${viewport.height} screenshot=${viewport.screenshotPath}`,
+    ),
+    "",
+    `Findings: ${inspection.findings.length}`,
+    `Wrote: ${path}`,
+  ].join("\n");
+}
+
+function parseInteger(value: string): number {
+  const parsed = Number.parseInt(value, 10);
+  if (!Number.isFinite(parsed) || parsed <= 0) {
+    throw new Error(`Expected a positive integer, got ${value}`);
+  }
+  return parsed;
+}
 
 async function run(task: () => Promise<void>): Promise<void> {
   try {

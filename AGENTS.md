@@ -12,6 +12,8 @@ Source of truth:
 
 Keep the V0 focused: CLI, Golden Standard, benchmark metadata, candidate input, deterministic audit engine, reports, fixtures, and tests. Do not build a SaaS, marketplace, scraper, visual editor, payment system, or full Framer automation.
 
+Browser automation is infrastructure. The audit domain must remain browser-provider agnostic.
+
 Run before finishing changes:
 
 ```bash

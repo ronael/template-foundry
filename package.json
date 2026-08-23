@@ -20,13 +20,16 @@
     "lint": "biome check .",
     "format": "biome format --write .",
     "dev": "tsx src/cli/index.ts",
-    "smoke": "pnpm build && vitest run tests/e2e/smoke.test.ts"
+    "smoke": "pnpm build && vitest run tests/e2e/smoke.test.ts",
+    "smoke:browser": "pnpm build && vitest run tests/e2e/browser-smoke.test.ts"
   },
   "engines": {
     "node": ">=22.12"
   },
   "dependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "commander": "^15.0.0",
+    "playwright": "^1.62.1",
     "yaml": "^2.8.4",
     "zod": "^4.4.3"
   },
