@@ -9,6 +9,7 @@ import {
   type Response,
 } from "playwright";
 import {
+  dedupeFindings,
   defaultSiteBudget,
   defaultViewports,
   type InspectionArtifact,
@@ -155,6 +156,11 @@ export async function inspectSite(
       discovery: {
         considered: root.discoveredPaths.length,
         selected,
+      },
+      summary: {
+        discovered: root.discoveredPaths.length,
+        inspected: pages.filter((page) => page.status === "inspected").length,
+        failed: pages.filter((page) => page.status === "failed").length,
       },
       pages,
       checks: aggregateChecks(artifacts),
@@ -846,14 +852,4 @@ function axeSeverity(impact: string | null | undefined): Severity {
   if (impact === "serious") return "error";
   if (impact === "moderate") return "warning";
   return "info";
-}
-
-function dedupeFindings(findings: AuditFinding[]): AuditFinding[] {
-  const seen = new Set<string>();
-  return findings.filter((finding) => {
-    const key = `${finding.page ?? ""}:${finding.id}:${finding.evidence ?? ""}`;
-    if (seen.has(key)) return false;
-    seen.add(key);
-    return true;
-  });
 }

@@ -113,6 +113,12 @@ describe("inspectionToCandidate (site)", () => {
     // One failed page penalizes completeness: 60 + 6*2 - 10*1 = 62.
     expect(candidate.evaluations.packaging.pageCompleteness.score).toBe(62);
     expect(candidate.findings.every((finding) => finding.page)).toBe(true);
+    expect(candidate.inspection).toEqual({
+      discoveredPages: 4,
+      inspectedPages: 2,
+      failedPages: 1,
+      worstPage: "/about",
+    });
   });
 
   it("audits a multi-page artifact without relaunching a browser", () => {
@@ -131,5 +137,6 @@ describe("inspectionToCandidate (site)", () => {
     expect(result.findings.some((finding) => finding.page === "/pricing")).toBe(
       true,
     );
+    expect(result.inspection?.inspectedPages).toBe(2);
   });
 });

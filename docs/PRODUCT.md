@@ -62,7 +62,7 @@ Calibration outcomes fixed in the engine and standard:
 - `linksChecked` reports links actually examined;
 - Framer platform requests/console noise is excluded from template findings.
 
-Known limits: one page per inspection, no cross-page navigation audit, no performance budgets (LCP/weight) yet, landmark-related axe warnings are common to most Framer sites and currently informational.
+Known limits: route discovery is deliberately root-only and capped rather than recursive; no performance budgets (LCP/weight) exist yet; landmark-related axe warnings are common to most Framer sites and currently informational.
 
 ## Golden Standard
 

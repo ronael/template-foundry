@@ -33,11 +33,16 @@ PlaywrightInspector -> InspectionArtifact (v1, one page)
 
 ## Multi-Page Discovery
 
-`inspect` discovers routes from the root page's same-origin links only (depth 1 — no recursion, no crawler). `selectRoutes` dedupes discovered paths, ranks commercially important routes first (`/pricing`, `/about`, `/contact`, `/blog`, `/services`, `/work`, `/portfolio`), and caps the run by an explicit budget: `maxPages` (5), `maxDepth` (1), `maxLinksPerPage` (20), `timeoutMsPerPage` (15s). All are CLI-configurable.
+`inspect` discovers routes from the root page's same-origin links only (depth 1 — no recursion, no crawler). `selectRoutes` dedupes equivalent route variants, ranks commercially important routes first (`/pricing`, `/about`, `/contact`, `/blog`, `/services`, `/work`, `/portfolio`), and caps the run by an explicit budget: `maxPages` (5), `maxDepth` (0 or 1), `maxLinksPerPage` (20), `timeoutMsPerPage` (15s). All are CLI-configurable and the effective values are stored in `site.json`.
 
 ## Score Aggregation
 
 Per-criterion site score = `0.7 * mean(pages) + 0.3 * worst(page)`. A single broken page (a broken pricing page, an overflowing about page) cannot hide behind a polished homepage, while one weak outlier does not dominate the whole product. Page completeness rewards real route coverage and penalizes pages that failed to load.
+
+The candidate projection also carries a browser-agnostic inspection summary:
+discovered, inspected, and failed page counts plus the worst route. The audit
+result copies this summary so terminal, JSON, and Markdown reports can expose
+product coverage without teaching the audit engine about Playwright.
 
 ## Extension Points
 

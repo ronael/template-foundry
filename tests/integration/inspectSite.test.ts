@@ -39,6 +39,11 @@ describe("inspectSite", () => {
       "/pricing.html",
     ]);
     expect(site.pages.every((page) => page.status === "inspected")).toBe(true);
+    expect(site.summary).toEqual({
+      discovered: 3,
+      inspected: 4,
+      failed: 0,
+    });
 
     // Per-page artifacts exist and stay auditable on their own.
     for (const page of site.pages) {
@@ -90,6 +95,7 @@ describe("inspectSite", () => {
     // The same artifact feeds the unchanged audit engine.
     const candidate = inspectionToCandidate(site);
     const result = auditCandidate(candidate, defaultStandard);
+    expect(result.inspection?.worstPage).toBe("/pricing.html");
     // Broken image = critical finding -> REJECTED regardless of the average.
     expect(result.verdict).toBe("REJECTED");
   }, 60_000);

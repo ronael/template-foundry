@@ -36,6 +36,12 @@ describe("multi-page inspection smoke workflow", () => {
       server.url,
       "--out",
       join(workspace, "inspections"),
+      "--max-links-per-page",
+      "7",
+      "--timeout-per-page",
+      "10000",
+      "--max-depth",
+      "1",
     ]);
     expect(inspectResult.stdout).toContain("Site inspection:");
     expect(inspectResult.stdout).toContain("/pricing.html");
@@ -46,6 +52,11 @@ describe("multi-page inspection smoke workflow", () => {
     const site = JSON.parse(await readFile(sitePath, "utf8"));
     expect(site.version).toBe(2);
     expect(site.pages.length).toBeGreaterThanOrEqual(4);
+    expect(site.budget).toMatchObject({
+      maxDepth: 1,
+      maxLinksPerPage: 7,
+      timeoutMsPerPage: 10_000,
+    });
 
     const audit = await execFileAsync("node", [
       cli,
@@ -60,5 +71,7 @@ describe("multi-page inspection smoke workflow", () => {
     expect(audit.stdout).toContain("Verdict:");
     // The pricing page carries a broken image (critical finding).
     expect(audit.stdout).toContain("REJECTED");
+    expect(audit.stdout).toContain("Pages inspected   4");
+    expect(audit.stdout).toContain("Worst page        /pricing.html");
   }, 90_000);
 });

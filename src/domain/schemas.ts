@@ -124,6 +124,14 @@ export const candidateSchema = z.object({
     auditedAt: z.string().optional(),
     notes: z.string().optional(),
   }),
+  inspection: z
+    .object({
+      discoveredPages: z.number().int().nonnegative(),
+      inspectedPages: z.number().int().nonnegative(),
+      failedPages: z.number().int().nonnegative(),
+      worstPage: z.string().min(1).optional(),
+    })
+    .optional(),
   pages: z.array(z.string().min(1)).min(1),
   breakpoints: z.array(z.string().min(1)).min(1),
   components: z.array(z.string().min(1)).default([]),

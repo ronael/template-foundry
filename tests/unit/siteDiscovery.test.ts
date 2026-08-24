@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { selectRoutes } from "../../src/domain/inspection.js";
+import { dedupeFindings, selectRoutes } from "../../src/domain/inspection.js";
 
 describe("selectRoutes", () => {
   it("prioritizes commercially important routes and dedupes", () => {
@@ -27,5 +27,33 @@ describe("selectRoutes", () => {
 
     expect(first).toEqual(second);
     expect(first).toEqual(["/mid", "/alpha", "/zebra"]);
+  });
+
+  it("applies depth zero and recognizes common route variants", () => {
+    expect(
+      selectRoutes(["/pricing", "/about"], { maxPages: 5, maxDepth: 0 }),
+    ).toEqual([]);
+    expect(
+      selectRoutes(["/random", "/pricing.html", "/about/", "/pricing"], {
+        maxPages: 3,
+        maxDepth: 1,
+      }),
+    ).toEqual(["/pricing", "/about/"]);
+  });
+
+  it("deduplicates identical findings but preserves their page origin", () => {
+    const finding = {
+      id: "axe-link-name",
+      severity: "error" as const,
+      message: "Missing link name",
+      evidence: "1 node",
+    };
+    expect(
+      dedupeFindings([
+        { ...finding, page: "/" },
+        { ...finding, page: "/" },
+        { ...finding, page: "/pricing" },
+      ]),
+    ).toHaveLength(2);
   });
 });

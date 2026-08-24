@@ -69,11 +69,12 @@ function siteToCandidate(site: SiteInspectionArtifact): Candidate {
   // page (broken pricing, overflowing about) cannot hide behind a polished
   // homepage. Site completeness rewards real route coverage and penalizes
   // pages that failed to load.
-  const scores = aggregateSiteScores(
+  const aggregation = aggregateSiteScores(
     site,
     inspectedPages.length,
     failedPages.length,
   );
+  const scores = aggregation.scores;
   const checks = site.checks;
 
   return {
@@ -83,6 +84,12 @@ function siteToCandidate(site: SiteInspectionArtifact): Candidate {
     metadata: {
       auditedAt: site.createdAt,
       notes: `Generated from multi-page rendered inspection (${inspectedPages.length} pages inspected, ${failedPages.length} failed). Criteria that a rendered URL cannot prove are marked not-evaluated and excluded from scoring.`,
+    },
+    inspection: {
+      discoveredPages: site.summary?.discovered ?? site.discovery.considered,
+      inspectedPages: inspectedPages.length,
+      failedPages: failedPages.length,
+      ...(aggregation.worstPage ? { worstPage: aggregation.worstPage } : {}),
     },
     pages: site.pages.map((page) => page.url),
     breakpoints: ["desktop", "tablet", "mobile"],
@@ -143,61 +150,25 @@ function aggregateSiteScores(
   site: SiteInspectionArtifact,
   inspectedCount: number,
   failedCount: number,
-): PageCriterionScores {
+): { scores: PageCriterionScores; worstPage?: string } {
   // Reconstruct per-page scores from the merged findings so the worst page
   // is visible. Findings carry their origin page since inspection V2.
   const perPage = new Map<string, PageCriterionScores>();
   for (const page of site.pages) {
     if (page.status !== "inspected") continue;
-    const pageFindings = site.findings.filter(
-      (finding) => finding.page === page.path,
+    perPage.set(
+      page.path,
+      pageScoresFromFindings(
+        site.findings.filter((finding) => finding.page === page.path),
+      ),
     );
-    perPage.set(page.path, {
-      performance: scoreFromProblems(96, [
-        [countPrefix(pageFindings, "network-failure-"), 12],
-        [countPrefix(pageFindings, "bad-response-"), 10],
-        [countPrefix(pageFindings, "console-error-"), 8],
-        [countPrefix(pageFindings, "page-error-"), 14],
-      ]),
-      accessibilitySeo: scoreFromProblems(96, [
-        [
-          pageFindings.filter(
-            (finding) =>
-              finding.id.startsWith("axe-") &&
-              ["critical", "error"].includes(finding.severity),
-          ).length,
-          14,
-        ],
-        [
-          pageFindings.filter((finding) => finding.id.startsWith("axe-"))
-            .length,
-          4,
-        ],
-        [countPrefix(pageFindings, "broken-image-"), 8],
-        [countPrefix(pageFindings, "broken-internal-link-"), 10],
-        [countPrefix(pageFindings, "broken-anchor-"), 8],
-      ]),
-      mobile: scoreFromProblems(100, [
-        [
-          pageFindings.filter((finding) =>
-            finding.id.startsWith("horizontal-overflow-"),
-          ).length,
-          18,
-        ],
-        [countPrefix(pageFindings, "small-touch-target-"), 3],
-      ]),
-      tablet: pageFindings.some(
-        (finding) => finding.id === "horizontal-overflow-tablet",
-      )
-        ? 70
-        : 84,
-      navigation: scoreFromProblems(88, [
-        [countPrefix(pageFindings, "broken-internal-link-"), 12],
-        [countPrefix(pageFindings, "broken-anchor-"), 8],
-      ]),
-      pageCompleteness: 82,
-    });
   }
+  const failedPage = site.pages.find((page) => page.status === "failed");
+  const worstInspectedPage = [...perPage.entries()].sort(
+    ([pathA, scoresA], [pathB, scoresB]) =>
+      pageQuality(scoresA) - pageQuality(scoresB) || pathA.localeCompare(pathB),
+  )[0]?.[0];
+  const worstPage = failedPage?.path ?? worstInspectedPage;
   const criteria: (keyof PageCriterionScores)[] = [
     "performance",
     "accessibilitySeo",
@@ -222,7 +193,64 @@ function aggregateSiteScores(
     0,
     92,
   );
-  return aggregated;
+  return {
+    scores: aggregated,
+    ...(worstPage ? { worstPage } : {}),
+  };
+}
+
+function pageScoresFromFindings(
+  pageFindings: SiteInspectionArtifact["findings"],
+): PageCriterionScores {
+  return {
+    performance: scoreFromProblems(96, [
+      [countPrefix(pageFindings, "network-failure-"), 12],
+      [countPrefix(pageFindings, "bad-response-"), 10],
+      [countPrefix(pageFindings, "console-error-"), 8],
+      [countPrefix(pageFindings, "page-error-"), 14],
+    ]),
+    accessibilitySeo: scoreFromProblems(96, [
+      [
+        pageFindings.filter(
+          (finding) =>
+            finding.id.startsWith("axe-") &&
+            ["critical", "error"].includes(finding.severity),
+        ).length,
+        14,
+      ],
+      [
+        pageFindings.filter((finding) => finding.id.startsWith("axe-")).length,
+        4,
+      ],
+      [countPrefix(pageFindings, "broken-image-"), 8],
+      [countPrefix(pageFindings, "broken-internal-link-"), 10],
+      [countPrefix(pageFindings, "broken-anchor-"), 8],
+    ]),
+    mobile: scoreFromProblems(100, [
+      [
+        pageFindings.filter((finding) =>
+          finding.id.startsWith("horizontal-overflow-"),
+        ).length,
+        18,
+      ],
+      [countPrefix(pageFindings, "small-touch-target-"), 3],
+    ]),
+    tablet: pageFindings.some(
+      (finding) => finding.id === "horizontal-overflow-tablet",
+    )
+      ? 70
+      : 84,
+    navigation: scoreFromProblems(88, [
+      [countPrefix(pageFindings, "broken-internal-link-"), 12],
+      [countPrefix(pageFindings, "broken-anchor-"), 8],
+    ]),
+    pageCompleteness: 82,
+  };
+}
+
+function pageQuality(scores: PageCriterionScores): number {
+  const values = Object.values(scores);
+  return values.reduce((sum, value) => sum + value, 0) / values.length;
 }
 
 function buildEvaluations(

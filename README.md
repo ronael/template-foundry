@@ -71,19 +71,24 @@ inspections/<site-id>/
 Every finding carries its origin `page`. Site scores aggregate as `70% mean + 30% worst page`, so a broken pricing page cannot hide behind a polished homepage. Old single-page `inspection.json` artifacts remain auditable.
 
 ```bash
-pnpm dev -- inspect https://<template>.framer.website --max-pages 5
+pnpm dev -- inspect https://<template>.framer.website --max-pages 5 --max-depth 1 --max-links-per-page 20 --timeout-per-page 15000
 pnpm dev -- audit .template-foundry/inspections/<site-id>/site.json --standard standards/golden-framer-v1.yml
 ```
+
+The site artifact records discovered, inspected, and failed page counts. Audit
+reports surface that coverage, the worst page, critical-finding count, and the
+origin page for every observed issue. Set `--max-depth 0` for a root-only site
+artifact; depth is intentionally capped at 1.
 
 ## Real-Template Workflow
 
 ```text
-framer template URL -> inspect -> inspection.json -> audit -> report -> human review -> standard tuning
+framer template URL -> inspect -> site.json -> audit -> report -> human review -> standard tuning
 ```
 
 ```bash
 pnpm dev -- inspect https://<template>.framer.website --out .template-foundry/inspections
-pnpm dev -- audit .template-foundry/inspections/<inspection-id>/inspection.json --standard standards/golden-framer-v1.yml --out .template-foundry/reports
+pnpm dev -- audit .template-foundry/inspections/<inspection-id>/site.json --standard standards/golden-framer-v1.yml --out .template-foundry/reports
 pnpm dev -- report .template-foundry/reports/<inspection-id>-audit.json
 ```
 

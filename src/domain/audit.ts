@@ -52,6 +52,7 @@ export type AuditResult = {
   findings: AuditFinding[];
   verdict: Verdict;
   recommendations: string[];
+  inspection?: Candidate["inspection"];
 };
 
 export function auditCandidate(
@@ -131,6 +132,7 @@ export function auditCandidate(
     findings,
     verdict,
     recommendations,
+    ...(candidate.inspection ? { inspection: candidate.inspection } : {}),
   };
 }
 

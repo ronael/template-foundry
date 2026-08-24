@@ -111,11 +111,21 @@ program
   )
   .option(
     "--timeout <ms>",
-    "navigation and check timeout in milliseconds",
+    "navigation and check timeout in milliseconds (legacy alias)",
+    parseInteger,
+  )
+  .option(
+    "--timeout-per-page <ms>",
+    "navigation and check timeout per page in milliseconds",
     parseInteger,
   )
   .option(
     "--max-internal-links <count>",
+    "maximum internal links to verify per page (legacy alias)",
+    parseInteger,
+  )
+  .option(
+    "--max-links-per-page <count>",
     "maximum internal links to verify per page",
     parseInteger,
   )
@@ -124,6 +134,11 @@ program
     "maximum pages to inspect (1 = single-page artifact)",
     parseInteger,
   )
+  .option(
+    "--max-depth <depth>",
+    "discovery depth (0 = root only, 1 = root links; maximum 1)",
+    parseDepth,
+  )
   .option("--json", "print full inspection JSON to stdout")
   .action(
     async (
@@ -131,19 +146,25 @@ program
       options: {
         out: string;
         timeout?: number;
+        timeoutPerPage?: number;
         maxInternalLinks?: number;
+        maxLinksPerPage?: number;
         maxPages?: number;
+        maxDepth?: number;
         json?: boolean;
       },
     ) => {
       await run(async () => {
+        const timeoutMs = options.timeoutPerPage ?? options.timeout;
+        const maxLinksPerPage =
+          options.maxLinksPerPage ??
+          options.maxInternalLinks ??
+          defaultSiteBudget.maxLinksPerPage;
         const inspectOptions = {
           outputDir: resolve(options.out),
           viewports: defaultViewports,
-          ...(options.timeout ? { timeoutMs: options.timeout } : {}),
-          ...(options.maxInternalLinks
-            ? { maxInternalLinks: options.maxInternalLinks }
-            : {}),
+          ...(timeoutMs ? { timeoutMs } : {}),
+          maxInternalLinks: maxLinksPerPage,
         };
         const maxPages = options.maxPages ?? defaultSiteBudget.maxPages;
         if (maxPages === 1) {
@@ -163,7 +184,12 @@ program
         }
         const site = await inspectSite(url, {
           ...inspectOptions,
-          budget: { maxPages },
+          budget: {
+            maxPages,
+            maxDepth: options.maxDepth ?? defaultSiteBudget.maxDepth,
+            maxLinksPerPage,
+            timeoutMsPerPage: timeoutMs ?? defaultSiteBudget.timeoutMsPerPage,
+          },
         });
         const path = join(resolve(options.out), site.id, "site.json");
         await writeJsonFile(path, site);
@@ -264,7 +290,7 @@ function renderSiteSummary(
     `Site inspection: ${site.id}`,
     `Target: ${site.target.inputUrl}`,
     `Final URL: ${site.target.finalUrl ?? "unknown"}`,
-    `Budget: maxPages=${site.budget.maxPages} maxDepth=${site.budget.maxDepth} maxLinksPerPage=${site.budget.maxLinksPerPage}`,
+    `Budget: maxPages=${site.budget.maxPages} maxDepth=${site.budget.maxDepth} maxLinksPerPage=${site.budget.maxLinksPerPage} timeoutMsPerPage=${site.budget.timeoutMsPerPage}`,
     "",
     `Pages (${site.pages.length}):`,
     ...site.pages.map(
@@ -304,6 +330,14 @@ function parseInteger(value: string): number {
   const parsed = Number.parseInt(value, 10);
   if (!Number.isFinite(parsed) || parsed <= 0) {
     throw new Error(`Expected a positive integer, got ${value}`);
+  }
+  return parsed;
+}
+
+function parseDepth(value: string): number {
+  const parsed = Number.parseInt(value, 10);
+  if (!Number.isFinite(parsed) || parsed < 0 || parsed > 1) {
+    throw new Error(`Expected max depth 0 or 1, got ${value}`);
   }
   return parsed;
 }
