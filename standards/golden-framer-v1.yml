@@ -4,7 +4,7 @@ name: Golden Framer Standard
 scope: Sellable Framer templates evaluated through structured candidate data.
 metadata:
   createdAt: "2026-08-23"
-  updatedAt: "2026-08-23"
+  updatedAt: "2026-08-24"
   notes: >-
     V0 standard derived from public Framer template expectations and internal
     quality gates; it stores criteria, not third-party template content.
@@ -12,6 +12,34 @@ metadata:
     criteria a rendered URL cannot prove are scored as not-evaluated and are
     excluded from weighted scores, minimums, and gates rather than padded with
     placeholder numbers.
+    Performance thresholds calibrated 2026-08-24 on seven rendered pages from
+    BenBox, Portfr, Unvoid, and Enigma. Observed transfer ranged from 362609 to
+    1986609 bytes; thresholds remain conservative and target clear outliers.
+performance:
+  totalTransferBytes:
+    warningAbove: 4194304
+    errorAbove: 7340032
+  imageTransferBytes:
+    warningAbove: 2621440
+    errorAbove: 5242880
+  javascriptTransferBytes:
+    warningAbove: 1048576
+    errorAbove: 2097152
+  fontTransferBytes:
+    warningAbove: 524288
+    errorAbove: 1048576
+  oversizedImageBytes:
+    warningAbove: 1048576
+    errorAbove: 2621440
+  oversizedScriptBytes:
+    warningAbove: 524288
+    errorAbove: 1048576
+  domNodes:
+    warningAbove: 1500
+    errorAbove: 3000
+  lcpMs:
+    warningAbove: 2500
+    errorAbove: 4000
 thresholds:
   rejectedBelow: 75
   needsWorkBelow: 85

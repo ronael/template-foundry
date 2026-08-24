@@ -1,7 +1,11 @@
 import type { AuditResult } from "../domain/audit.js";
+import { formatBytes } from "../domain/performanceAudit.js";
 
 export function renderTerminalReport(result: AuditResult): string {
   const commonIssues = summarizeCommonIssues(result);
+  const performanceLines = result.performance
+    ? renderTerminalPerformance(result.performance)
+    : [];
   const inspectionLines = result.inspection
     ? [
         `Pages inspected   ${result.inspection.inspectedPages}`,
@@ -41,6 +45,7 @@ export function renderTerminalReport(result: AuditResult): string {
     axisLines,
     "",
     ...inspectionLines,
+    ...performanceLines,
     "Gates:",
     gateLines || "No gates declared.",
     "",
@@ -54,6 +59,9 @@ export function renderTerminalReport(result: AuditResult): string {
 
 export function renderMarkdownReport(result: AuditResult): string {
   const commonIssues = summarizeCommonIssues(result);
+  const performanceSection = result.performance
+    ? renderMarkdownPerformance(result.performance)
+    : "";
   const inspectionSection = result.inspection
     ? `## Site Coverage
 
@@ -83,7 +91,7 @@ ${commonIssues.length > 0 ? commonIssues.map((issue) => `- ${issue}`).join("\n")
   const findingRows = result.findings
     .map(
       (finding) =>
-        `| ${finding.severity} | ${finding.page ?? "-"} | ${finding.criterion ?? "-"} | ${finding.message} | ${finding.suggestedFix ?? "-"} |`,
+        `| ${finding.severity} | ${finding.page ?? "-"} | ${finding.viewport ?? "-"} | ${finding.criterion ?? "-"} | ${finding.message} | ${finding.suggestedFix ?? "-"} |`,
     )
     .join("\n");
   const recommendations = result.recommendations
@@ -98,7 +106,7 @@ Verdict: **${result.verdict}**
 
 Overall score: **${result.overallScore.toFixed(1)}**
 
-${inspectionSection}## Axis Scores
+${inspectionSection}${performanceSection}## Axis Scores
 
 | Axis | Score | Weighted |
 | --- | ---: | ---: |
@@ -112,14 +120,76 @@ ${gateRows}
 
 ## Findings
 
-| Severity | Page | Criterion | Message | Suggested fix |
-| --- | --- | --- | --- | --- |
-${findingRows || "| info | - | - | No findings. | - |"}
+| Severity | Page | Viewport | Criterion | Message | Suggested fix |
+| --- | --- | --- | --- | --- | --- |
+${findingRows || "| info | - | - | - | No findings. | - |"}
 
 ## Recommendations
 
 ${recommendations || "- No action required."}
 `;
+}
+
+function renderTerminalPerformance(
+  performance: NonNullable<AuditResult["performance"]>,
+): string[] {
+  const mobileLcp =
+    performance.lcp.find((item) => item.viewport === "mobile") ??
+    performance.lcp[0];
+  return [
+    "Performance:",
+    `Pages measured    ${performance.pagesMeasured}`,
+    ...(performance.transfer
+      ? [
+          `Transfer avg      ${formatBytes(performance.transfer.averageBytes)}`,
+          `Transfer worst    ${formatBytes(performance.transfer.worstBytes)} (${performance.transfer.worstPage})`,
+        ]
+      : ["Transfer           n/e"]),
+    ...(mobileLcp
+      ? [
+          `LCP ${mobileLcp.viewport.padEnd(12)} ${(mobileLcp.averageMs / 1000).toFixed(2)} s avg; ${(mobileLcp.worstMs / 1000).toFixed(2)} s worst (${mobileLcp.worstPage})`,
+        ]
+      : ["LCP                n/e"]),
+    `Heavy assets      ${performance.heavyImages} image(s), ${performance.heavyScripts} first-party script(s)`,
+    ...performance.commonHeavyResources.map(
+      (resource) =>
+        `Common heavy      ${resource.category} ${formatBytes(resource.maxTransferBytes)} on ${resource.pages.length} pages (${shortResource(resource.url)})`,
+    ),
+    "",
+  ];
+}
+
+function renderMarkdownPerformance(
+  performance: NonNullable<AuditResult["performance"]>,
+): string {
+  const lcpRows = performance.lcp
+    .map(
+      (item) =>
+        `| ${item.viewport} | ${(item.averageMs / 1000).toFixed(2)} s | ${(item.worstMs / 1000).toFixed(2)} s (${item.worstPage}) | ${item.measuredPages} | ${item.notEvaluatedPages} |`,
+    )
+    .join("\n");
+  return `## Performance Evidence
+
+- Pages measured: ${performance.pagesMeasured}
+- Average transfer: ${performance.transfer ? formatBytes(performance.transfer.averageBytes) : "n/e"}
+- Worst transfer: ${performance.transfer ? `${formatBytes(performance.transfer.worstBytes)} (${performance.transfer.worstPage})` : "n/e"}
+- Heavy assets: ${performance.heavyImages} image(s), ${performance.heavyScripts} first-party script(s)
+- Common heavy resources: ${performance.commonHeavyResources.length > 0 ? performance.commonHeavyResources.map((resource) => `${resource.category} ${formatBytes(resource.maxTransferBytes)} on ${resource.pages.length} pages (${shortResource(resource.url)})`).join("; ") : "none"}
+
+| LCP viewport | Average | Worst | Measured pages | Not evaluated |
+| --- | ---: | ---: | ---: | ---: |
+${lcpRows || "| - | n/e | n/e | 0 | 0 |"}
+
+`;
+}
+
+function shortResource(value: string): string {
+  try {
+    const url = new URL(value);
+    return `${url.hostname}${url.pathname}`.slice(0, 100);
+  } catch {
+    return value.slice(0, 100);
+  }
 }
 
 function summarizeCommonIssues(result: AuditResult): string[] {

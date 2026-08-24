@@ -21,6 +21,14 @@ import {
   type Viewport,
 } from "../domain/inspection.js";
 import type { AuditFinding, Severity } from "../domain/schemas.js";
+import {
+  buildUnavailableNetworkEvidence,
+  installLcpObserver,
+  measureColdLcp,
+  type NetworkPerformanceCollector,
+  readLcp,
+  startNetworkPerformanceCollection,
+} from "./performanceCollector.js";
 import { writeJsonFile } from "./yamlStore.js";
 
 type LinkRecord = {
@@ -180,6 +188,18 @@ export async function inspectSite(
             ),
           ),
       ]),
+      performance: {
+        pages: artifacts.flatMap((artifact) =>
+          artifact.performance
+            ? [
+                {
+                  path: new URL(artifact.target.inputUrl).pathname || "/",
+                  evidence: artifact.performance,
+                },
+              ]
+            : [],
+        ),
+      },
     };
   } finally {
     await browser.close();
@@ -213,8 +233,16 @@ async function capturePage(
   const context = await browser.newContext({
     viewport: { width: firstViewport.width, height: firstViewport.height },
   });
+  let performanceCollector: NetworkPerformanceCollector | undefined;
+  let performanceCollectionError: string | undefined;
   try {
+    await installLcpObserver(context);
     const page = await context.newPage();
+    try {
+      performanceCollector = await startNetworkPerformanceCollection(page);
+    } catch (error) {
+      performanceCollectionError = `CDP transfer collection unavailable: ${error instanceof Error ? error.message : String(error)}`;
+    }
     page.setDefaultTimeout(timeoutMs);
     page.on("console", (message) => {
       if (["error", "warning"].includes(message.type())) {
@@ -273,6 +301,41 @@ async function capturePage(
 
     const title = await page.title();
     const finalUrl = page.url();
+    await page.waitForTimeout(100);
+    const lcp = [await readLcp(page, firstViewport.id)];
+    const mobileViewport = viewports.find(
+      (viewport) => viewport.id === "mobile",
+    );
+    if (mobileViewport && mobileViewport.id !== firstViewport.id) {
+      lcp.push(await measureColdLcp(browser, url, mobileViewport, timeoutMs));
+    }
+    for (const viewport of viewports) {
+      if (lcp.some((item) => item.viewport === viewport.id)) continue;
+      lcp.push({
+        viewport: viewport.id,
+        status: "not-evaluated",
+        reason:
+          "LCP is sampled on desktop and mobile only to bound inspection cost.",
+        provenance: {
+          provider: "performance-observer",
+          check: "largest-contentful-paint",
+          confidence: 0.8,
+        },
+      });
+    }
+    await scrollThroughPage(page);
+    await page
+      .waitForLoadState("networkidle", { timeout: timeoutMs })
+      .catch(() => undefined);
+    const performanceEvidence = performanceCollector
+      ? await performanceCollector.finish(page, finalUrl, firstViewport.id, lcp)
+      : await buildUnavailableNetworkEvidence(
+          page,
+          finalUrl,
+          firstViewport.id,
+          lcp,
+          performanceCollectionError ?? "CDP transfer collection unavailable.",
+        );
     const viewportResults = [];
 
     for (const viewport of viewports) {
@@ -410,7 +473,6 @@ async function capturePage(
     const horizontalOverflowViewports = viewportResults.filter(
       (viewport) => viewport.scrollWidth > viewport.clientWidth + 2,
     ).length;
-
     return {
       artifact: {
         version: 1,
@@ -461,10 +523,12 @@ async function capturePage(
           badResponses,
         },
         findings: dedupeFindings(findings),
+        performance: performanceEvidence,
       },
       discoveredPaths: linkInspection.discovered,
     };
   } finally {
+    await performanceCollector?.dispose();
     await context.close();
   }
 }

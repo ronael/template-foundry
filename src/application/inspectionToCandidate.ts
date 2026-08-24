@@ -41,6 +41,13 @@ function pageToCandidate(inspection: InspectionArtifact): Candidate {
       notes:
         "Generated from rendered-site inspection. Criteria that a rendered URL cannot prove (visual, originality, buyer editability) are marked not-evaluated and excluded from scoring.",
     },
+    ...(inspection.performance
+      ? {
+          performance: {
+            pages: [{ path: "/", evidence: inspection.performance }],
+          },
+        }
+      : {}),
     pages: [inspection.target.finalUrl ?? inspection.target.inputUrl],
     breakpoints: inspection.viewports.map((viewport) => viewport.id),
     components: [],
@@ -91,6 +98,7 @@ function siteToCandidate(site: SiteInspectionArtifact): Candidate {
       failedPages: failedPages.length,
       ...(aggregation.worstPage ? { worstPage: aggregation.worstPage } : {}),
     },
+    ...(site.performance ? { performance: site.performance } : {}),
     pages: site.pages.map((page) => page.url),
     breakpoints: ["desktop", "tablet", "mobile"],
     components: [],

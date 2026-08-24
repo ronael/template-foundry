@@ -1,4 +1,8 @@
 import { z } from "zod";
+import {
+  pagePerformanceEvidenceSchema,
+  sitePerformanceEvidenceSchema,
+} from "./performance.js";
 import { type AuditFinding, findingSchema } from "./schemas.js";
 
 export const viewportSchema = z.object({
@@ -79,6 +83,7 @@ export const inspectionArtifactSchema = z.object({
     ),
   }),
   findings: z.array(findingSchema),
+  performance: pagePerformanceEvidenceSchema.optional(),
 });
 export type InspectionArtifact = z.infer<typeof inspectionArtifactSchema>;
 
@@ -194,6 +199,7 @@ export const siteInspectionArtifactSchema = z.object({
   pages: z.array(sitePageSchema).min(1),
   checks: inspectionArtifactSchema.shape.checks,
   findings: z.array(findingSchema),
+  performance: sitePerformanceEvidenceSchema.optional(),
 });
 export type SiteInspectionArtifact = z.infer<
   typeof siteInspectionArtifactSchema

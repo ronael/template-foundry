@@ -56,6 +56,13 @@ Candidate files provide structured facts and evaluations. Scores may come from `
 
 Inspection artifacts are reusable JSON files created from rendered URLs. They store page metadata, console and network evidence, 3 viewport screenshots, objective findings, and provenance. Auditing an inspection does not relaunch the browser.
 
+Performance evidence is measurement-first: each page artifact stores request
+count, transferred bytes, resource breakdown, image/font/JavaScript details,
+DOM size, and desktop/mobile LCP observations. `site.json` references the same
+page evidence for deterministic re-audits. Bytes remain bytes internally; the
+CLI only formats them as KiB/MiB for display. Resource weights are measured at
+the named primary desktop viewport; mobile receives its own cold-ish LCP load.
+
 ## Multi-Page Inspection
 
 A template is a product, not a homepage. `inspect` discovers same-origin routes from the root page (depth 1, no crawling), prioritizes commercially important routes (`/pricing`, `/about`, `/contact`, `/blog`, …), and inspects up to `--max-pages` pages (default 5, `1` keeps the single-page v1 artifact):
@@ -79,6 +86,11 @@ The site artifact records discovered, inspected, and failed page counts. Audit
 reports surface that coverage, the worst page, critical-finding count, and the
 origin page for every observed issue. Set `--max-depth 0` for a root-only site
 artifact; depth is intentionally capped at 1.
+
+Performance thresholds live under `performance` in the Golden Standard. The
+existing `technical.performance` criterion is derived from available evidence;
+missing observations remain `not-evaluated`. A compact report includes average
+and worst transfer, LCP, and heavy-asset counts.
 
 ## Real-Template Workflow
 

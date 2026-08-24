@@ -1,3 +1,5 @@
+import type { PerformanceSummary } from "./performance.js";
+import { assessPerformance } from "./performanceAudit.js";
 import type {
   AuditFinding,
   Candidate,
@@ -53,6 +55,7 @@ export type AuditResult = {
   verdict: Verdict;
   recommendations: string[];
   inspection?: Candidate["inspection"];
+  performance?: PerformanceSummary;
 };
 
 export function auditCandidate(
@@ -61,10 +64,25 @@ export function auditCandidate(
 ): AuditResult {
   assertValidStandard(standard);
   assertCandidateCoversStandard(candidate, standard);
+  const performanceAssessment =
+    candidate.performance && standard.performance
+      ? assessPerformance(candidate.performance, standard.performance)
+      : undefined;
 
   const axes = standard.axes.map((axis) => {
     const criteria = axis.criteria.map((criterion) => {
-      const evaluation = candidate.evaluations[axis.id]?.[criterion.id];
+      const storedEvaluation = candidate.evaluations[axis.id]?.[criterion.id];
+      const evaluation =
+        axis.id === "technical" &&
+        criterion.id === "performance" &&
+        performanceAssessment
+          ? performanceAssessment.score !== undefined
+            ? {
+                score: performanceAssessment.score,
+                source: "automated" as const,
+              }
+            : { score: 0, source: "not-evaluated" as const }
+          : storedEvaluation;
       if (!evaluation) {
         throw new Error(`Missing evaluation ${axis.id}.${criterion.id}`);
       }
@@ -115,7 +133,13 @@ export function auditCandidate(
   const gates = standard.gates.map((gate) =>
     evaluateGate(gate, candidate, axes),
   );
-  const findings = deriveFindings(candidate, standard, axes, gates);
+  const findings = deriveFindings(
+    candidate,
+    standard,
+    axes,
+    gates,
+    performanceAssessment?.findings ?? [],
+  );
   const verdict = decideVerdict(overallScore, standard, axes, gates, findings);
   const recommendations = buildRecommendations(findings, gates);
 
@@ -133,6 +157,9 @@ export function auditCandidate(
     verdict,
     recommendations,
     ...(candidate.inspection ? { inspection: candidate.inspection } : {}),
+    ...(performanceAssessment
+      ? { performance: performanceAssessment.summary }
+      : {}),
   };
 }
 
@@ -229,8 +256,12 @@ function deriveFindings(
   standard: QualityStandard,
   axes: AxisScore[],
   gates: GateResult[],
+  performanceFindings: AuditFinding[],
 ): AuditFinding[] {
-  const findings: AuditFinding[] = [...candidate.findings];
+  const findings: AuditFinding[] = [
+    ...candidate.findings,
+    ...performanceFindings,
+  ];
 
   for (const axis of standard.axes) {
     const axisScore = axes.find((item) => item.id === axis.id);

@@ -8,9 +8,37 @@ export const defaultStandard: QualityStandard = {
     "Sellable Framer templates evaluated through structured candidate data.",
   metadata: {
     createdAt: "2026-08-23",
-    updatedAt: "2026-08-23",
+    updatedAt: "2026-08-24",
     notes:
-      "V0 standard derived from public Framer template expectations and internal quality gates; it stores criteria, not third-party template content.",
+      "V0 standard derived from public Framer template expectations and internal quality gates. Performance thresholds were calibrated on seven public rendered Framer pages; the standard stores derived criteria, not third-party content.",
+  },
+  performance: {
+    totalTransferBytes: {
+      warningAbove: 4 * 1024 * 1024,
+      errorAbove: 7 * 1024 * 1024,
+    },
+    imageTransferBytes: {
+      warningAbove: 2.5 * 1024 * 1024,
+      errorAbove: 5 * 1024 * 1024,
+    },
+    javascriptTransferBytes: {
+      warningAbove: 1024 * 1024,
+      errorAbove: 2 * 1024 * 1024,
+    },
+    fontTransferBytes: {
+      warningAbove: 512 * 1024,
+      errorAbove: 1024 * 1024,
+    },
+    oversizedImageBytes: {
+      warningAbove: 1024 * 1024,
+      errorAbove: 2.5 * 1024 * 1024,
+    },
+    oversizedScriptBytes: {
+      warningAbove: 512 * 1024,
+      errorAbove: 1024 * 1024,
+    },
+    domNodes: { warningAbove: 1500, errorAbove: 3000 },
+    lcpMs: { warningAbove: 2500, errorAbove: 4000 },
   },
   thresholds: {
     rejectedBelow: 75,

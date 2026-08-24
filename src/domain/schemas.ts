@@ -1,4 +1,8 @@
 import { z } from "zod";
+import {
+  performancePolicySchema,
+  sitePerformanceEvidenceSchema,
+} from "./performance.js";
 
 export const severitySchema = z.enum(["info", "warning", "error", "critical"]);
 export type Severity = z.infer<typeof severitySchema>;
@@ -77,6 +81,7 @@ export const standardSchema = z.object({
     updatedAt: z.string().min(1),
     notes: z.string().optional(),
   }),
+  performance: performancePolicySchema.optional(),
   thresholds: z.object({
     rejectedBelow: scoreSchema,
     needsWorkBelow: scoreSchema,
@@ -98,6 +103,7 @@ export const findingSchema = z.object({
   source: z.string().min(1).optional(),
   confidence: z.number().min(0).max(1).optional(),
   page: z.string().min(1).optional(),
+  viewport: z.string().min(1).optional(),
   provenance: z
     .object({
       kind: z.enum(["observed", "inferred", "subjective", "manual"]),
@@ -132,6 +138,7 @@ export const candidateSchema = z.object({
       worstPage: z.string().min(1).optional(),
     })
     .optional(),
+  performance: sitePerformanceEvidenceSchema.optional(),
   pages: z.array(z.string().min(1)).min(1),
   breakpoints: z.array(z.string().min(1)).min(1),
   components: z.array(z.string().min(1)).default([]),

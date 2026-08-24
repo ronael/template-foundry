@@ -33,6 +33,12 @@ URL -> browser inspection -> inspection.json -> Candidate projection -> existing
 
 The browser inspection captures page load metadata, desktop/tablet/mobile screenshots, horizontal overflow, console and page errors, relevant network failures, broken internal links, broken anchors, broken images, small mobile touch targets, and basic accessibility findings through axe-core.
 
+The performance evidence layer additionally captures cold-ish transferred
+bytes, request and resource-type counts, heavy images and scripts, loaded font
+resources/faces, DOM size/depth, and sampled desktop/mobile LCP. These are
+observations before they are evaluations: configurable Golden Standard
+thresholds produce findings and the existing `technical.performance` score.
+
 Rendered-site inspection is not the same as an editable-template buyer test. It can prove what the published site does in a browser, but it cannot prove that a Framer buyer can easily swap branding, CMS entries, components, or sections. Buyer tests remain a future editor/template-structure workflow.
 
 ## Objective vs Subjective Evaluation
@@ -62,7 +68,18 @@ Calibration outcomes fixed in the engine and standard:
 - `linksChecked` reports links actually examined;
 - Framer platform requests/console noise is excluded from template findings.
 
-Known limits: route discovery is deliberately root-only and capped rather than recursive; no performance budgets (LCP/weight) exist yet; landmark-related axe warnings are common to most Framer sites and currently informational.
+Known limits: route discovery is deliberately root-only and capped rather than recursive; performance measurements are local lab-style evidence without network/CPU throttling; CLS, INP, decoded body size, and unused JavaScript are not evaluated; landmark-related axe warnings are common to most Framer sites and currently informational.
+
+## Performance Calibration (2026-08-24)
+
+Seven pages across BenBox, Portfr, Unvoid, and Enigma were measured outside CI.
+Transfers ranged from about 354 KiB to 1.89 MiB, JavaScript from 265 KiB to
+771 KiB, fonts from 41 KiB to 112 KiB, and DOM size from 181 to 1,096 nodes.
+Enigma was the clear image-weight outlier at roughly 1.04 MiB per page. Local
+unthrottled mobile LCP ranged from 104–316 ms, confirming that this signal is a
+comparative lab observation rather than field performance. The initial
+thresholds were kept above these normal distributions and target clear
+outliers; no global axis weights changed.
 
 ## Golden Standard
 

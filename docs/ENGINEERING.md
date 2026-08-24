@@ -19,6 +19,8 @@
 - Do not hard-code marketplace or reference template content.
 - Distinguish automated, manual, and not-evaluated checks.
 - Keep browser automation in infrastructure; never import Playwright from domain code.
+- Performance collectors produce evidence; quality thresholds belong to the Golden Standard.
+- Store transfer sizes as integer bytes and durations as milliseconds. Format units only at report boundaries.
 - Use deterministic tests for domain behavior.
 
 ## Test Layers
@@ -27,3 +29,4 @@
 - Integration: YAML/JSON loading and schema validation.
 - E2E: real CLI process against temporary workspaces and fixtures.
 - Browser E2E: local fixture server, `tfoundry inspect`, screenshots, then `tfoundry audit inspection.json`.
+- Performance E2E: generated local resources with controlled sizes; Internet calibration is never a CI dependency.

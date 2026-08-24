@@ -31,6 +31,54 @@ PlaywrightInspector -> InspectionArtifact (v1, one page)
 
 `inspection.json` (v1) and `site.json` (v2) can both be audited repeatedly against different standards without relaunching a browser. Version 2 is a superset: per-page artifacts live under `pages/<slug>.json`, findings carry their origin `page`, and `site.json` aggregates checks.
 
+## Performance Evidence
+
+Performance follows the same boundary as other observations:
+
+```text
+Playwright + CDP -> PagePerformanceEvidence -> Candidate evidence
+                 -> Golden Standard thresholds -> existing AuditResult
+```
+
+The collector uses CDP `Network.loadingFinished.encodedDataLength` as
+`transferBytes`: total bytes Chrome reports receiving for the request. It is
+not named `Content-Length`, body size, or decoded size. Resource Timing was not
+chosen for transfer accounting because cross-origin entries often expose zero
+without `Timing-Allow-Origin`. Lighthouse was not added: its trace, simulated
+network, scoring, and dependency graph solve a broader problem than this
+bounded product-quality evidence layer.
+
+Each page uses a fresh non-persistent browser context. CDP disables cache,
+clears browser cache, and bypasses service workers before navigation. This is a
+documented "cold-ish" load, not a laboratory CPU/network benchmark. Network
+listeners and CDP sessions are scoped to that page and detached before context
+closure.
+
+Transfer totals include the existing inspection's one controlled full-page
+scroll, so lazy resources used by the sellable page are observed. LCP is frozen
+before that scroll. Resource transfer evidence is collected once at the primary
+desktop viewport and names that viewport explicitly; responsive resizing is not
+allowed to mix additional downloads into the total. Each resource and page total records whether CDP completed
+the byte measurement; incomplete totals are `not-evaluated`, never silently
+treated as zero.
+
+LCP uses a buffered `PerformanceObserver` installed before navigation. Desktop
+and mobile receive separate cold-ish loads; tablet is explicitly
+`not-evaluated` to avoid tripling inspection time. CLS and INP are not collected
+because the current automated visit has neither a representative observation
+window nor user interaction.
+
+The domain knows only evidence in bytes, milliseconds, counts, and provenance.
+It applies standard-owned warning/error thresholds, maps each available metric
+to transparent score bands (100 / 75 / 50), then uses the existing 70% mean +
+30% worst-page aggregation. Resource-level findings use the existing finding
+model. Third-party resources remain visible in actual transfer totals, but
+third-party scripts do not receive individual oversized-script findings because
+template authors may not control platform bundles.
+
+Performance fields are optional additions to artifact versions 1 and 2, so old
+artifacts remain readable without a migration framework.
+
 ## Multi-Page Discovery
 
 `inspect` discovers routes from the root page's same-origin links only (depth 1 — no recursion, no crawler). `selectRoutes` dedupes equivalent route variants, ranks commercially important routes first (`/pricing`, `/about`, `/contact`, `/blog`, `/services`, `/work`, `/portfolio`), and caps the run by an explicit budget: `maxPages` (5), `maxDepth` (0 or 1), `maxLinksPerPage` (20), `timeoutMsPerPage` (15s). All are CLI-configurable and the effective values are stored in `site.json`.
