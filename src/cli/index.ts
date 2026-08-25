@@ -26,6 +26,10 @@ import {
   DomainValidationError,
 } from "../domain/validation.js";
 import {
+  applyVisualEvaluation,
+  visualEvaluationSchema,
+} from "../domain/visualEvaluation.js";
+import {
   inspectSite,
   inspectUrl,
 } from "../infrastructure/playwrightInspector.js";
@@ -209,15 +213,31 @@ program
   )
   .argument("<input>", "candidate or inspection YAML/JSON file")
   .requiredOption("-s, --standard <path>", "standard YAML or JSON file")
+  .option(
+    "--visual-evaluation <path>",
+    "validated subjective visual evaluation to apply before audit",
+  )
   .option("-o, --out <directory>", "directory for JSON and Markdown reports")
   .option("--json", "print full JSON audit result to stdout")
   .action(
     async (
       inputPath: string,
-      options: { standard: string; out?: string; json?: boolean },
+      options: {
+        standard: string;
+        visualEvaluation?: string;
+        out?: string;
+        json?: boolean;
+      },
     ) => {
       await run(async () => {
-        const candidate = await readCandidateOrInspection(resolve(inputPath));
+        let candidate = await readCandidateOrInspection(resolve(inputPath));
+        if (options.visualEvaluation) {
+          const evaluation = await readStructuredFile(
+            resolve(options.visualEvaluation),
+            visualEvaluationSchema,
+          );
+          candidate = applyVisualEvaluation(candidate, evaluation);
+        }
         const standard = await readStructuredFile(
           resolve(options.standard),
           standardSchema,

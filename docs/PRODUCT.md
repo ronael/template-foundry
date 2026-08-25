@@ -48,7 +48,7 @@ The audit engine separates what is measured from what is judged:
 - criteria a rendered URL can prove (technical performance, accessibility, responsive behavior, navigation links) are scored from inspection evidence;
 - criteria it cannot prove (visual quality, originality, buyer editability, documentation, demo content) are declared with source `not-evaluated` and are excluded from weighted scores, minimum checks, and gates instead of being padded with placeholder numbers.
 
-An axis with no evaluated criteria shows as `n/e` in reports; gates targeting it report `NOT_EVALUATED`. Subjective evaluation (vision model, LLM reviewer, human buyer test) plugs in later by producing real evaluations for those criteria.
+An axis with no evaluated criteria shows as `n/e` in reports; gates targeting it report `NOT_EVALUATED`. A versioned visual-evaluation artifact can now import an explicit vision/LLM or human review. It must cite screenshots and a reference set, produce actionable existing findings, and keep its separate sellability verdict distinct from the technical `READY/PREMIUM` verdict.
 
 Verdicts are honest about defects: any `critical` finding rejects the template, and any `error` finding caps the verdict at `NEEDS_WORK` — a template with known console errors or serious accessibility violations is not sellable, whatever the average says. Findings carry a `confidence` value (0–1) per check type, since automated detection certainty varies (hard overflow ≈ 0.98, touch-target heuristics ≈ 0.7).
 
@@ -100,6 +100,20 @@ Thresholds:
 - 93 and above: `PREMIUM`.
 
 Quality gates can block an otherwise good weighted average. V0 supports automated, manual, and not-evaluated gates and does not pretend to test manual criteria.
+
+## Candidate 001 production experiment
+
+Candidate 001, Kern, is the first end-to-end production experiment: a premium
+AI/SaaS web prototype with Home, Product, and Pricing routes. Its direction is a
+technical editorial field manual rather than the common gradient/glass AI
+landing-page treatment. Four current public references set the quality bar;
+their URLs and derived observations are stored, not their proprietary assets.
+
+The first review returned `NEEDS_POLISH`. After one correction loop, the
+subjective sellability verdict became `SELLABLE`; the independent Golden
+Standard audit returned `READY`. This does not prove native Framer editability,
+publication readiness, or buyer customization, so those remain explicit manual
+boundaries.
 
 ## References
 

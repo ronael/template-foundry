@@ -1,0 +1,331 @@
+{
+  "candidate": {
+    "id": "127-0-0-1-20260825075653",
+    "name": "Prototype"
+  },
+  "standard": {
+    "id": "golden-framer-v1",
+    "version": 1,
+    "name": "Golden Framer Standard"
+  },
+  "overallScore": 91.4,
+  "axes": [
+    {
+      "id": "visual",
+      "name": "Visual Quality",
+      "score": 87.1,
+      "weightedScore": 26.1,
+      "evaluated": true,
+      "criteria": [
+        {
+          "id": "hierarchy",
+          "name": "Hierarchy",
+          "score": 89,
+          "weightedScore": 22.3,
+          "source": "llm",
+          "evaluated": true
+        },
+        {
+          "id": "typography",
+          "name": "Typography",
+          "score": 86,
+          "weightedScore": 21.5,
+          "source": "llm",
+          "evaluated": true
+        },
+        {
+          "id": "spacing",
+          "name": "Spacing",
+          "score": 86,
+          "weightedScore": 21.5,
+          "source": "llm",
+          "evaluated": true
+        },
+        {
+          "id": "polish",
+          "name": "Polish",
+          "score": 87,
+          "weightedScore": 21.8,
+          "source": "llm",
+          "evaluated": true
+        }
+      ]
+    },
+    {
+      "id": "technical",
+      "name": "Technical Quality",
+      "score": 98,
+      "weightedScore": 24.5,
+      "evaluated": true,
+      "criteria": [
+        {
+          "id": "structure",
+          "name": "Structure",
+          "score": 0,
+          "weightedScore": 0,
+          "source": "not-evaluated",
+          "evaluated": false
+        },
+        {
+          "id": "components",
+          "name": "Component Reuse",
+          "score": 0,
+          "weightedScore": 0,
+          "source": "not-evaluated",
+          "evaluated": false
+        },
+        {
+          "id": "performance",
+          "name": "Performance",
+          "score": 100,
+          "weightedScore": 25,
+          "source": "automated",
+          "evaluated": true
+        },
+        {
+          "id": "accessibilitySeo",
+          "name": "Accessibility and SEO",
+          "score": 96,
+          "weightedScore": 24,
+          "source": "automated",
+          "evaluated": true
+        }
+      ]
+    },
+    {
+      "id": "responsive",
+      "name": "UX / Responsive",
+      "score": 93,
+      "weightedScore": 14,
+      "evaluated": true,
+      "criteria": [
+        {
+          "id": "mobile",
+          "name": "Mobile Quality",
+          "score": 100,
+          "weightedScore": 40,
+          "source": "automated",
+          "evaluated": true
+        },
+        {
+          "id": "tablet",
+          "name": "Tablet Quality",
+          "score": 84,
+          "weightedScore": 16.8,
+          "source": "automated",
+          "evaluated": true
+        },
+        {
+          "id": "navigation",
+          "name": "Navigation",
+          "score": 88,
+          "weightedScore": 17.6,
+          "source": "automated",
+          "evaluated": true
+        },
+        {
+          "id": "contentFlow",
+          "name": "Content Flow",
+          "score": 0,
+          "weightedScore": 0,
+          "source": "not-evaluated",
+          "evaluated": false
+        }
+      ]
+    },
+    {
+      "id": "customization",
+      "name": "Ease of Customization",
+      "score": 0,
+      "weightedScore": 0,
+      "evaluated": false,
+      "criteria": [
+        {
+          "id": "brandSwap",
+          "name": "Brand Swap",
+          "score": 0,
+          "weightedScore": 0,
+          "source": "not-evaluated",
+          "evaluated": false
+        },
+        {
+          "id": "contentEditing",
+          "name": "Content Editing",
+          "score": 0,
+          "weightedScore": 0,
+          "source": "not-evaluated",
+          "evaluated": false
+        },
+        {
+          "id": "cmsReadiness",
+          "name": "CMS Readiness",
+          "score": 0,
+          "weightedScore": 0,
+          "source": "not-evaluated",
+          "evaluated": false
+        },
+        {
+          "id": "sectionFlexibility",
+          "name": "Section Flexibility",
+          "score": 0,
+          "weightedScore": 0,
+          "source": "not-evaluated",
+          "evaluated": false
+        }
+      ]
+    },
+    {
+      "id": "originality",
+      "name": "Originality",
+      "score": 92,
+      "weightedScore": 9.2,
+      "evaluated": true,
+      "criteria": [
+        {
+          "id": "differentiation",
+          "name": "Differentiation",
+          "score": 91,
+          "weightedScore": 45.5,
+          "source": "llm",
+          "evaluated": true
+        },
+        {
+          "id": "similarityRisk",
+          "name": "Similarity Risk",
+          "score": 93,
+          "weightedScore": 46.5,
+          "source": "llm",
+          "evaluated": true
+        }
+      ]
+    },
+    {
+      "id": "packaging",
+      "name": "Packaging / Documentation",
+      "score": 78,
+      "weightedScore": 3.9,
+      "evaluated": true,
+      "criteria": [
+        {
+          "id": "pageCompleteness",
+          "name": "Page Completeness",
+          "score": 78,
+          "weightedScore": 27.3,
+          "source": "automated",
+          "evaluated": true
+        },
+        {
+          "id": "documentation",
+          "name": "Documentation",
+          "score": 0,
+          "weightedScore": 0,
+          "source": "not-evaluated",
+          "evaluated": false
+        },
+        {
+          "id": "demoContent",
+          "name": "Demo Content",
+          "score": 0,
+          "weightedScore": 0,
+          "source": "not-evaluated",
+          "evaluated": false
+        }
+      ]
+    }
+  ],
+  "gates": [
+    {
+      "id": "no-critical-overflow",
+      "name": "No critical overflow",
+      "status": "PASS",
+      "severity": "error",
+      "message": "criticalOverflow expected false, got false"
+    },
+    {
+      "id": "no-critical-missing-assets",
+      "name": "No critical missing assets",
+      "status": "PASS",
+      "severity": "critical",
+      "message": "missingRequiredAssets expected false, got false"
+    },
+    {
+      "id": "mobile-quality-minimum",
+      "name": "Mobile quality minimum",
+      "status": "PASS",
+      "severity": "error",
+      "message": "responsive.mobile minimum 72, got 100"
+    },
+    {
+      "id": "buyer-test-minimum",
+      "name": "Buyer test minimum",
+      "status": "NOT_EVALUATED",
+      "severity": "error",
+      "message": "customization has no evaluated criteria; gate skipped."
+    },
+    {
+      "id": "manual-marketplace-readiness",
+      "name": "Manual marketplace readiness",
+      "status": "MANUAL",
+      "severity": "warning",
+      "message": "Manual gate is declared but not evaluated by the V0 engine."
+    }
+  ],
+  "findings": [
+    {
+      "id": "visual-after-native-framer-boundary",
+      "criterion": "visual.polish",
+      "severity": "info",
+      "message": "The candidate demonstrates a sellable web direction, but native Framer editing and Framer-specific motion polish have not been proven.",
+      "evidence": "Final artifact is a responsive React/Vite prototype with three routes, not a native Framer project.",
+      "suggestedFix": "Rebuild the validated system in Framer and re-run the same visual and technical review before listing.",
+      "source": "llm:codex-agent:visual-quality",
+      "confidence": 0.99,
+      "page": "/",
+      "viewport": "desktop",
+      "provenance": {
+        "kind": "subjective",
+        "provider": "codex-agent",
+        "check": "visual-quality"
+      }
+    }
+  ],
+  "verdict": "READY",
+  "recommendations": [
+    "Manually evaluate gate: Manual marketplace readiness."
+  ],
+  "inspection": {
+    "discoveredPages": 3,
+    "inspectedPages": 3,
+    "failedPages": 0,
+    "worstPage": "/"
+  },
+  "performance": {
+    "pagesMeasured": 3,
+    "transfer": {
+      "averageBytes": 149081,
+      "worstBytes": 149081,
+      "worstPage": "/"
+    },
+    "lcp": [
+      {
+        "viewport": "desktop",
+        "averageMs": 88,
+        "worstMs": 136,
+        "worstPage": "/",
+        "measuredPages": 3,
+        "notEvaluatedPages": 0
+      },
+      {
+        "viewport": "mobile",
+        "averageMs": 61,
+        "worstMs": 72,
+        "worstPage": "/",
+        "measuredPages": 3,
+        "notEvaluatedPages": 0
+      }
+    ],
+    "heavyImages": 0,
+    "heavyScripts": 0,
+    "commonHeavyResources": []
+  }
+}

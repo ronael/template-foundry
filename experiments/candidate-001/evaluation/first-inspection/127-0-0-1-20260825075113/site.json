@@ -1,0 +1,1524 @@
+{
+  "version": 2,
+  "id": "127-0-0-1-20260825075113",
+  "createdAt": "2026-08-25T07:51:13.632Z",
+  "target": {
+    "inputUrl": "http://127.0.0.1:4173",
+    "finalUrl": "http://127.0.0.1:4173/"
+  },
+  "title": "Prototype",
+  "provider": {
+    "name": "playwright",
+    "version": "chromium"
+  },
+  "budget": {
+    "maxPages": 3,
+    "maxDepth": 1,
+    "maxLinksPerPage": 20,
+    "timeoutMsPerPage": 20000
+  },
+  "discovery": {
+    "considered": 3,
+    "selected": [
+      "/pricing",
+      "/product"
+    ]
+  },
+  "summary": {
+    "discovered": 3,
+    "inspected": 3,
+    "failed": 0
+  },
+  "pages": [
+    {
+      "slug": "home",
+      "path": "/",
+      "url": "http://127.0.0.1:4173/",
+      "status": "inspected",
+      "artifactPath": "pages/home.json"
+    },
+    {
+      "slug": "pricing",
+      "path": "/pricing",
+      "url": "http://127.0.0.1:4173/pricing",
+      "status": "inspected",
+      "artifactPath": "pages/pricing.json"
+    },
+    {
+      "slug": "product",
+      "path": "/product",
+      "url": "http://127.0.0.1:4173/product",
+      "status": "inspected",
+      "artifactPath": "pages/product.json"
+    }
+  ],
+  "checks": {
+    "linksChecked": 60,
+    "brokenInternalLinks": 0,
+    "brokenAnchors": 0,
+    "brokenImages": 0,
+    "consoleErrors": 0,
+    "pageErrors": 0,
+    "networkFailures": 0,
+    "badHttpResponses": 0,
+    "accessibilityViolations": 6,
+    "seriousAccessibilityViolations": 5,
+    "smallTouchTargets": 17,
+    "horizontalOverflowViewports": 0
+  },
+  "findings": [
+    {
+      "id": "small-touch-target-mobile-1",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Copy install command: 34x34px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-2",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Tracing: 38x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-3",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Pricing: 38x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-4",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "About: 27x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-5",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Contact: 38x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-6",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Security: 43x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "axe-aria-prohibited-attr",
+      "criterion": "technical.accessibilitySeo",
+      "severity": "error",
+      "message": "Accessibility violation: Elements must only use permitted ARIA attributes.",
+      "evidence": "1 node(s). https://dequeuniversity.com/rules/axe/4.13/aria-prohibited-attr?application=playwright",
+      "source": "automated:playwright:axe-core",
+      "confidence": 0.85,
+      "page": "/",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "axe-core"
+      }
+    },
+    {
+      "id": "axe-color-contrast",
+      "criterion": "technical.accessibilitySeo",
+      "severity": "error",
+      "message": "Accessibility violation: Elements must meet minimum color contrast ratio thresholds.",
+      "evidence": "5 node(s). https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright",
+      "source": "automated:playwright:axe-core",
+      "confidence": 0.85,
+      "page": "/",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "axe-core"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-1",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Tracing: 38x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/pricing",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-2",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Pricing: 38x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/pricing",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-3",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "About: 27x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/pricing",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-4",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Contact: 38x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/pricing",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-5",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Security: 43x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/pricing",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "axe-heading-order",
+      "criterion": "technical.accessibilitySeo",
+      "severity": "warning",
+      "message": "Accessibility violation: Heading levels should only increase by one.",
+      "evidence": "1 node(s). https://dequeuniversity.com/rules/axe/4.13/heading-order?application=playwright",
+      "source": "automated:playwright:axe-core",
+      "confidence": 0.85,
+      "page": "/pricing",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "axe-core"
+      }
+    },
+    {
+      "id": "axe-scrollable-region-focusable",
+      "criterion": "technical.accessibilitySeo",
+      "severity": "error",
+      "message": "Accessibility violation: Scrollable region must have keyboard access.",
+      "evidence": "1 node(s). https://dequeuniversity.com/rules/axe/4.13/scrollable-region-focusable?application=playwright",
+      "source": "automated:playwright:axe-core",
+      "confidence": 0.85,
+      "page": "/pricing",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "axe-core"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-1",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Copy SDK install command: 34x34px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/product",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-2",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Tracing: 38x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/product",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-3",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Pricing: 38x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/product",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-4",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "About: 27x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/product",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-5",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Contact: 38x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/product",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-6",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Security: 43x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/product",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "axe-aria-prohibited-attr",
+      "criterion": "technical.accessibilitySeo",
+      "severity": "error",
+      "message": "Accessibility violation: Elements must only use permitted ARIA attributes.",
+      "evidence": "1 node(s). https://dequeuniversity.com/rules/axe/4.13/aria-prohibited-attr?application=playwright",
+      "source": "automated:playwright:axe-core",
+      "confidence": 0.85,
+      "page": "/product",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "axe-core"
+      }
+    },
+    {
+      "id": "axe-color-contrast",
+      "criterion": "technical.accessibilitySeo",
+      "severity": "error",
+      "message": "Accessibility violation: Elements must meet minimum color contrast ratio thresholds.",
+      "evidence": "3 node(s). https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright",
+      "source": "automated:playwright:axe-core",
+      "confidence": 0.85,
+      "page": "/product",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "axe-core"
+      }
+    }
+  ],
+  "performance": {
+    "pages": [
+      {
+        "path": "/",
+        "evidence": {
+          "status": "measured",
+          "resourceViewport": "desktop",
+          "transfer": {
+            "status": "measured",
+            "totalRequests": 16,
+            "measuredRequests": 16,
+            "transferBytes": 7858337
+          },
+          "resources": [
+            {
+              "url": "http://127.0.0.1:4173/",
+              "category": "document",
+              "mimeType": "text/html",
+              "transferBytes": 782,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/src/main.jsx",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 2423,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=52dfeaae",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 12744,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/.vite/deps/react.js?v=52dfeaae",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 1030,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/@react-refresh",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 112187,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/@vite/client",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 182925,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/src/styles.css",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 28967,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/src/App.jsx",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 162871,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/.vite/deps/chunk-WGQ442SR.js?v=ce434a05",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 47372,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/vite/dist/client/env.mjs",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 4151,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=52dfeaae",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 1005848,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/.vite/deps/chunk-5OEL3WWE.js?v=ce434a05",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 16771,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/.vite/deps/@phosphor-icons_react.js?v=4a755c41",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 6214050,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2",
+              "category": "font",
+              "mimeType": "font/woff2",
+              "transferBytes": 15028,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff2",
+              "category": "font",
+              "mimeType": "font/woff2",
+              "transferBytes": 15940,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/@fontsource-variable/archivo/files/archivo-latin-wght-normal.woff2",
+              "category": "font",
+              "mimeType": "font/woff2",
+              "transferBytes": 35248,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            }
+          ],
+          "breakdown": [
+            {
+              "category": "document",
+              "count": 1,
+              "transferBytes": 782,
+              "largestResource": {
+                "url": "http://127.0.0.1:4173/",
+                "transferBytes": 782,
+                "mimeType": "text/html"
+              }
+            },
+            {
+              "category": "script",
+              "count": 12,
+              "transferBytes": 7791339,
+              "largestResource": {
+                "url": "http://127.0.0.1:4173/node_modules/.vite/deps/@phosphor-icons_react.js?v=4a755c41",
+                "transferBytes": 6214050,
+                "mimeType": "text/javascript"
+              }
+            },
+            {
+              "category": "stylesheet",
+              "count": 0,
+              "transferBytes": 0
+            },
+            {
+              "category": "image",
+              "count": 0,
+              "transferBytes": 0
+            },
+            {
+              "category": "font",
+              "count": 3,
+              "transferBytes": 66216,
+              "largestResource": {
+                "url": "http://127.0.0.1:4173/node_modules/@fontsource-variable/archivo/files/archivo-latin-wght-normal.woff2",
+                "transferBytes": 35248,
+                "mimeType": "font/woff2"
+              }
+            },
+            {
+              "category": "media",
+              "count": 0,
+              "transferBytes": 0
+            },
+            {
+              "category": "other",
+              "count": 0,
+              "transferBytes": 0
+            }
+          ],
+          "images": {
+            "count": 0,
+            "transferBytes": 0,
+            "resources": []
+          },
+          "fonts": {
+            "count": 3,
+            "transferBytes": 66216,
+            "faces": [
+              {
+                "family": "Archivo Variable",
+                "style": "normal",
+                "weight": "100 900"
+              },
+              {
+                "family": "IBM Plex Mono",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "IBM Plex Mono",
+                "style": "normal",
+                "weight": "600"
+              }
+            ],
+            "resources": [
+              {
+                "url": "http://127.0.0.1:4173/node_modules/@fontsource-variable/archivo/files/archivo-latin-wght-normal.woff2",
+                "transferBytes": 35248,
+                "mimeType": "font/woff2"
+              },
+              {
+                "url": "http://127.0.0.1:4173/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff2",
+                "transferBytes": 15940,
+                "mimeType": "font/woff2"
+              },
+              {
+                "url": "http://127.0.0.1:4173/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2",
+                "transferBytes": 15028,
+                "mimeType": "font/woff2"
+              }
+            ]
+          },
+          "javascript": {
+            "count": 12,
+            "transferBytes": 7791339,
+            "resources": [
+              {
+                "url": "http://127.0.0.1:4173/node_modules/.vite/deps/@phosphor-icons_react.js?v=4a755c41",
+                "transferBytes": 6214050,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=52dfeaae",
+                "transferBytes": 1005848,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/@vite/client",
+                "transferBytes": 182925,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/src/App.jsx",
+                "transferBytes": 162871,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/@react-refresh",
+                "transferBytes": 112187,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/node_modules/.vite/deps/chunk-WGQ442SR.js?v=ce434a05",
+                "transferBytes": 47372,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/src/styles.css",
+                "transferBytes": 28967,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/node_modules/.vite/deps/chunk-5OEL3WWE.js?v=ce434a05",
+                "transferBytes": 16771,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=52dfeaae",
+                "transferBytes": 12744,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/node_modules/vite/dist/client/env.mjs",
+                "transferBytes": 4151,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/src/main.jsx",
+                "transferBytes": 2423,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/node_modules/.vite/deps/react.js?v=52dfeaae",
+                "transferBytes": 1030,
+                "mimeType": "text/javascript"
+              }
+            ]
+          },
+          "dom": {
+            "nodes": 411,
+            "maxDepth": 12
+          },
+          "lcp": [
+            {
+              "viewport": "desktop",
+              "status": "measured",
+              "valueMs": 1184,
+              "element": {
+                "tag": "h2",
+                "selector": "h2",
+                "text": "Find the failure.Fix the cause."
+              },
+              "provenance": {
+                "provider": "performance-observer",
+                "check": "largest-contentful-paint",
+                "confidence": 0.85
+              }
+            },
+            {
+              "viewport": "mobile",
+              "status": "not-evaluated",
+              "reason": "Largest Contentful Paint was not exposed by the browser.",
+              "provenance": {
+                "provider": "performance-observer",
+                "check": "largest-contentful-paint",
+                "confidence": 0.8
+              }
+            },
+            {
+              "viewport": "tablet",
+              "status": "not-evaluated",
+              "reason": "LCP is sampled on desktop and mobile only to bound inspection cost.",
+              "provenance": {
+                "provider": "performance-observer",
+                "check": "largest-contentful-paint",
+                "confidence": 0.8
+              }
+            }
+          ],
+          "provenance": {
+            "provider": "playwright-cdp",
+            "check": "cold-load-performance",
+            "confidence": 0.95,
+            "cacheDisabled": true,
+            "serviceWorkerBypassed": true
+          }
+        }
+      },
+      {
+        "path": "/pricing",
+        "evidence": {
+          "status": "measured",
+          "resourceViewport": "desktop",
+          "transfer": {
+            "status": "measured",
+            "totalRequests": 16,
+            "measuredRequests": 16,
+            "transferBytes": 7858337
+          },
+          "resources": [
+            {
+              "url": "http://127.0.0.1:4173/pricing",
+              "category": "document",
+              "mimeType": "text/html",
+              "transferBytes": 782,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/src/main.jsx",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 2423,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/@vite/client",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 182925,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=52dfeaae",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 12744,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/.vite/deps/react.js?v=52dfeaae",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 1030,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/@react-refresh",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 112187,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/src/styles.css",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 28967,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/src/App.jsx",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 162871,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/vite/dist/client/env.mjs",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 4151,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/.vite/deps/chunk-WGQ442SR.js?v=ce434a05",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 47372,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=52dfeaae",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 1005848,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/.vite/deps/chunk-5OEL3WWE.js?v=ce434a05",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 16771,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/.vite/deps/@phosphor-icons_react.js?v=4a755c41",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 6214050,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2",
+              "category": "font",
+              "mimeType": "font/woff2",
+              "transferBytes": 15028,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff2",
+              "category": "font",
+              "mimeType": "font/woff2",
+              "transferBytes": 15940,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/@fontsource-variable/archivo/files/archivo-latin-wght-normal.woff2",
+              "category": "font",
+              "mimeType": "font/woff2",
+              "transferBytes": 35248,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            }
+          ],
+          "breakdown": [
+            {
+              "category": "document",
+              "count": 1,
+              "transferBytes": 782,
+              "largestResource": {
+                "url": "http://127.0.0.1:4173/pricing",
+                "transferBytes": 782,
+                "mimeType": "text/html"
+              }
+            },
+            {
+              "category": "script",
+              "count": 12,
+              "transferBytes": 7791339,
+              "largestResource": {
+                "url": "http://127.0.0.1:4173/node_modules/.vite/deps/@phosphor-icons_react.js?v=4a755c41",
+                "transferBytes": 6214050,
+                "mimeType": "text/javascript"
+              }
+            },
+            {
+              "category": "stylesheet",
+              "count": 0,
+              "transferBytes": 0
+            },
+            {
+              "category": "image",
+              "count": 0,
+              "transferBytes": 0
+            },
+            {
+              "category": "font",
+              "count": 3,
+              "transferBytes": 66216,
+              "largestResource": {
+                "url": "http://127.0.0.1:4173/node_modules/@fontsource-variable/archivo/files/archivo-latin-wght-normal.woff2",
+                "transferBytes": 35248,
+                "mimeType": "font/woff2"
+              }
+            },
+            {
+              "category": "media",
+              "count": 0,
+              "transferBytes": 0
+            },
+            {
+              "category": "other",
+              "count": 0,
+              "transferBytes": 0
+            }
+          ],
+          "images": {
+            "count": 0,
+            "transferBytes": 0,
+            "resources": []
+          },
+          "fonts": {
+            "count": 3,
+            "transferBytes": 66216,
+            "faces": [
+              {
+                "family": "Archivo Variable",
+                "style": "normal",
+                "weight": "100 900"
+              },
+              {
+                "family": "IBM Plex Mono",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "IBM Plex Mono",
+                "style": "normal",
+                "weight": "600"
+              }
+            ],
+            "resources": [
+              {
+                "url": "http://127.0.0.1:4173/node_modules/@fontsource-variable/archivo/files/archivo-latin-wght-normal.woff2",
+                "transferBytes": 35248,
+                "mimeType": "font/woff2"
+              },
+              {
+                "url": "http://127.0.0.1:4173/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff2",
+                "transferBytes": 15940,
+                "mimeType": "font/woff2"
+              },
+              {
+                "url": "http://127.0.0.1:4173/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2",
+                "transferBytes": 15028,
+                "mimeType": "font/woff2"
+              }
+            ]
+          },
+          "javascript": {
+            "count": 12,
+            "transferBytes": 7791339,
+            "resources": [
+              {
+                "url": "http://127.0.0.1:4173/node_modules/.vite/deps/@phosphor-icons_react.js?v=4a755c41",
+                "transferBytes": 6214050,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=52dfeaae",
+                "transferBytes": 1005848,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/@vite/client",
+                "transferBytes": 182925,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/src/App.jsx",
+                "transferBytes": 162871,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/@react-refresh",
+                "transferBytes": 112187,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/node_modules/.vite/deps/chunk-WGQ442SR.js?v=ce434a05",
+                "transferBytes": 47372,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/src/styles.css",
+                "transferBytes": 28967,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/node_modules/.vite/deps/chunk-5OEL3WWE.js?v=ce434a05",
+                "transferBytes": 16771,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=52dfeaae",
+                "transferBytes": 12744,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/node_modules/vite/dist/client/env.mjs",
+                "transferBytes": 4151,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/src/main.jsx",
+                "transferBytes": 2423,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/node_modules/.vite/deps/react.js?v=52dfeaae",
+                "transferBytes": 1030,
+                "mimeType": "text/javascript"
+              }
+            ]
+          },
+          "dom": {
+            "nodes": 239,
+            "maxDepth": 11
+          },
+          "lcp": [
+            {
+              "viewport": "desktop",
+              "status": "measured",
+              "valueMs": 1032,
+              "element": {
+                "tag": "h1",
+                "selector": "h1",
+                "text": "Start with one agent.Scale with confidence."
+              },
+              "provenance": {
+                "provider": "performance-observer",
+                "check": "largest-contentful-paint",
+                "confidence": 0.85
+              }
+            },
+            {
+              "viewport": "mobile",
+              "status": "not-evaluated",
+              "reason": "Largest Contentful Paint was not exposed by the browser.",
+              "provenance": {
+                "provider": "performance-observer",
+                "check": "largest-contentful-paint",
+                "confidence": 0.8
+              }
+            },
+            {
+              "viewport": "tablet",
+              "status": "not-evaluated",
+              "reason": "LCP is sampled on desktop and mobile only to bound inspection cost.",
+              "provenance": {
+                "provider": "performance-observer",
+                "check": "largest-contentful-paint",
+                "confidence": 0.8
+              }
+            }
+          ],
+          "provenance": {
+            "provider": "playwright-cdp",
+            "check": "cold-load-performance",
+            "confidence": 0.95,
+            "cacheDisabled": true,
+            "serviceWorkerBypassed": true
+          }
+        }
+      },
+      {
+        "path": "/product",
+        "evidence": {
+          "status": "measured",
+          "resourceViewport": "desktop",
+          "transfer": {
+            "status": "measured",
+            "totalRequests": 16,
+            "measuredRequests": 16,
+            "transferBytes": 7858337
+          },
+          "resources": [
+            {
+              "url": "http://127.0.0.1:4173/product",
+              "category": "document",
+              "mimeType": "text/html",
+              "transferBytes": 782,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/src/main.jsx",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 2423,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/@vite/client",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 182925,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/.vite/deps/react.js?v=52dfeaae",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 1030,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=52dfeaae",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 12744,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/@react-refresh",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 112187,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/src/styles.css",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 28967,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/src/App.jsx",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 162871,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/vite/dist/client/env.mjs",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 4151,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/.vite/deps/chunk-WGQ442SR.js?v=ce434a05",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 47372,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=52dfeaae",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 1005848,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/.vite/deps/chunk-5OEL3WWE.js?v=ce434a05",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 16771,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/.vite/deps/@phosphor-icons_react.js?v=4a755c41",
+              "category": "script",
+              "mimeType": "text/javascript",
+              "transferBytes": 6214050,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff2",
+              "category": "font",
+              "mimeType": "font/woff2",
+              "transferBytes": 15940,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/@fontsource-variable/archivo/files/archivo-latin-wght-normal.woff2",
+              "category": "font",
+              "mimeType": "font/woff2",
+              "transferBytes": 35248,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4173/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2",
+              "category": "font",
+              "mimeType": "font/woff2",
+              "transferBytes": 15028,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            }
+          ],
+          "breakdown": [
+            {
+              "category": "document",
+              "count": 1,
+              "transferBytes": 782,
+              "largestResource": {
+                "url": "http://127.0.0.1:4173/product",
+                "transferBytes": 782,
+                "mimeType": "text/html"
+              }
+            },
+            {
+              "category": "script",
+              "count": 12,
+              "transferBytes": 7791339,
+              "largestResource": {
+                "url": "http://127.0.0.1:4173/node_modules/.vite/deps/@phosphor-icons_react.js?v=4a755c41",
+                "transferBytes": 6214050,
+                "mimeType": "text/javascript"
+              }
+            },
+            {
+              "category": "stylesheet",
+              "count": 0,
+              "transferBytes": 0
+            },
+            {
+              "category": "image",
+              "count": 0,
+              "transferBytes": 0
+            },
+            {
+              "category": "font",
+              "count": 3,
+              "transferBytes": 66216,
+              "largestResource": {
+                "url": "http://127.0.0.1:4173/node_modules/@fontsource-variable/archivo/files/archivo-latin-wght-normal.woff2",
+                "transferBytes": 35248,
+                "mimeType": "font/woff2"
+              }
+            },
+            {
+              "category": "media",
+              "count": 0,
+              "transferBytes": 0
+            },
+            {
+              "category": "other",
+              "count": 0,
+              "transferBytes": 0
+            }
+          ],
+          "images": {
+            "count": 0,
+            "transferBytes": 0,
+            "resources": []
+          },
+          "fonts": {
+            "count": 3,
+            "transferBytes": 66216,
+            "faces": [
+              {
+                "family": "Archivo Variable",
+                "style": "normal",
+                "weight": "100 900"
+              },
+              {
+                "family": "IBM Plex Mono",
+                "style": "normal",
+                "weight": "400"
+              },
+              {
+                "family": "IBM Plex Mono",
+                "style": "normal",
+                "weight": "600"
+              }
+            ],
+            "resources": [
+              {
+                "url": "http://127.0.0.1:4173/node_modules/@fontsource-variable/archivo/files/archivo-latin-wght-normal.woff2",
+                "transferBytes": 35248,
+                "mimeType": "font/woff2"
+              },
+              {
+                "url": "http://127.0.0.1:4173/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff2",
+                "transferBytes": 15940,
+                "mimeType": "font/woff2"
+              },
+              {
+                "url": "http://127.0.0.1:4173/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2",
+                "transferBytes": 15028,
+                "mimeType": "font/woff2"
+              }
+            ]
+          },
+          "javascript": {
+            "count": 12,
+            "transferBytes": 7791339,
+            "resources": [
+              {
+                "url": "http://127.0.0.1:4173/node_modules/.vite/deps/@phosphor-icons_react.js?v=4a755c41",
+                "transferBytes": 6214050,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=52dfeaae",
+                "transferBytes": 1005848,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/@vite/client",
+                "transferBytes": 182925,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/src/App.jsx",
+                "transferBytes": 162871,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/@react-refresh",
+                "transferBytes": 112187,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/node_modules/.vite/deps/chunk-WGQ442SR.js?v=ce434a05",
+                "transferBytes": 47372,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/src/styles.css",
+                "transferBytes": 28967,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/node_modules/.vite/deps/chunk-5OEL3WWE.js?v=ce434a05",
+                "transferBytes": 16771,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=52dfeaae",
+                "transferBytes": 12744,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/node_modules/vite/dist/client/env.mjs",
+                "transferBytes": 4151,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/src/main.jsx",
+                "transferBytes": 2423,
+                "mimeType": "text/javascript"
+              },
+              {
+                "url": "http://127.0.0.1:4173/node_modules/.vite/deps/react.js?v=52dfeaae",
+                "transferBytes": 1030,
+                "mimeType": "text/javascript"
+              }
+            ]
+          },
+          "dom": {
+            "nodes": 228,
+            "maxDepth": 11
+          },
+          "lcp": [
+            {
+              "viewport": "desktop",
+              "status": "measured",
+              "valueMs": 1056,
+              "element": {
+                "tag": "h1",
+                "selector": "h1",
+                "text": "One record for every agent decision."
+              },
+              "provenance": {
+                "provider": "performance-observer",
+                "check": "largest-contentful-paint",
+                "confidence": 0.85
+              }
+            },
+            {
+              "viewport": "mobile",
+              "status": "not-evaluated",
+              "reason": "Largest Contentful Paint was not exposed by the browser.",
+              "provenance": {
+                "provider": "performance-observer",
+                "check": "largest-contentful-paint",
+                "confidence": 0.8
+              }
+            },
+            {
+              "viewport": "tablet",
+              "status": "not-evaluated",
+              "reason": "LCP is sampled on desktop and mobile only to bound inspection cost.",
+              "provenance": {
+                "provider": "performance-observer",
+                "check": "largest-contentful-paint",
+                "confidence": 0.8
+              }
+            }
+          ],
+          "provenance": {
+            "provider": "playwright-cdp",
+            "check": "cold-load-performance",
+            "confidence": 0.95,
+            "cacheDisabled": true,
+            "serviceWorkerBypassed": true
+          }
+        }
+      }
+    ]
+  }
+}

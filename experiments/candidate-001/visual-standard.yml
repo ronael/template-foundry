@@ -1,0 +1,24 @@
+id: premium-ai-saas-visual-v0
+version: 0
+referenceSet: premium-ai-saas-v1
+principles:
+  qualityAndSimilarityAreSeparate: true
+  subjectiveJudgmentRequiresProvenance: true
+  scoresRequireActionableFindings: true
+criteria:
+  hierarchy: Product and primary action are clear within the first viewport; section contrast sustains the narrative.
+  typography: Type scale, measure, weight, and pairing feel intentional at every viewport.
+  spacing: Gutters, vertical rhythm, and density form a coherent system.
+  composition: Layout has a recognizable point of view and balances product evidence with editorial breathing room.
+  color: Palette is coherent, accessible, and uses accent color with restraint.
+  components: Buttons, cards, navigation, data panels, and states share one visual language.
+  responsive: Mobile is recomposed as a deliberate reading experience rather than merely stacked desktop.
+  motion: Motion communicates state or hierarchy and respects reduced-motion preferences.
+  polish: Borders, alignment, iconography, micro-spacing, interactions, and content all feel finished.
+  differentiation: Candidate has an identifiable art direction appropriate to its product.
+  similarityRisk: Candidate reaches comparable quality without copying a reference's branding, copy, assets, or signature composition.
+sellability:
+  NOT_SELLABLE: Appearance is an obvious reason not to purchase.
+  NEEDS_POLISH: Direction is credible but visible blockers prevent a confident commercial launch.
+  SELLABLE: Coherent and finished enough to be sold within its category.
+  PREMIUM_CANDIDATE: Visually distinctive and competitive with strong premium references.

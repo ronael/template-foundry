@@ -102,6 +102,31 @@ Future evaluators should produce the same candidate evaluation shape:
 
 Those adapters should stay outside the domain. The audit engine remains deterministic for a given candidate and standard.
 
+## Visual Evaluation V0
+
+The first visual workflow deliberately stops short of embedding a remote model:
+
+```text
+screenshots + reference-set + external human/LLM judgment
+  -> VisualEvaluation v1
+  -> applyVisualEvaluation(Candidate)
+  -> existing auditCandidate
+```
+
+`VisualEvaluation` is a validated evidence envelope, not a provider SDK. It
+requires explicit reviewer kind/provider, screenshot provenance, understandable
+criterion scores, existing normalized findings, and a separate experimental
+sellability verdict. `applyVisualEvaluation` projects hierarchy, typography,
+spacing, broad polish, differentiation, and similarity risk onto the existing
+candidate shape. It never changes objective technical observations and never
+creates a parallel finding or audit engine.
+
+The richer experimental rubric remains under `experiments/candidate-001` while
+the Golden Standard keeps its existing weights. This is intentional calibration:
+we observed one real candidate before deciding whether composition, color,
+components, responsive visual quality, and motion deserve permanent independent
+criteria.
+
 ## ADR: Browser Runtime
 
 Decision: use Playwright as the Template Foundry runtime browser for V1.

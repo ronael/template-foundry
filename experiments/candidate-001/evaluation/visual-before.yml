@@ -1,0 +1,85 @@
+version: 1
+candidateId: 127-0-0-1-20260825075113
+createdAt: 2026-08-25T07:55:00.000Z
+status: evaluated
+evaluator:
+  kind: llm
+  provider: codex-agent
+  name: visual-quality
+referenceSet: premium-ai-saas-v1
+screenshots:
+  - page: /
+    viewport: desktop
+    path: first-inspection/127-0-0-1-20260825075113/screenshots/home-desktop.png
+  - page: /
+    viewport: mobile
+    path: first-inspection/127-0-0-1-20260825075113/screenshots/home-mobile.png
+  - page: /pricing
+    viewport: desktop
+    path: first-inspection/127-0-0-1-20260825075113/screenshots/pricing-desktop.png
+scores:
+  hierarchy: 86
+  typography: 82
+  spacing: 83
+  composition: 86
+  color: 84
+  components: 83
+  responsive: 79
+  motion: 70
+  polish: 76
+  differentiation: 88
+  similarityRisk: 91
+findings:
+  - id: visual-before-motion-capture
+    criterion: visual.polish
+    severity: warning
+    message: Hero entrance opacity makes automated captures look washed out and weakens first-impression contrast.
+    evidence: The initial desktop capture records the hero before the delayed opacity animation has fully settled.
+    suggestedFix: Keep the restrained positional entrance but do not animate content opacity.
+    source: llm:codex-agent:visual-quality
+    confidence: 0.96
+    page: /
+    viewport: desktop
+    provenance:
+      kind: subjective
+      provider: codex-agent
+      check: visual-quality
+  - id: visual-before-mobile-touch-density
+    criterion: visual.responsive
+    severity: warning
+    message: Small footer and utility targets make the mobile finish feel closer to a demo than a commercial template.
+    evidence: Multiple named links and copy controls measure below 44px in the mobile inspection.
+    suggestedFix: Preserve compact typography while increasing the interactive hit areas.
+    source: llm:codex-agent:visual-quality
+    confidence: 0.93
+    page: /
+    viewport: mobile
+    provenance:
+      kind: subjective
+      provider: codex-agent
+      check: visual-quality
+  - id: visual-before-proof-authenticity
+    criterion: originality.differentiation
+    severity: error
+    message: Real company names in the fictional proof grid weaken originality and make the demo feel derivative.
+    evidence: The first proof grid includes recognizable SaaS company names.
+    suggestedFix: Replace every logo wordmark with a coherent fictional customer set.
+    source: llm:codex-agent:visual-quality
+    confidence: 0.99
+    page: /
+    viewport: desktop
+    provenance:
+      kind: subjective
+      provider: codex-agent
+      check: visual-quality
+strengths:
+  - Distinct field-manual art direction avoids generic AI visual tropes.
+  - Real product interfaces create convincing technical specificity.
+  - Editorial rails and strong type give the homepage marketplace thumbnail appeal.
+sellability:
+  verdict: NEEDS_POLISH
+  rationale: The direction is commercially credible, but capture behavior, mobile target finish, accessibility contrast, and borrowed proof names block a confident release.
+  blockers:
+    - Capture-time contrast and accessibility failures.
+    - Mobile interaction finish.
+    - Real company names inside fictional proof.

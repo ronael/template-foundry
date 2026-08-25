@@ -1,0 +1,61 @@
+version: 1
+candidateId: 127-0-0-1-20260825075653
+createdAt: 2026-08-25T07:58:00.000Z
+status: evaluated
+evaluator:
+  kind: llm
+  provider: codex-agent
+  name: visual-quality
+referenceSet: premium-ai-saas-v1
+screenshots:
+  - page: /
+    viewport: desktop
+    path: final/127-0-0-1-20260825075653/screenshots/home-desktop.png
+  - page: /
+    viewport: tablet
+    path: final/127-0-0-1-20260825075653/screenshots/home-tablet.png
+  - page: /
+    viewport: mobile
+    path: final/127-0-0-1-20260825075653/screenshots/home-mobile.png
+  - page: /product
+    viewport: desktop
+    path: final/127-0-0-1-20260825075653/screenshots/product-desktop.png
+  - page: /pricing
+    viewport: desktop
+    path: final/127-0-0-1-20260825075653/screenshots/pricing-desktop.png
+scores:
+  hierarchy: 89
+  typography: 86
+  spacing: 86
+  composition: 89
+  color: 90
+  components: 88
+  responsive: 87
+  motion: 80
+  polish: 88
+  differentiation: 91
+  similarityRisk: 93
+findings:
+  - id: visual-after-native-framer-boundary
+    criterion: visual.polish
+    severity: info
+    message: The candidate demonstrates a sellable web direction, but native Framer editing and Framer-specific motion polish have not been proven.
+    evidence: Final artifact is a responsive React/Vite prototype with three routes, not a native Framer project.
+    suggestedFix: Rebuild the validated system in Framer and re-run the same visual and technical review before listing.
+    source: llm:codex-agent:visual-quality
+    confidence: 0.99
+    page: /
+    viewport: desktop
+    provenance:
+      kind: subjective
+      provider: codex-agent
+      check: visual-quality
+strengths:
+  - The hero communicates the product and art direction immediately.
+  - Product evidence, editorial rails, and restrained acid accent create a coherent identity across all pages.
+  - Mobile reads as an intentional long-form technical story and preserves the product UI hierarchy.
+  - The candidate reaches a comparable level of finish without reproducing any selected reference's branding or assets.
+sellability:
+  verdict: SELLABLE
+  rationale: Appearance is no longer an obvious reason not to sell the candidate; it has a distinct identity, coherent multi-page system, strong hero, and finished responsive behavior.
+  blockers: []

@@ -20,6 +20,7 @@ pnpm dev -- benchmark validate fixtures/benchmarks/framer-public-benchmark-notes
 pnpm dev -- inspect https://example.framer.website --out .template-foundry/inspections
 pnpm dev -- audit fixtures/candidates/acceptable-template.yml --standard standards/golden-framer-v1.yml --out .template-foundry/reports
 pnpm dev -- audit .template-foundry/inspections/<inspection-id>/inspection.json --standard standards/golden-framer-v1.yml
+pnpm dev -- audit .template-foundry/inspections/<site-id>/site.json --standard standards/golden-framer-v1.yml --visual-evaluation ./visual-evaluation.yml
 pnpm dev -- report .template-foundry/reports/acceptable-saas-template-audit.json
 ```
 
@@ -119,3 +120,18 @@ pnpm smoke:browser
 ```
 
 Core behavior lives in `src/domain`. Filesystem, YAML, and CLI concerns stay outside the domain so future Playwright or LLM evaluators can plug in through adapters.
+
+## Subjective visual evidence
+
+`audit --visual-evaluation <file>` validates and applies a versioned subjective
+review before the deterministic audit. The artifact records screenshots,
+reference set, criterion scores, actionable findings, sellability, and explicit
+`human` or `llm` provenance. It does not call a model and never relabels visual
+judgment as browser evidence. An explicit `not-evaluated` result remains valid
+when screenshots or a reviewer are unavailable.
+
+The first production experiment is [Candidate 001](experiments/candidate-001/BRIEF.md),
+a three-page React/Vite prototype named Kern. It proves the loop
+reference → brief → build → screenshots → subjective review → correction →
+technical audit. It is intentionally described as a web prototype, not a
+native Framer template.

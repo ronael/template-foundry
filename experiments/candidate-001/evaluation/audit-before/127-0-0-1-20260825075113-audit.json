@@ -1,0 +1,928 @@
+{
+  "candidate": {
+    "id": "127-0-0-1-20260825075113",
+    "name": "Prototype"
+  },
+  "standard": {
+    "id": "golden-framer-v1",
+    "version": 1,
+    "name": "Golden Framer Standard"
+  },
+  "overallScore": 80.8,
+  "axes": [
+    {
+      "id": "visual",
+      "name": "Visual Quality",
+      "score": 82.8,
+      "weightedScore": 24.8,
+      "evaluated": true,
+      "criteria": [
+        {
+          "id": "hierarchy",
+          "name": "Hierarchy",
+          "score": 86,
+          "weightedScore": 21.5,
+          "source": "llm",
+          "evaluated": true
+        },
+        {
+          "id": "typography",
+          "name": "Typography",
+          "score": 82,
+          "weightedScore": 20.5,
+          "source": "llm",
+          "evaluated": true
+        },
+        {
+          "id": "spacing",
+          "name": "Spacing",
+          "score": 83,
+          "weightedScore": 20.8,
+          "source": "llm",
+          "evaluated": true
+        },
+        {
+          "id": "polish",
+          "name": "Polish",
+          "score": 80,
+          "weightedScore": 20,
+          "source": "llm",
+          "evaluated": true
+        }
+      ]
+    },
+    {
+      "id": "technical",
+      "name": "Technical Quality",
+      "score": 73.2,
+      "weightedScore": 18.3,
+      "evaluated": true,
+      "criteria": [
+        {
+          "id": "structure",
+          "name": "Structure",
+          "score": 0,
+          "weightedScore": 0,
+          "source": "not-evaluated",
+          "evaluated": false
+        },
+        {
+          "id": "components",
+          "name": "Component Reuse",
+          "score": 0,
+          "weightedScore": 0,
+          "source": "not-evaluated",
+          "evaluated": false
+        },
+        {
+          "id": "performance",
+          "name": "Performance",
+          "score": 83,
+          "weightedScore": 20.8,
+          "source": "automated",
+          "evaluated": true
+        },
+        {
+          "id": "accessibilitySeo",
+          "name": "Accessibility and SEO",
+          "score": 63,
+          "weightedScore": 15.8,
+          "source": "automated",
+          "evaluated": true
+        }
+      ]
+    },
+    {
+      "id": "responsive",
+      "name": "UX / Responsive",
+      "score": 84.5,
+      "weightedScore": 12.7,
+      "evaluated": true,
+      "criteria": [
+        {
+          "id": "mobile",
+          "name": "Mobile Quality",
+          "score": 83,
+          "weightedScore": 33.2,
+          "source": "automated",
+          "evaluated": true
+        },
+        {
+          "id": "tablet",
+          "name": "Tablet Quality",
+          "score": 84,
+          "weightedScore": 16.8,
+          "source": "automated",
+          "evaluated": true
+        },
+        {
+          "id": "navigation",
+          "name": "Navigation",
+          "score": 88,
+          "weightedScore": 17.6,
+          "source": "automated",
+          "evaluated": true
+        },
+        {
+          "id": "contentFlow",
+          "name": "Content Flow",
+          "score": 0,
+          "weightedScore": 0,
+          "source": "not-evaluated",
+          "evaluated": false
+        }
+      ]
+    },
+    {
+      "id": "customization",
+      "name": "Ease of Customization",
+      "score": 0,
+      "weightedScore": 0,
+      "evaluated": false,
+      "criteria": [
+        {
+          "id": "brandSwap",
+          "name": "Brand Swap",
+          "score": 0,
+          "weightedScore": 0,
+          "source": "not-evaluated",
+          "evaluated": false
+        },
+        {
+          "id": "contentEditing",
+          "name": "Content Editing",
+          "score": 0,
+          "weightedScore": 0,
+          "source": "not-evaluated",
+          "evaluated": false
+        },
+        {
+          "id": "cmsReadiness",
+          "name": "CMS Readiness",
+          "score": 0,
+          "weightedScore": 0,
+          "source": "not-evaluated",
+          "evaluated": false
+        },
+        {
+          "id": "sectionFlexibility",
+          "name": "Section Flexibility",
+          "score": 0,
+          "weightedScore": 0,
+          "source": "not-evaluated",
+          "evaluated": false
+        }
+      ]
+    },
+    {
+      "id": "originality",
+      "name": "Originality",
+      "score": 89.5,
+      "weightedScore": 9,
+      "evaluated": true,
+      "criteria": [
+        {
+          "id": "differentiation",
+          "name": "Differentiation",
+          "score": 88,
+          "weightedScore": 44,
+          "source": "llm",
+          "evaluated": true
+        },
+        {
+          "id": "similarityRisk",
+          "name": "Similarity Risk",
+          "score": 91,
+          "weightedScore": 45.5,
+          "source": "llm",
+          "evaluated": true
+        }
+      ]
+    },
+    {
+      "id": "packaging",
+      "name": "Packaging / Documentation",
+      "score": 78,
+      "weightedScore": 3.9,
+      "evaluated": true,
+      "criteria": [
+        {
+          "id": "pageCompleteness",
+          "name": "Page Completeness",
+          "score": 78,
+          "weightedScore": 27.3,
+          "source": "automated",
+          "evaluated": true
+        },
+        {
+          "id": "documentation",
+          "name": "Documentation",
+          "score": 0,
+          "weightedScore": 0,
+          "source": "not-evaluated",
+          "evaluated": false
+        },
+        {
+          "id": "demoContent",
+          "name": "Demo Content",
+          "score": 0,
+          "weightedScore": 0,
+          "source": "not-evaluated",
+          "evaluated": false
+        }
+      ]
+    }
+  ],
+  "gates": [
+    {
+      "id": "no-critical-overflow",
+      "name": "No critical overflow",
+      "status": "PASS",
+      "severity": "error",
+      "message": "criticalOverflow expected false, got false"
+    },
+    {
+      "id": "no-critical-missing-assets",
+      "name": "No critical missing assets",
+      "status": "PASS",
+      "severity": "critical",
+      "message": "missingRequiredAssets expected false, got false"
+    },
+    {
+      "id": "mobile-quality-minimum",
+      "name": "Mobile quality minimum",
+      "status": "PASS",
+      "severity": "error",
+      "message": "responsive.mobile minimum 72, got 83"
+    },
+    {
+      "id": "buyer-test-minimum",
+      "name": "Buyer test minimum",
+      "status": "NOT_EVALUATED",
+      "severity": "error",
+      "message": "customization has no evaluated criteria; gate skipped."
+    },
+    {
+      "id": "manual-marketplace-readiness",
+      "name": "Manual marketplace readiness",
+      "status": "MANUAL",
+      "severity": "warning",
+      "message": "Manual gate is declared but not evaluated by the V0 engine."
+    }
+  ],
+  "findings": [
+    {
+      "id": "axe-aria-prohibited-attr",
+      "criterion": "technical.accessibilitySeo",
+      "severity": "error",
+      "message": "Accessibility violation: Elements must only use permitted ARIA attributes.",
+      "evidence": "1 node(s). https://dequeuniversity.com/rules/axe/4.13/aria-prohibited-attr?application=playwright",
+      "source": "automated:playwright:axe-core",
+      "confidence": 0.85,
+      "page": "/",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "axe-core"
+      }
+    },
+    {
+      "id": "axe-color-contrast",
+      "criterion": "technical.accessibilitySeo",
+      "severity": "error",
+      "message": "Accessibility violation: Elements must meet minimum color contrast ratio thresholds.",
+      "evidence": "5 node(s). https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright",
+      "source": "automated:playwright:axe-core",
+      "confidence": 0.85,
+      "page": "/",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "axe-core"
+      }
+    },
+    {
+      "id": "axe-scrollable-region-focusable",
+      "criterion": "technical.accessibilitySeo",
+      "severity": "error",
+      "message": "Accessibility violation: Scrollable region must have keyboard access.",
+      "evidence": "1 node(s). https://dequeuniversity.com/rules/axe/4.13/scrollable-region-focusable?application=playwright",
+      "source": "automated:playwright:axe-core",
+      "confidence": 0.85,
+      "page": "/pricing",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "axe-core"
+      }
+    },
+    {
+      "id": "axe-aria-prohibited-attr",
+      "criterion": "technical.accessibilitySeo",
+      "severity": "error",
+      "message": "Accessibility violation: Elements must only use permitted ARIA attributes.",
+      "evidence": "1 node(s). https://dequeuniversity.com/rules/axe/4.13/aria-prohibited-attr?application=playwright",
+      "source": "automated:playwright:axe-core",
+      "confidence": 0.85,
+      "page": "/product",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "axe-core"
+      }
+    },
+    {
+      "id": "axe-color-contrast",
+      "criterion": "technical.accessibilitySeo",
+      "severity": "error",
+      "message": "Accessibility violation: Elements must meet minimum color contrast ratio thresholds.",
+      "evidence": "3 node(s). https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright",
+      "source": "automated:playwright:axe-core",
+      "confidence": 0.85,
+      "page": "/product",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "axe-core"
+      }
+    },
+    {
+      "id": "visual-before-proof-authenticity",
+      "criterion": "originality.differentiation",
+      "severity": "error",
+      "message": "Real company names in the fictional proof grid weaken originality and make the demo feel derivative.",
+      "evidence": "The first proof grid includes recognizable SaaS company names.",
+      "suggestedFix": "Replace every logo wordmark with a coherent fictional customer set.",
+      "source": "llm:codex-agent:visual-quality",
+      "confidence": 0.99,
+      "page": "/",
+      "viewport": "desktop",
+      "provenance": {
+        "kind": "subjective",
+        "provider": "codex-agent",
+        "check": "visual-quality"
+      }
+    },
+    {
+      "id": "performance-total-transfer-home",
+      "criterion": "technical.performance",
+      "severity": "error",
+      "message": "Total Transfer exceeds the configured error threshold.",
+      "evidence": "Page transferred 7.49 MiB across 16 requests. Threshold: 7340032 bytes.",
+      "suggestedFix": "Reduce this page-level performance cost before release.",
+      "source": "automated:playwright-cdp:total-transfer",
+      "confidence": 0.95,
+      "page": "/",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright-cdp",
+        "check": "total-transfer"
+      }
+    },
+    {
+      "id": "performance-javascript-weight-home",
+      "criterion": "technical.performance",
+      "severity": "error",
+      "message": "Javascript Weight exceeds the configured error threshold.",
+      "evidence": "12 scripts transferred 7.43 MiB. Threshold: 2097152 bytes.",
+      "suggestedFix": "Reduce this page-level performance cost before release.",
+      "source": "automated:playwright-cdp:javascript-weight",
+      "confidence": 0.95,
+      "page": "/",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright-cdp",
+        "check": "javascript-weight"
+      }
+    },
+    {
+      "id": "performance-oversized-script-home-1",
+      "criterion": "technical.performance",
+      "severity": "error",
+      "message": "First-party script exceeds the configured transfer threshold.",
+      "evidence": "127.0.0.1/node_modules/.vite/deps/@phosphor-icons_react.js transferred 5.93 MiB on /.",
+      "suggestedFix": "Split or reduce the first-party JavaScript payload.",
+      "source": "automated:playwright-cdp:oversized-script",
+      "confidence": 0.97,
+      "page": "/",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright-cdp",
+        "check": "oversized-script"
+      }
+    },
+    {
+      "id": "performance-total-transfer-pricing",
+      "criterion": "technical.performance",
+      "severity": "error",
+      "message": "Total Transfer exceeds the configured error threshold.",
+      "evidence": "Page transferred 7.49 MiB across 16 requests. Threshold: 7340032 bytes.",
+      "suggestedFix": "Reduce this page-level performance cost before release.",
+      "source": "automated:playwright-cdp:total-transfer",
+      "confidence": 0.95,
+      "page": "/pricing",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright-cdp",
+        "check": "total-transfer"
+      }
+    },
+    {
+      "id": "performance-javascript-weight-pricing",
+      "criterion": "technical.performance",
+      "severity": "error",
+      "message": "Javascript Weight exceeds the configured error threshold.",
+      "evidence": "12 scripts transferred 7.43 MiB. Threshold: 2097152 bytes.",
+      "suggestedFix": "Reduce this page-level performance cost before release.",
+      "source": "automated:playwright-cdp:javascript-weight",
+      "confidence": 0.95,
+      "page": "/pricing",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright-cdp",
+        "check": "javascript-weight"
+      }
+    },
+    {
+      "id": "performance-oversized-script-pricing-1",
+      "criterion": "technical.performance",
+      "severity": "error",
+      "message": "First-party script exceeds the configured transfer threshold.",
+      "evidence": "127.0.0.1/node_modules/.vite/deps/@phosphor-icons_react.js transferred 5.93 MiB on /pricing.",
+      "suggestedFix": "Split or reduce the first-party JavaScript payload.",
+      "source": "automated:playwright-cdp:oversized-script",
+      "confidence": 0.97,
+      "page": "/pricing",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright-cdp",
+        "check": "oversized-script"
+      }
+    },
+    {
+      "id": "performance-total-transfer-product",
+      "criterion": "technical.performance",
+      "severity": "error",
+      "message": "Total Transfer exceeds the configured error threshold.",
+      "evidence": "Page transferred 7.49 MiB across 16 requests. Threshold: 7340032 bytes.",
+      "suggestedFix": "Reduce this page-level performance cost before release.",
+      "source": "automated:playwright-cdp:total-transfer",
+      "confidence": 0.95,
+      "page": "/product",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright-cdp",
+        "check": "total-transfer"
+      }
+    },
+    {
+      "id": "performance-javascript-weight-product",
+      "criterion": "technical.performance",
+      "severity": "error",
+      "message": "Javascript Weight exceeds the configured error threshold.",
+      "evidence": "12 scripts transferred 7.43 MiB. Threshold: 2097152 bytes.",
+      "suggestedFix": "Reduce this page-level performance cost before release.",
+      "source": "automated:playwright-cdp:javascript-weight",
+      "confidence": 0.95,
+      "page": "/product",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright-cdp",
+        "check": "javascript-weight"
+      }
+    },
+    {
+      "id": "performance-oversized-script-product-1",
+      "criterion": "technical.performance",
+      "severity": "error",
+      "message": "First-party script exceeds the configured transfer threshold.",
+      "evidence": "127.0.0.1/node_modules/.vite/deps/@phosphor-icons_react.js transferred 5.93 MiB on /product.",
+      "suggestedFix": "Split or reduce the first-party JavaScript payload.",
+      "source": "automated:playwright-cdp:oversized-script",
+      "confidence": 0.97,
+      "page": "/product",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright-cdp",
+        "check": "oversized-script"
+      }
+    },
+    {
+      "id": "technical-accessibilitySeo-below-minimum",
+      "criterion": "technical.accessibilitySeo",
+      "severity": "error",
+      "message": "Accessibility and SEO scored 63, below minimum 70.",
+      "suggestedFix": "Fix headings, labels, alt text, contrast, metadata, and link semantics.",
+      "source": "rule"
+    },
+    {
+      "id": "small-touch-target-mobile-1",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Copy install command: 34x34px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-2",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Tracing: 38x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-3",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Pricing: 38x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-4",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "About: 27x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-5",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Contact: 38x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-6",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Security: 43x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-1",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Tracing: 38x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/pricing",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-2",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Pricing: 38x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/pricing",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-3",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "About: 27x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/pricing",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-4",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Contact: 38x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/pricing",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-5",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Security: 43x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/pricing",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "axe-heading-order",
+      "criterion": "technical.accessibilitySeo",
+      "severity": "warning",
+      "message": "Accessibility violation: Heading levels should only increase by one.",
+      "evidence": "1 node(s). https://dequeuniversity.com/rules/axe/4.13/heading-order?application=playwright",
+      "source": "automated:playwright:axe-core",
+      "confidence": 0.85,
+      "page": "/pricing",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "axe-core"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-1",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Copy SDK install command: 34x34px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/product",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-2",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Tracing: 38x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/product",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-3",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Pricing: 38x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/product",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-4",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "About: 27x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/product",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-5",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Contact: 38x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/product",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "small-touch-target-mobile-6",
+      "criterion": "responsive.mobile",
+      "severity": "warning",
+      "message": "Interactive element is smaller than the configured mobile touch target.",
+      "evidence": "Security: 43x12px, minimum 44px.",
+      "source": "automated:playwright:touch-target",
+      "confidence": 0.7,
+      "page": "/product",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright",
+        "check": "touch-target"
+      }
+    },
+    {
+      "id": "visual-before-motion-capture",
+      "criterion": "visual.polish",
+      "severity": "warning",
+      "message": "Hero entrance opacity makes automated captures look washed out and weakens first-impression contrast.",
+      "evidence": "The initial desktop capture records the hero before the delayed opacity animation has fully settled.",
+      "suggestedFix": "Keep the restrained positional entrance but do not animate content opacity.",
+      "source": "llm:codex-agent:visual-quality",
+      "confidence": 0.96,
+      "page": "/",
+      "viewport": "desktop",
+      "provenance": {
+        "kind": "subjective",
+        "provider": "codex-agent",
+        "check": "visual-quality"
+      }
+    },
+    {
+      "id": "visual-before-mobile-touch-density",
+      "criterion": "visual.responsive",
+      "severity": "warning",
+      "message": "Small footer and utility targets make the mobile finish feel closer to a demo than a commercial template.",
+      "evidence": "Multiple named links and copy controls measure below 44px in the mobile inspection.",
+      "suggestedFix": "Preserve compact typography while increasing the interactive hit areas.",
+      "source": "llm:codex-agent:visual-quality",
+      "confidence": 0.93,
+      "page": "/",
+      "viewport": "mobile",
+      "provenance": {
+        "kind": "subjective",
+        "provider": "codex-agent",
+        "check": "visual-quality"
+      }
+    },
+    {
+      "id": "performance-oversized-script-home-2",
+      "criterion": "technical.performance",
+      "severity": "warning",
+      "message": "First-party script exceeds the configured transfer threshold.",
+      "evidence": "127.0.0.1/node_modules/.vite/deps/react-dom_client.js transferred 982.3 KiB on /.",
+      "suggestedFix": "Split or reduce the first-party JavaScript payload.",
+      "source": "automated:playwright-cdp:oversized-script",
+      "confidence": 0.97,
+      "page": "/",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright-cdp",
+        "check": "oversized-script"
+      }
+    },
+    {
+      "id": "performance-oversized-script-pricing-2",
+      "criterion": "technical.performance",
+      "severity": "warning",
+      "message": "First-party script exceeds the configured transfer threshold.",
+      "evidence": "127.0.0.1/node_modules/.vite/deps/react-dom_client.js transferred 982.3 KiB on /pricing.",
+      "suggestedFix": "Split or reduce the first-party JavaScript payload.",
+      "source": "automated:playwright-cdp:oversized-script",
+      "confidence": 0.97,
+      "page": "/pricing",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright-cdp",
+        "check": "oversized-script"
+      }
+    },
+    {
+      "id": "performance-oversized-script-product-2",
+      "criterion": "technical.performance",
+      "severity": "warning",
+      "message": "First-party script exceeds the configured transfer threshold.",
+      "evidence": "127.0.0.1/node_modules/.vite/deps/react-dom_client.js transferred 982.3 KiB on /product.",
+      "suggestedFix": "Split or reduce the first-party JavaScript payload.",
+      "source": "automated:playwright-cdp:oversized-script",
+      "confidence": 0.97,
+      "page": "/product",
+      "provenance": {
+        "kind": "observed",
+        "provider": "playwright-cdp",
+        "check": "oversized-script"
+      }
+    }
+  ],
+  "verdict": "NEEDS_WORK",
+  "recommendations": [
+    "Accessibility violation: Elements must only use permitted ARIA attributes.",
+    "Accessibility violation: Elements must meet minimum color contrast ratio thresholds.",
+    "Accessibility violation: Scrollable region must have keyboard access.",
+    "Accessibility violation: Elements must only use permitted ARIA attributes.",
+    "Accessibility violation: Elements must meet minimum color contrast ratio thresholds.",
+    "Manually evaluate gate: Manual marketplace readiness."
+  ],
+  "inspection": {
+    "discoveredPages": 3,
+    "inspectedPages": 3,
+    "failedPages": 0,
+    "worstPage": "/"
+  },
+  "performance": {
+    "pagesMeasured": 3,
+    "transfer": {
+      "averageBytes": 7858337,
+      "worstBytes": 7858337,
+      "worstPage": "/"
+    },
+    "lcp": [
+      {
+        "viewport": "desktop",
+        "averageMs": 1091,
+        "worstMs": 1184,
+        "worstPage": "/",
+        "measuredPages": 3,
+        "notEvaluatedPages": 0
+      }
+    ],
+    "heavyImages": 0,
+    "heavyScripts": 6,
+    "commonHeavyResources": [
+      {
+        "url": "http://127.0.0.1:4173/node_modules/.vite/deps/@phosphor-icons_react.js?v=4a755c41",
+        "category": "script",
+        "pages": [
+          "/",
+          "/pricing",
+          "/product"
+        ],
+        "maxTransferBytes": 6214050
+      },
+      {
+        "url": "http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=52dfeaae",
+        "category": "script",
+        "pages": [
+          "/",
+          "/pricing",
+          "/product"
+        ],
+        "maxTransferBytes": 1005848
+      }
+    ]
+  }
+}

@@ -1,0 +1,298 @@
+{
+  "version": 1,
+  "id": "127-0-0-1-20260825075653-home",
+  "createdAt": "2026-08-25T07:56:53.196Z",
+  "target": {
+    "inputUrl": "http://127.0.0.1:4173",
+    "finalUrl": "http://127.0.0.1:4173/"
+  },
+  "provider": {
+    "name": "playwright",
+    "version": "chromium"
+  },
+  "page": {
+    "title": "Prototype",
+    "status": 200,
+    "navigationMs": 617,
+    "redirects": []
+  },
+  "viewports": [
+    {
+      "id": "desktop",
+      "width": 1440,
+      "height": 1100,
+      "screenshotPath": "../screenshots/home-desktop.png",
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "bodyWidth": 1440
+    },
+    {
+      "id": "tablet",
+      "width": 768,
+      "height": 1024,
+      "screenshotPath": "../screenshots/home-tablet.png",
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "bodyWidth": 768
+    },
+    {
+      "id": "mobile",
+      "width": 390,
+      "height": 844,
+      "screenshotPath": "../screenshots/home-mobile.png",
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "bodyWidth": 390
+    }
+  ],
+  "checks": {
+    "linksChecked": 20,
+    "brokenInternalLinks": 0,
+    "brokenAnchors": 0,
+    "brokenImages": 0,
+    "consoleErrors": 0,
+    "pageErrors": 0,
+    "networkFailures": 0,
+    "badHttpResponses": 0,
+    "accessibilityViolations": 0,
+    "seriousAccessibilityViolations": 0,
+    "smallTouchTargets": 0,
+    "horizontalOverflowViewports": 0
+  },
+  "console": [],
+  "network": {
+    "failedRequests": [],
+    "badResponses": []
+  },
+  "findings": [],
+  "performance": {
+    "status": "measured",
+    "resourceViewport": "desktop",
+    "transfer": {
+      "status": "measured",
+      "totalRequests": 6,
+      "measuredRequests": 6,
+      "transferBytes": 149081
+    },
+    "resources": [
+      {
+        "url": "http://127.0.0.1:4173/",
+        "category": "document",
+        "mimeType": "text/html",
+        "transferBytes": 644,
+        "transferStatus": "measured",
+        "fromCache": false,
+        "thirdParty": false
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/index-C3ac9PYU.css",
+        "category": "stylesheet",
+        "mimeType": "text/css",
+        "transferBytes": 6177,
+        "transferStatus": "measured",
+        "fromCache": false,
+        "thirdParty": false
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/index-az66s6SC.js",
+        "category": "script",
+        "mimeType": "text/javascript",
+        "transferBytes": 76044,
+        "transferStatus": "measured",
+        "fromCache": false,
+        "thirdParty": false
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2",
+        "category": "font",
+        "mimeType": "font/woff2",
+        "transferBytes": 15028,
+        "transferStatus": "measured",
+        "fromCache": false,
+        "thirdParty": false
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/ibm-plex-mono-latin-600-normal-BgSNZQsw.woff2",
+        "category": "font",
+        "mimeType": "font/woff2",
+        "transferBytes": 15940,
+        "transferStatus": "measured",
+        "fromCache": false,
+        "thirdParty": false
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
+        "category": "font",
+        "mimeType": "font/woff2",
+        "transferBytes": 35248,
+        "transferStatus": "measured",
+        "fromCache": false,
+        "thirdParty": false
+      }
+    ],
+    "breakdown": [
+      {
+        "category": "document",
+        "count": 1,
+        "transferBytes": 644,
+        "largestResource": {
+          "url": "http://127.0.0.1:4173/",
+          "transferBytes": 644,
+          "mimeType": "text/html"
+        }
+      },
+      {
+        "category": "script",
+        "count": 1,
+        "transferBytes": 76044,
+        "largestResource": {
+          "url": "http://127.0.0.1:4173/assets/index-az66s6SC.js",
+          "transferBytes": 76044,
+          "mimeType": "text/javascript"
+        }
+      },
+      {
+        "category": "stylesheet",
+        "count": 1,
+        "transferBytes": 6177,
+        "largestResource": {
+          "url": "http://127.0.0.1:4173/assets/index-C3ac9PYU.css",
+          "transferBytes": 6177,
+          "mimeType": "text/css"
+        }
+      },
+      {
+        "category": "image",
+        "count": 0,
+        "transferBytes": 0
+      },
+      {
+        "category": "font",
+        "count": 3,
+        "transferBytes": 66216,
+        "largestResource": {
+          "url": "http://127.0.0.1:4173/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
+          "transferBytes": 35248,
+          "mimeType": "font/woff2"
+        }
+      },
+      {
+        "category": "media",
+        "count": 0,
+        "transferBytes": 0
+      },
+      {
+        "category": "other",
+        "count": 0,
+        "transferBytes": 0
+      }
+    ],
+    "images": {
+      "count": 0,
+      "transferBytes": 0,
+      "resources": []
+    },
+    "fonts": {
+      "count": 3,
+      "transferBytes": 66216,
+      "faces": [
+        {
+          "family": "Archivo Variable",
+          "style": "normal",
+          "weight": "100 900"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "style": "normal",
+          "weight": "400"
+        },
+        {
+          "family": "IBM Plex Mono",
+          "style": "normal",
+          "weight": "600"
+        }
+      ],
+      "resources": [
+        {
+          "url": "http://127.0.0.1:4173/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
+          "transferBytes": 35248,
+          "mimeType": "font/woff2"
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/ibm-plex-mono-latin-600-normal-BgSNZQsw.woff2",
+          "transferBytes": 15940,
+          "mimeType": "font/woff2"
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2",
+          "transferBytes": 15028,
+          "mimeType": "font/woff2"
+        }
+      ]
+    },
+    "javascript": {
+      "count": 1,
+      "transferBytes": 76044,
+      "resources": [
+        {
+          "url": "http://127.0.0.1:4173/assets/index-az66s6SC.js",
+          "transferBytes": 76044,
+          "mimeType": "text/javascript"
+        }
+      ]
+    },
+    "dom": {
+      "nodes": 409,
+      "maxDepth": 12
+    },
+    "lcp": [
+      {
+        "viewport": "desktop",
+        "status": "measured",
+        "valueMs": 136,
+        "element": {
+          "tag": "h1",
+          "selector": "h1",
+          "text": "Reliable agents are built, not hoped for."
+        },
+        "provenance": {
+          "provider": "performance-observer",
+          "check": "largest-contentful-paint",
+          "confidence": 0.85
+        }
+      },
+      {
+        "viewport": "mobile",
+        "status": "measured",
+        "valueMs": 72,
+        "element": {
+          "tag": "h1",
+          "selector": "h1",
+          "text": "Reliable agents are built, not hoped for."
+        },
+        "provenance": {
+          "provider": "performance-observer",
+          "check": "largest-contentful-paint",
+          "confidence": 0.85
+        }
+      },
+      {
+        "viewport": "tablet",
+        "status": "not-evaluated",
+        "reason": "LCP is sampled on desktop and mobile only to bound inspection cost.",
+        "provenance": {
+          "provider": "performance-observer",
+          "check": "largest-contentful-paint",
+          "confidence": 0.8
+        }
+      }
+    ],
+    "provenance": {
+      "provider": "playwright-cdp",
+      "check": "cold-load-performance",
+      "confidence": 0.95,
+      "cacheDisabled": true,
+      "serviceWorkerBypassed": true
+    }
+  }
+}

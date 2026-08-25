@@ -1,0 +1,29 @@
+id: premium-ai-saas-v1
+category: premium-ai-saas
+purpose: Quality benchmark only; derive finish, hierarchy, and responsive expectations without cloning.
+references:
+  - name: Lateral
+    url: https://lateral.framer.media
+    marketplace: https://www.framer.com/community/marketplace/templates/lateral/
+    notes:
+      - Strong product-led narrative and confident typography.
+      - Dense interface evidence without losing section clarity.
+  - name: Saasto
+    url: https://saasto.framer.website
+    marketplace: https://www.framer.com/community/marketplace/templates/saasto/
+    notes:
+      - Commercial completeness across SaaS page patterns.
+      - Controlled component consistency and conversion hierarchy.
+  - name: Nonlinear
+    url: https://nonlinear.framer.website
+    marketplace: https://www.framer.com/community/marketplace/templates/nonlinear/
+    notes:
+      - Distinct art direction and polished interaction framing.
+      - Useful benchmark for avoiding generic template composition.
+  - name: Outside
+    url: https://outsidetheboxtemplate.framer.website
+    marketplace: https://www.framer.com/community/marketplace/templates/outside/
+    notes:
+      - Expressive editorial layout with clear visual identity.
+      - Strong benchmark for composition and thumbnail appeal.
+assetPolicy: URLs and observations are persisted; third-party screenshots and assets are not committed.
