@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "id": "127-0-0-1-20260825083355",
-  "createdAt": "2026-08-25T08:33:55.195Z",
+  "id": "127-0-0-1-20260825091059",
+  "createdAt": "2026-08-25T09:10:59.227Z",
   "target": {
-    "inputUrl": "http://127.0.0.1:4173",
-    "finalUrl": "http://127.0.0.1:4173/"
+    "inputUrl": "http://127.0.0.1:4174",
+    "finalUrl": "http://127.0.0.1:4174/"
   },
   "title": "Prototype",
   "provider": {
@@ -15,7 +15,7 @@
     "maxPages": 3,
     "maxDepth": 1,
     "maxLinksPerPage": 20,
-    "timeoutMsPerPage": 20000
+    "timeoutMsPerPage": 15000
   },
   "discovery": {
     "considered": 3,
@@ -33,21 +33,21 @@
     {
       "slug": "home",
       "path": "/",
-      "url": "http://127.0.0.1:4173/",
+      "url": "http://127.0.0.1:4174/",
       "status": "inspected",
       "artifactPath": "pages/home.json"
     },
     {
       "slug": "pricing",
       "path": "/pricing",
-      "url": "http://127.0.0.1:4173/pricing",
+      "url": "http://127.0.0.1:4174/pricing",
       "status": "inspected",
       "artifactPath": "pages/pricing.json"
     },
     {
       "slug": "product",
       "path": "/product",
-      "url": "http://127.0.0.1:4173/product",
+      "url": "http://127.0.0.1:4174/product",
       "status": "inspected",
       "artifactPath": "pages/product.json"
     }
@@ -78,11 +78,11 @@
             "status": "measured",
             "totalRequests": 6,
             "measuredRequests": 6,
-            "transferBytes": 149624
+            "transferBytes": 150417
           },
           "resources": [
             {
-              "url": "http://127.0.0.1:4173/",
+              "url": "http://127.0.0.1:4174/",
               "category": "document",
               "mimeType": "text/html",
               "transferBytes": 644,
@@ -91,25 +91,25 @@
               "thirdParty": false
             },
             {
-              "url": "http://127.0.0.1:4173/assets/index-BKUZV-xi.css",
+              "url": "http://127.0.0.1:4174/assets/index-DPGlCKP1.css",
               "category": "stylesheet",
               "mimeType": "text/css",
-              "transferBytes": 6468,
+              "transferBytes": 6739,
               "transferStatus": "measured",
               "fromCache": false,
               "thirdParty": false
             },
             {
-              "url": "http://127.0.0.1:4173/assets/index-BSNdUAhn.js",
+              "url": "http://127.0.0.1:4174/assets/index-CR3kTXY-.js",
               "category": "script",
               "mimeType": "text/javascript",
-              "transferBytes": 76296,
+              "transferBytes": 76818,
               "transferStatus": "measured",
               "fromCache": false,
               "thirdParty": false
             },
             {
-              "url": "http://127.0.0.1:4173/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2",
+              "url": "http://127.0.0.1:4174/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2",
               "category": "font",
               "mimeType": "font/woff2",
               "transferBytes": 15028,
@@ -118,19 +118,19 @@
               "thirdParty": false
             },
             {
-              "url": "http://127.0.0.1:4173/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
+              "url": "http://127.0.0.1:4174/assets/ibm-plex-mono-latin-600-normal-BgSNZQsw.woff2",
               "category": "font",
               "mimeType": "font/woff2",
-              "transferBytes": 35248,
+              "transferBytes": 15940,
               "transferStatus": "measured",
               "fromCache": false,
               "thirdParty": false
             },
             {
-              "url": "http://127.0.0.1:4173/assets/ibm-plex-mono-latin-600-normal-BgSNZQsw.woff2",
+              "url": "http://127.0.0.1:4174/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
               "category": "font",
               "mimeType": "font/woff2",
-              "transferBytes": 15940,
+              "transferBytes": 35248,
               "transferStatus": "measured",
               "fromCache": false,
               "thirdParty": false
@@ -142,7 +142,7 @@
               "count": 1,
               "transferBytes": 644,
               "largestResource": {
-                "url": "http://127.0.0.1:4173/",
+                "url": "http://127.0.0.1:4174/",
                 "transferBytes": 644,
                 "mimeType": "text/html"
               }
@@ -150,20 +150,20 @@
             {
               "category": "script",
               "count": 1,
-              "transferBytes": 76296,
+              "transferBytes": 76818,
               "largestResource": {
-                "url": "http://127.0.0.1:4173/assets/index-BSNdUAhn.js",
-                "transferBytes": 76296,
+                "url": "http://127.0.0.1:4174/assets/index-CR3kTXY-.js",
+                "transferBytes": 76818,
                 "mimeType": "text/javascript"
               }
             },
             {
               "category": "stylesheet",
               "count": 1,
-              "transferBytes": 6468,
+              "transferBytes": 6739,
               "largestResource": {
-                "url": "http://127.0.0.1:4173/assets/index-BKUZV-xi.css",
-                "transferBytes": 6468,
+                "url": "http://127.0.0.1:4174/assets/index-DPGlCKP1.css",
+                "transferBytes": 6739,
                 "mimeType": "text/css"
               }
             },
@@ -177,7 +177,7 @@
               "count": 3,
               "transferBytes": 66216,
               "largestResource": {
-                "url": "http://127.0.0.1:4173/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
+                "url": "http://127.0.0.1:4174/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
                 "transferBytes": 35248,
                 "mimeType": "font/woff2"
               }
@@ -220,17 +220,17 @@
             ],
             "resources": [
               {
-                "url": "http://127.0.0.1:4173/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
+                "url": "http://127.0.0.1:4174/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
                 "transferBytes": 35248,
                 "mimeType": "font/woff2"
               },
               {
-                "url": "http://127.0.0.1:4173/assets/ibm-plex-mono-latin-600-normal-BgSNZQsw.woff2",
+                "url": "http://127.0.0.1:4174/assets/ibm-plex-mono-latin-600-normal-BgSNZQsw.woff2",
                 "transferBytes": 15940,
                 "mimeType": "font/woff2"
               },
               {
-                "url": "http://127.0.0.1:4173/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2",
+                "url": "http://127.0.0.1:4174/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2",
                 "transferBytes": 15028,
                 "mimeType": "font/woff2"
               }
@@ -238,11 +238,11 @@
           },
           "javascript": {
             "count": 1,
-            "transferBytes": 76296,
+            "transferBytes": 76818,
             "resources": [
               {
-                "url": "http://127.0.0.1:4173/assets/index-BSNdUAhn.js",
-                "transferBytes": 76296,
+                "url": "http://127.0.0.1:4174/assets/index-CR3kTXY-.js",
+                "transferBytes": 76818,
                 "mimeType": "text/javascript"
               }
             ]
@@ -255,7 +255,7 @@
             {
               "viewport": "desktop",
               "status": "measured",
-              "valueMs": 156,
+              "valueMs": 144,
               "element": {
                 "tag": "h1",
                 "selector": "h1",
@@ -270,7 +270,7 @@
             {
               "viewport": "mobile",
               "status": "measured",
-              "valueMs": 72,
+              "valueMs": 64,
               "element": {
                 "tag": "h1",
                 "selector": "h1",
@@ -311,11 +311,11 @@
             "status": "measured",
             "totalRequests": 6,
             "measuredRequests": 6,
-            "transferBytes": 149624
+            "transferBytes": 150417
           },
           "resources": [
             {
-              "url": "http://127.0.0.1:4173/pricing",
+              "url": "http://127.0.0.1:4174/pricing",
               "category": "document",
               "mimeType": "text/html",
               "transferBytes": 644,
@@ -324,34 +324,25 @@
               "thirdParty": false
             },
             {
-              "url": "http://127.0.0.1:4173/assets/index-BKUZV-xi.css",
+              "url": "http://127.0.0.1:4174/assets/index-DPGlCKP1.css",
               "category": "stylesheet",
               "mimeType": "text/css",
-              "transferBytes": 6468,
+              "transferBytes": 6739,
               "transferStatus": "measured",
               "fromCache": false,
               "thirdParty": false
             },
             {
-              "url": "http://127.0.0.1:4173/assets/index-BSNdUAhn.js",
+              "url": "http://127.0.0.1:4174/assets/index-CR3kTXY-.js",
               "category": "script",
               "mimeType": "text/javascript",
-              "transferBytes": 76296,
+              "transferBytes": 76818,
               "transferStatus": "measured",
               "fromCache": false,
               "thirdParty": false
             },
             {
-              "url": "http://127.0.0.1:4173/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2",
-              "category": "font",
-              "mimeType": "font/woff2",
-              "transferBytes": 15028,
-              "transferStatus": "measured",
-              "fromCache": false,
-              "thirdParty": false
-            },
-            {
-              "url": "http://127.0.0.1:4173/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
+              "url": "http://127.0.0.1:4174/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
               "category": "font",
               "mimeType": "font/woff2",
               "transferBytes": 35248,
@@ -360,7 +351,16 @@
               "thirdParty": false
             },
             {
-              "url": "http://127.0.0.1:4173/assets/ibm-plex-mono-latin-600-normal-BgSNZQsw.woff2",
+              "url": "http://127.0.0.1:4174/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2",
+              "category": "font",
+              "mimeType": "font/woff2",
+              "transferBytes": 15028,
+              "transferStatus": "measured",
+              "fromCache": false,
+              "thirdParty": false
+            },
+            {
+              "url": "http://127.0.0.1:4174/assets/ibm-plex-mono-latin-600-normal-BgSNZQsw.woff2",
               "category": "font",
               "mimeType": "font/woff2",
               "transferBytes": 15940,
@@ -375,7 +375,7 @@
               "count": 1,
               "transferBytes": 644,
               "largestResource": {
-                "url": "http://127.0.0.1:4173/pricing",
+                "url": "http://127.0.0.1:4174/pricing",
                 "transferBytes": 644,
                 "mimeType": "text/html"
               }
@@ -383,20 +383,20 @@
             {
               "category": "script",
               "count": 1,
-              "transferBytes": 76296,
+              "transferBytes": 76818,
               "largestResource": {
-                "url": "http://127.0.0.1:4173/assets/index-BSNdUAhn.js",
-                "transferBytes": 76296,
+                "url": "http://127.0.0.1:4174/assets/index-CR3kTXY-.js",
+                "transferBytes": 76818,
                 "mimeType": "text/javascript"
               }
             },
             {
               "category": "stylesheet",
               "count": 1,
-              "transferBytes": 6468,
+              "transferBytes": 6739,
               "largestResource": {
-                "url": "http://127.0.0.1:4173/assets/index-BKUZV-xi.css",
-                "transferBytes": 6468,
+                "url": "http://127.0.0.1:4174/assets/index-DPGlCKP1.css",
+                "transferBytes": 6739,
                 "mimeType": "text/css"
               }
             },
@@ -410,7 +410,7 @@
               "count": 3,
               "transferBytes": 66216,
               "largestResource": {
-                "url": "http://127.0.0.1:4173/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
+                "url": "http://127.0.0.1:4174/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
                 "transferBytes": 35248,
                 "mimeType": "font/woff2"
               }
@@ -453,17 +453,17 @@
             ],
             "resources": [
               {
-                "url": "http://127.0.0.1:4173/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
+                "url": "http://127.0.0.1:4174/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
                 "transferBytes": 35248,
                 "mimeType": "font/woff2"
               },
               {
-                "url": "http://127.0.0.1:4173/assets/ibm-plex-mono-latin-600-normal-BgSNZQsw.woff2",
+                "url": "http://127.0.0.1:4174/assets/ibm-plex-mono-latin-600-normal-BgSNZQsw.woff2",
                 "transferBytes": 15940,
                 "mimeType": "font/woff2"
               },
               {
-                "url": "http://127.0.0.1:4173/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2",
+                "url": "http://127.0.0.1:4174/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2",
                 "transferBytes": 15028,
                 "mimeType": "font/woff2"
               }
@@ -471,11 +471,11 @@
           },
           "javascript": {
             "count": 1,
-            "transferBytes": 76296,
+            "transferBytes": 76818,
             "resources": [
               {
-                "url": "http://127.0.0.1:4173/assets/index-BSNdUAhn.js",
-                "transferBytes": 76296,
+                "url": "http://127.0.0.1:4174/assets/index-CR3kTXY-.js",
+                "transferBytes": 76818,
                 "mimeType": "text/javascript"
               }
             ]
@@ -488,7 +488,7 @@
             {
               "viewport": "desktop",
               "status": "measured",
-              "valueMs": 60,
+              "valueMs": 56,
               "element": {
                 "tag": "h1",
                 "selector": "h1",
@@ -544,11 +544,11 @@
             "status": "measured",
             "totalRequests": 6,
             "measuredRequests": 6,
-            "transferBytes": 149624
+            "transferBytes": 150417
           },
           "resources": [
             {
-              "url": "http://127.0.0.1:4173/product",
+              "url": "http://127.0.0.1:4174/product",
               "category": "document",
               "mimeType": "text/html",
               "transferBytes": 644,
@@ -557,25 +557,25 @@
               "thirdParty": false
             },
             {
-              "url": "http://127.0.0.1:4173/assets/index-BKUZV-xi.css",
+              "url": "http://127.0.0.1:4174/assets/index-DPGlCKP1.css",
               "category": "stylesheet",
               "mimeType": "text/css",
-              "transferBytes": 6468,
+              "transferBytes": 6739,
               "transferStatus": "measured",
               "fromCache": false,
               "thirdParty": false
             },
             {
-              "url": "http://127.0.0.1:4173/assets/index-BSNdUAhn.js",
+              "url": "http://127.0.0.1:4174/assets/index-CR3kTXY-.js",
               "category": "script",
               "mimeType": "text/javascript",
-              "transferBytes": 76296,
+              "transferBytes": 76818,
               "transferStatus": "measured",
               "fromCache": false,
               "thirdParty": false
             },
             {
-              "url": "http://127.0.0.1:4173/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
+              "url": "http://127.0.0.1:4174/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
               "category": "font",
               "mimeType": "font/woff2",
               "transferBytes": 35248,
@@ -584,7 +584,7 @@
               "thirdParty": false
             },
             {
-              "url": "http://127.0.0.1:4173/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2",
+              "url": "http://127.0.0.1:4174/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2",
               "category": "font",
               "mimeType": "font/woff2",
               "transferBytes": 15028,
@@ -593,7 +593,7 @@
               "thirdParty": false
             },
             {
-              "url": "http://127.0.0.1:4173/assets/ibm-plex-mono-latin-600-normal-BgSNZQsw.woff2",
+              "url": "http://127.0.0.1:4174/assets/ibm-plex-mono-latin-600-normal-BgSNZQsw.woff2",
               "category": "font",
               "mimeType": "font/woff2",
               "transferBytes": 15940,
@@ -608,7 +608,7 @@
               "count": 1,
               "transferBytes": 644,
               "largestResource": {
-                "url": "http://127.0.0.1:4173/product",
+                "url": "http://127.0.0.1:4174/product",
                 "transferBytes": 644,
                 "mimeType": "text/html"
               }
@@ -616,20 +616,20 @@
             {
               "category": "script",
               "count": 1,
-              "transferBytes": 76296,
+              "transferBytes": 76818,
               "largestResource": {
-                "url": "http://127.0.0.1:4173/assets/index-BSNdUAhn.js",
-                "transferBytes": 76296,
+                "url": "http://127.0.0.1:4174/assets/index-CR3kTXY-.js",
+                "transferBytes": 76818,
                 "mimeType": "text/javascript"
               }
             },
             {
               "category": "stylesheet",
               "count": 1,
-              "transferBytes": 6468,
+              "transferBytes": 6739,
               "largestResource": {
-                "url": "http://127.0.0.1:4173/assets/index-BKUZV-xi.css",
-                "transferBytes": 6468,
+                "url": "http://127.0.0.1:4174/assets/index-DPGlCKP1.css",
+                "transferBytes": 6739,
                 "mimeType": "text/css"
               }
             },
@@ -643,7 +643,7 @@
               "count": 3,
               "transferBytes": 66216,
               "largestResource": {
-                "url": "http://127.0.0.1:4173/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
+                "url": "http://127.0.0.1:4174/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
                 "transferBytes": 35248,
                 "mimeType": "font/woff2"
               }
@@ -686,17 +686,17 @@
             ],
             "resources": [
               {
-                "url": "http://127.0.0.1:4173/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
+                "url": "http://127.0.0.1:4174/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
                 "transferBytes": 35248,
                 "mimeType": "font/woff2"
               },
               {
-                "url": "http://127.0.0.1:4173/assets/ibm-plex-mono-latin-600-normal-BgSNZQsw.woff2",
+                "url": "http://127.0.0.1:4174/assets/ibm-plex-mono-latin-600-normal-BgSNZQsw.woff2",
                 "transferBytes": 15940,
                 "mimeType": "font/woff2"
               },
               {
-                "url": "http://127.0.0.1:4173/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2",
+                "url": "http://127.0.0.1:4174/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2",
                 "transferBytes": 15028,
                 "mimeType": "font/woff2"
               }
@@ -704,11 +704,11 @@
           },
           "javascript": {
             "count": 1,
-            "transferBytes": 76296,
+            "transferBytes": 76818,
             "resources": [
               {
-                "url": "http://127.0.0.1:4173/assets/index-BSNdUAhn.js",
-                "transferBytes": 76296,
+                "url": "http://127.0.0.1:4174/assets/index-CR3kTXY-.js",
+                "transferBytes": 76818,
                 "mimeType": "text/javascript"
               }
             ]

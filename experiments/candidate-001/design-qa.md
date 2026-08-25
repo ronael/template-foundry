@@ -5,7 +5,7 @@ Reference direction and implementation were inspected together at the same deskt
 - `evaluation/comparisons/before-reference-vs-implementation.png`
 - `evaluation/comparisons/final-reference-vs-implementation.png`
 
-Source visual truth: `reference-direction.png` (1536px-wide generated direction). Final implementation evidence: `evaluation/final/127-0-0-1-20260825083355/screenshots/home-desktop.png` at a 1440×900 CSS viewport and device scale 1. Full-view images were normalized to 900px width for the combined comparison.
+Source visual truth: `reference-direction.png` (generated direction). Final implementation evidence: `evaluation/final/127-0-0-1-20260825091059/screenshots/home-desktop.png` at a 1440×900 CSS viewport and device scale 1. Full-view images were normalized to 900px width for the combined comparison.
 
 ## First comparison
 
@@ -21,7 +21,7 @@ Source visual truth: `reference-direction.png` (1536px-wide generated direction)
 - Corrected the SDK code presentation after the final page-level visual review.
 - Replaced the disconnected indented failure path with one continuous, icon-aligned vertical stepper after direct user review.
 - Rebalanced the collaboration section after direct user review: a wider editorial column, smaller display scale, and intrinsic-height evidence panel prevent clipping and dead space.
-- Added the required `minimal` motion profile: compressing sticky navigation, reading progress, indexed route states, directional button motion, and a transitioned mobile menu with reduced-motion fallback.
+- Upgraded the candidate from `minimal` to `medium`: kept the navigation signature, then added coordinated section entrances, staggered repeated content, animated data bars, and an automatic trace demonstration that pauses during direct interaction.
 
 ## Focused evidence
 
@@ -29,6 +29,8 @@ Source visual truth: `reference-direction.png` (1536px-wide generated direction)
 - `evaluation/qa/collaboration-before-after.png`: P1 clipped headline and oversized panel corrected at the narrow desktop breakpoint.
 - `evaluation/qa/navigation-scrolled.png`: compact scroll state and reading progress.
 - `evaluation/qa/navigation-mobile-open.png`: open mobile navigation state; menu remains keyboard-accessible and uses full-size targets.
+- `evaluation/qa/motion-trace-before-after.png`: the product demonstration advances from the Payments API step to Customer response on a 2.6s cadence.
+- `evaluation/qa/motion-data-settled.png`: the corrected failure panel after its chart entrance has settled.
 
 Focused captures were necessary because the path connectors, headline boundary, and navigation states are too small to judge reliably in the full-page comparison.
 
@@ -44,6 +46,9 @@ Focused captures were necessary because the path connectors, headline boundary, 
 - Image/assets: no raster product assets were introduced; existing Phosphor icons remain sharp at all tested densities.
 - Copy: failure and collaboration labels remain complete and legible.
 - Automated inspection: 3/3 pages, 0 findings, 0 overflow, 0 small touch targets, 0 accessibility violations.
-- Interaction checks: initial header, compressed scroll state, progress indicator, mobile open/close state, and route links were exercised with zero console errors.
+- Motion profile: `medium` requirements are present without exceeding two automatic regions (trace progression and status pulse).
+- Interaction checks: initial header, compressed scroll state, progress indicator, mobile open/close state, route links, automatic trace progression, hover pause, chart entrance, and pricing-card lift were exercised with zero console errors.
+- Reduced motion: the trace remains stable and all CSS animation/transition durations collapse to `.01ms`; content remains visible and controls remain usable.
+- Capture stability: responsive viewport changes no longer trigger the mobile-menu transition; that motion starts only after a real menu interaction.
 
 final result: passed

@@ -56,6 +56,7 @@ function ButtonLink({ href, children, variant = "primary" }) {
 
 function Header() {
   const [open, setOpen] = useState(false);
+  const [menuReady, setMenuReady] = useState(false);
   const [progress, setProgress] = useState(0);
   const [scrolled, setScrolled] = useState(false);
   const currentPath = window.location.pathname;
@@ -83,7 +84,7 @@ function Header() {
     <header className={scrolled ? "site-header scrolled" : "site-header"} style={{ "--scroll-progress": progress }}>
       <div className="header-inner">
         <Brand />
-        <nav className={open ? "nav open" : "nav"} aria-label="Primary navigation">
+        <nav className={`nav${open ? " open" : ""}${menuReady ? " menu-ready" : ""}`} aria-label="Primary navigation">
           {navItems.map(([label, href], index) => (
             <a href={href} key={label} data-index={String(index + 1).padStart(2, "0")} aria-current={href === currentPath ? "page" : undefined} onClick={() => setOpen(false)}>{label}</a>
           ))}
@@ -91,7 +92,7 @@ function Header() {
         <div className="header-actions">
           <a className="sign-in" href="/product#demo">Sign in</a>
           <ButtonLink href="/#demo">Open the playbook</ButtonLink>
-          <button className="menu-button" type="button" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen((value) => !value)}>
+          <button className="menu-button" type="button" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => { setMenuReady(true); setOpen((value) => !value); }}>
             {open ? <X /> : <List />}
           </button>
         </div>
@@ -107,9 +108,19 @@ function RailLabel({ index, children }) {
 
 function TracePanel({ compact = false }) {
   const [active, setActive] = useState(4);
+  const [paused, setPaused] = useState(false);
   const step = traceSteps[active];
+
+  useEffect(() => {
+    if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
+    const timer = window.setInterval(() => {
+      setActive((current) => (current + 1) % traceSteps.length);
+    }, 2600);
+    return () => window.clearInterval(timer);
+  }, [paused]);
+
   return (
-    <div className={`trace-panel ${compact ? "trace-compact" : ""}`}>
+    <div className={`trace-panel ${compact ? "trace-compact" : ""}`} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)}>
       <div className="panel-topbar"><span>Trace · Customer Refund Flow</span><div className="panel-status"><CheckCircle weight="fill" /> Completed</div></div>
       <div className="trace-body">
         <div className="trace-list" role="group" aria-label="Agent trace steps">
@@ -122,7 +133,7 @@ function TracePanel({ compact = false }) {
           ))}
         </div>
         {!compact && (
-          <div className="trace-detail">
+          <div className="trace-detail" key={active}>
             <div className="detail-tabs"><b>Details</b><span>Input</span><span>Output</span></div>
             <p className="code-label">{step.type} · {step.label}</p>
             <pre>{`POST /agent/run\n{\n  \"trace\": \"krn_81f3\",\n  \"policy\": \"refund-v3\",\n  \"status\": \"passed\"\n}`}</pre>
@@ -254,8 +265,46 @@ function PricingPage() {
 }
 
 export function App() {
+  useMotionSystem();
   const path = window.location.pathname.replace(/\/$/, "") || "/";
   if (path === "/product") return <ProductPage />;
   if (path === "/pricing") return <PricingPage />;
   return <HomePage />;
+}
+
+function useMotionSystem() {
+  useEffect(() => {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return undefined;
+
+    const sections = [...document.querySelectorAll("main > section")];
+    const items = [
+      ...document.querySelectorAll(
+        ".workflow-step, .metric, .price-card, .comment, .logo-grid span, .eval-row, .faq-item",
+      ),
+    ];
+    const bars = [...document.querySelectorAll(".bars")];
+    document.documentElement.classList.add("motion-enabled");
+    items.forEach((item, index) => {
+      item.dataset.motionItem = "";
+      item.style.setProperty("--motion-delay", `${(index % 6) * 55}ms`);
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -6%" },
+    );
+    for (const element of [...sections, ...items, ...bars]) observer.observe(element);
+
+    return () => {
+      observer.disconnect();
+      document.documentElement.classList.remove("motion-enabled");
+    };
+  }, []);
 }

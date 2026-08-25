@@ -7,12 +7,39 @@ principles:
   scoresRequireActionableFindings: true
 motionPolicy:
   requiredMinimum: minimal
+  candidateProfile: medium
   originalNavigationMotionRequired: true
   reducedMotionFallbackRequired: true
   profiles:
-    minimal: One restrained navigation signature plus purposeful state transitions.
-    medium: Reserved for calibration; expected to add coordinated section and product-story motion.
-    high: Reserved for calibration; expected to add expressive art-directed motion without harming usability.
+    minimal:
+      motionFamilies: 2-4
+      typicalDurationMs: 120-400
+      maximumContinuousRegions: 0
+      requires:
+        - original navigation signature
+        - mobile menu transition
+        - interaction feedback
+    medium:
+      inherits: minimal
+      motionFamilies: 4-7
+      typicalDurationMs: 160-700
+      minimumAutomaticCadenceMs: 2000
+      maximumContinuousRegions: 2
+      requires:
+        - coordinated section entrances
+        - staggered repeated content
+        - product or data-story motion
+        - pause automatic demonstrations during interaction
+    high:
+      inherits: medium
+      motionFamilies: 6-10
+      typicalDurationMs: 180-1000
+      maximumContinuousRegions: 3
+      requires:
+        - coordinated page transition or scroll story
+        - bespoke motion asset or interaction
+        - explicit performance review
+        - mobile simplification strategy
 criteria:
   hierarchy: Product and primary action are clear within the first viewport; section contrast sustains the narrative.
   typography: Type scale, measure, weight, and pairing feel intentional at every viewport.

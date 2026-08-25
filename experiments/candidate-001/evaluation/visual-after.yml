@@ -1,6 +1,6 @@
 version: 1
-candidateId: 127-0-0-1-20260825083355
-createdAt: 2026-08-25T08:35:00.000Z
+candidateId: 127-0-0-1-20260825091059
+createdAt: 2026-08-25T09:12:00.000Z
 status: evaluated
 evaluator:
   kind: llm
@@ -10,19 +10,19 @@ referenceSet: premium-ai-saas-v1
 screenshots:
   - page: /
     viewport: desktop
-    path: final/127-0-0-1-20260825083355/screenshots/home-desktop.png
+    path: final/127-0-0-1-20260825091059/screenshots/home-desktop.png
   - page: /
     viewport: tablet
-    path: final/127-0-0-1-20260825083355/screenshots/home-tablet.png
+    path: final/127-0-0-1-20260825091059/screenshots/home-tablet.png
   - page: /
     viewport: mobile
-    path: final/127-0-0-1-20260825083355/screenshots/home-mobile.png
+    path: final/127-0-0-1-20260825091059/screenshots/home-mobile.png
   - page: /product
     viewport: desktop
-    path: final/127-0-0-1-20260825083355/screenshots/product-desktop.png
+    path: final/127-0-0-1-20260825091059/screenshots/product-desktop.png
   - page: /pricing
     viewport: desktop
-    path: final/127-0-0-1-20260825083355/screenshots/pricing-desktop.png
+    path: final/127-0-0-1-20260825091059/screenshots/pricing-desktop.png
 scores:
   hierarchy: 89
   typography: 86
@@ -31,7 +31,7 @@ scores:
   color: 90
   components: 88
   responsive: 90
-  motion: 84
+  motion: 90
   polish: 89
   differentiation: 91
   similarityRisk: 93
@@ -54,6 +54,7 @@ strengths:
   - The hero communicates the product and art direction immediately.
   - Product evidence, editorial rails, and restrained acid accent create a coherent identity across all pages.
   - Mobile reads as an intentional long-form technical story and preserves the product UI hierarchy.
+  - The medium motion system turns trace progression, evidence entrances, and navigation state into one restrained product narrative.
   - The candidate reaches a comparable level of finish without reproducing any selected reference's branding or assets.
 sellability:
   verdict: SELLABLE

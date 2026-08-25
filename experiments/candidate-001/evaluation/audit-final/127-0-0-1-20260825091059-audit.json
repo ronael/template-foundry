@@ -1,6 +1,6 @@
 {
   "candidate": {
-    "id": "127-0-0-1-20260825083355",
+    "id": "127-0-0-1-20260825091059",
     "name": "Prototype"
   },
   "standard": {
@@ -8,13 +8,13 @@
     "version": 1,
     "name": "Golden Framer Standard"
   },
-  "overallScore": 91.5,
+  "overallScore": 91.6,
   "axes": [
     {
       "id": "visual",
       "name": "Visual Quality",
-      "score": 87.3,
-      "weightedScore": 26.2,
+      "score": 87.6,
+      "weightedScore": 26.3,
       "evaluated": true,
       "criteria": [
         {
@@ -44,8 +44,8 @@
         {
           "id": "polish",
           "name": "Polish",
-          "score": 88,
-          "weightedScore": 22,
+          "score": 89,
+          "weightedScore": 22.3,
           "source": "llm",
           "evaluated": true
         }
@@ -302,23 +302,23 @@
   "performance": {
     "pagesMeasured": 3,
     "transfer": {
-      "averageBytes": 149624,
-      "worstBytes": 149624,
+      "averageBytes": 150417,
+      "worstBytes": 150417,
       "worstPage": "/"
     },
     "lcp": [
       {
         "viewport": "desktop",
-        "averageMs": 95,
-        "worstMs": 156,
+        "averageMs": 89,
+        "worstMs": 144,
         "worstPage": "/",
         "measuredPages": 3,
         "notEvaluatedPages": 0
       },
       {
         "viewport": "mobile",
-        "averageMs": 63,
-        "worstMs": 72,
+        "averageMs": 60,
+        "worstMs": 64,
         "worstPage": "/",
         "measuredPages": 3,
         "notEvaluatedPages": 0

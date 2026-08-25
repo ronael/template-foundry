@@ -117,9 +117,11 @@ boundaries.
 
 Candidate production now requires a minimal motion profile: at least one
 original, purposeful navigation behavior plus a reduced-motion fallback.
-`medium` and `high` remain named future profiles, not scored claims, until they
-are calibrated on real candidates. Motion stays a subjective visual criterion;
-browser checks only verify technical behavior and accessibility.
+The three behavioral profiles are defined in `docs/MOTION.md`; Candidate 001 now
+targets `medium`. They remain compliance labels rather than scored claims until
+each profile is calibrated on multiple real candidates. Motion stays a
+subjective visual criterion; browser checks only verify technical behavior and
+accessibility.
 
 ## References
 

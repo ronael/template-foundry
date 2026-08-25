@@ -14,7 +14,7 @@ Keep the V0 focused: CLI, Golden Standard, benchmark metadata, candidate input, 
 
 Browser automation is infrastructure. The audit domain must remain browser-provider agnostic.
 
-Every generated template candidate must include at least a restrained, original navigation motion system with a `prefers-reduced-motion` fallback. Treat `minimal` as the current required profile; do not invent `medium` or `high` scoring thresholds until they are calibrated on real candidates.
+Every generated template candidate must declare and satisfy a motion profile from `docs/MOTION.md`, with `minimal` as the floor, an original navigation signature, and a `prefers-reduced-motion` fallback. Do not invent numeric profile scoring thresholds until `minimal`, `medium`, and `high` are calibrated on real candidates.
 
 Run before finishing changes:
 

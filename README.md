@@ -134,4 +134,5 @@ The first production experiment is [Candidate 001](experiments/candidate-001/BRI
 a three-page React/Vite prototype named Kern. It proves the loop
 reference → brief → build → screenshots → subjective review → correction →
 technical audit. It is intentionally described as a web prototype, not a
-native Framer template.
+native Framer template. Generated candidates declare a behavioral profile from
+the [Motion Standard](docs/MOTION.md); Kern currently demonstrates `medium`.
