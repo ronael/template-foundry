@@ -18,14 +18,7 @@ import {
   X,
 } from "@phosphor-icons/react";
 import { useEffect, useMemo, useState } from "react";
-
-const navItems = [
-  ["Platform", "/product"],
-  ["Solutions", "/#workflow"],
-  ["Pricing", "/pricing"],
-  ["Docs", "/product#docs"],
-  ["Resources", "/#proof"],
-];
+import { getActiveNavHref, navItems } from "./navigation.js";
 
 const traceSteps = [
   { type: "Input", label: "Refund request", duration: "2.3s" },
@@ -59,7 +52,18 @@ function Header() {
   const [menuReady, setMenuReady] = useState(false);
   const [progress, setProgress] = useState(0);
   const [scrolled, setScrolled] = useState(false);
-  const currentPath = window.location.pathname;
+  const [location, setLocation] = useState(() => ({ pathname: window.location.pathname, hash: window.location.hash }));
+  const activeHref = getActiveNavHref(navItems, location.pathname, location.hash);
+
+  useEffect(() => {
+    const updateLocation = () => setLocation({ pathname: window.location.pathname, hash: window.location.hash });
+    window.addEventListener("hashchange", updateLocation);
+    window.addEventListener("popstate", updateLocation);
+    return () => {
+      window.removeEventListener("hashchange", updateLocation);
+      window.removeEventListener("popstate", updateLocation);
+    };
+  }, []);
 
   useEffect(() => {
     let frame = 0;
@@ -86,7 +90,7 @@ function Header() {
         <Brand />
         <nav className={`nav${open ? " open" : ""}${menuReady ? " menu-ready" : ""}`} aria-label="Primary navigation">
           {navItems.map(([label, href], index) => (
-            <a href={href} key={label} data-index={String(index + 1).padStart(2, "0")} aria-current={href === currentPath ? "page" : undefined} onClick={() => setOpen(false)}>{label}</a>
+            <a href={href} key={label} data-index={String(index + 1).padStart(2, "0")} aria-current={activeHref === href ? (href.includes("#") ? "location" : "page") : undefined} onClick={() => setOpen(false)}>{label}</a>
           ))}
         </nav>
         <div className="header-actions">

@@ -1,6 +1,6 @@
 version: 1
-candidateId: 127-0-0-1-20260825091059
-createdAt: 2026-08-25T09:12:00.000Z
+candidateId: 127-0-0-1-20260825092340
+createdAt: 2026-08-25T09:25:00.000Z
 status: evaluated
 evaluator:
   kind: llm
@@ -10,19 +10,19 @@ referenceSet: premium-ai-saas-v1
 screenshots:
   - page: /
     viewport: desktop
-    path: final/127-0-0-1-20260825091059/screenshots/home-desktop.png
+    path: final/127-0-0-1-20260825092340/screenshots/home-desktop.png
   - page: /
     viewport: tablet
-    path: final/127-0-0-1-20260825091059/screenshots/home-tablet.png
+    path: final/127-0-0-1-20260825092340/screenshots/home-tablet.png
   - page: /
     viewport: mobile
-    path: final/127-0-0-1-20260825091059/screenshots/home-mobile.png
+    path: final/127-0-0-1-20260825092340/screenshots/home-mobile.png
   - page: /product
     viewport: desktop
-    path: final/127-0-0-1-20260825091059/screenshots/product-desktop.png
+    path: final/127-0-0-1-20260825092340/screenshots/product-desktop.png
   - page: /pricing
     viewport: desktop
-    path: final/127-0-0-1-20260825091059/screenshots/pricing-desktop.png
+    path: final/127-0-0-1-20260825092340/screenshots/pricing-desktop.png
 scores:
   hierarchy: 89
   typography: 86

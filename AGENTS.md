@@ -16,6 +16,8 @@ Browser automation is infrastructure. The audit domain must remain browser-provi
 
 Every generated template candidate must declare and satisfy a motion profile from `docs/MOTION.md`, with `minimal` as the floor, an original navigation signature, and a `prefers-reduced-motion` fallback. Do not invent numeric profile scoring thresholds until `minimal`, `medium`, and `high` are calibrated on real candidates.
 
+Screenshots and automated audits do not replace interaction QA. Before candidate handoff, exercise every public route and primary navigation item on desktop and mobile. Verify the destination or anchor, visible active state, exactly one appropriate `aria-current` item, keyboard behavior, browser back/forward behavior, and add a regression test for the navigation state model.
+
 Run before finishing changes:
 
 ```bash

@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "id": "127-0-0-1-20260825091059-product",
-  "createdAt": "2026-08-25T09:10:59.227Z",
+  "id": "127-0-0-1-20260825092340-pricing",
+  "createdAt": "2026-08-25T09:23:40.032Z",
   "target": {
-    "inputUrl": "http://127.0.0.1:4174/product",
-    "finalUrl": "http://127.0.0.1:4174/product"
+    "inputUrl": "http://127.0.0.1:4401/pricing",
+    "finalUrl": "http://127.0.0.1:4401/pricing"
   },
   "provider": {
     "name": "playwright",
@@ -13,7 +13,7 @@
   "page": {
     "title": "Prototype",
     "status": 200,
-    "navigationMs": 554,
+    "navigationMs": 555,
     "redirects": []
   },
   "viewports": [
@@ -21,7 +21,7 @@
       "id": "desktop",
       "width": 1440,
       "height": 1100,
-      "screenshotPath": "../screenshots/product-desktop.png",
+      "screenshotPath": "../screenshots/pricing-desktop.png",
       "scrollWidth": 1440,
       "clientWidth": 1440,
       "bodyWidth": 1440
@@ -30,7 +30,7 @@
       "id": "tablet",
       "width": 768,
       "height": 1024,
-      "screenshotPath": "../screenshots/product-tablet.png",
+      "screenshotPath": "../screenshots/pricing-tablet.png",
       "scrollWidth": 768,
       "clientWidth": 768,
       "bodyWidth": 768
@@ -39,7 +39,7 @@
       "id": "mobile",
       "width": 390,
       "height": 844,
-      "screenshotPath": "../screenshots/product-mobile.png",
+      "screenshotPath": "../screenshots/pricing-mobile.png",
       "scrollWidth": 390,
       "clientWidth": 390,
       "bodyWidth": 390
@@ -72,11 +72,11 @@
       "status": "measured",
       "totalRequests": 6,
       "measuredRequests": 6,
-      "transferBytes": 150417
+      "transferBytes": 150674
     },
     "resources": [
       {
-        "url": "http://127.0.0.1:4174/product",
+        "url": "http://127.0.0.1:4401/pricing",
         "category": "document",
         "mimeType": "text/html",
         "transferBytes": 644,
@@ -85,25 +85,25 @@
         "thirdParty": false
       },
       {
-        "url": "http://127.0.0.1:4174/assets/index-DPGlCKP1.css",
+        "url": "http://127.0.0.1:4401/assets/index-CJRte5ma.css",
         "category": "stylesheet",
         "mimeType": "text/css",
-        "transferBytes": 6739,
+        "transferBytes": 6761,
         "transferStatus": "measured",
         "fromCache": false,
         "thirdParty": false
       },
       {
-        "url": "http://127.0.0.1:4174/assets/index-CR3kTXY-.js",
+        "url": "http://127.0.0.1:4401/assets/index-Cn6l1_q_.js",
         "category": "script",
         "mimeType": "text/javascript",
-        "transferBytes": 76818,
+        "transferBytes": 77053,
         "transferStatus": "measured",
         "fromCache": false,
         "thirdParty": false
       },
       {
-        "url": "http://127.0.0.1:4174/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
+        "url": "http://127.0.0.1:4401/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
         "category": "font",
         "mimeType": "font/woff2",
         "transferBytes": 35248,
@@ -112,7 +112,7 @@
         "thirdParty": false
       },
       {
-        "url": "http://127.0.0.1:4174/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2",
+        "url": "http://127.0.0.1:4401/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2",
         "category": "font",
         "mimeType": "font/woff2",
         "transferBytes": 15028,
@@ -121,7 +121,7 @@
         "thirdParty": false
       },
       {
-        "url": "http://127.0.0.1:4174/assets/ibm-plex-mono-latin-600-normal-BgSNZQsw.woff2",
+        "url": "http://127.0.0.1:4401/assets/ibm-plex-mono-latin-600-normal-BgSNZQsw.woff2",
         "category": "font",
         "mimeType": "font/woff2",
         "transferBytes": 15940,
@@ -136,7 +136,7 @@
         "count": 1,
         "transferBytes": 644,
         "largestResource": {
-          "url": "http://127.0.0.1:4174/product",
+          "url": "http://127.0.0.1:4401/pricing",
           "transferBytes": 644,
           "mimeType": "text/html"
         }
@@ -144,20 +144,20 @@
       {
         "category": "script",
         "count": 1,
-        "transferBytes": 76818,
+        "transferBytes": 77053,
         "largestResource": {
-          "url": "http://127.0.0.1:4174/assets/index-CR3kTXY-.js",
-          "transferBytes": 76818,
+          "url": "http://127.0.0.1:4401/assets/index-Cn6l1_q_.js",
+          "transferBytes": 77053,
           "mimeType": "text/javascript"
         }
       },
       {
         "category": "stylesheet",
         "count": 1,
-        "transferBytes": 6739,
+        "transferBytes": 6761,
         "largestResource": {
-          "url": "http://127.0.0.1:4174/assets/index-DPGlCKP1.css",
-          "transferBytes": 6739,
+          "url": "http://127.0.0.1:4401/assets/index-CJRte5ma.css",
+          "transferBytes": 6761,
           "mimeType": "text/css"
         }
       },
@@ -171,7 +171,7 @@
         "count": 3,
         "transferBytes": 66216,
         "largestResource": {
-          "url": "http://127.0.0.1:4174/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
+          "url": "http://127.0.0.1:4401/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
           "transferBytes": 35248,
           "mimeType": "font/woff2"
         }
@@ -214,17 +214,17 @@
       ],
       "resources": [
         {
-          "url": "http://127.0.0.1:4174/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
+          "url": "http://127.0.0.1:4401/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
           "transferBytes": 35248,
           "mimeType": "font/woff2"
         },
         {
-          "url": "http://127.0.0.1:4174/assets/ibm-plex-mono-latin-600-normal-BgSNZQsw.woff2",
+          "url": "http://127.0.0.1:4401/assets/ibm-plex-mono-latin-600-normal-BgSNZQsw.woff2",
           "transferBytes": 15940,
           "mimeType": "font/woff2"
         },
         {
-          "url": "http://127.0.0.1:4174/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2",
+          "url": "http://127.0.0.1:4401/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2",
           "transferBytes": 15028,
           "mimeType": "font/woff2"
         }
@@ -232,28 +232,28 @@
     },
     "javascript": {
       "count": 1,
-      "transferBytes": 76818,
+      "transferBytes": 77053,
       "resources": [
         {
-          "url": "http://127.0.0.1:4174/assets/index-CR3kTXY-.js",
-          "transferBytes": 76818,
+          "url": "http://127.0.0.1:4401/assets/index-Cn6l1_q_.js",
+          "transferBytes": 77053,
           "mimeType": "text/javascript"
         }
       ]
     },
     "dom": {
-      "nodes": 227,
+      "nodes": 238,
       "maxDepth": 11
     },
     "lcp": [
       {
         "viewport": "desktop",
         "status": "measured",
-        "valueMs": 68,
+        "valueMs": 60,
         "element": {
           "tag": "h1",
           "selector": "h1",
-          "text": "One record for every agent decision."
+          "text": "Start with one agent.Scale with confidence."
         },
         "provenance": {
           "provider": "performance-observer",
@@ -264,11 +264,11 @@
       {
         "viewport": "mobile",
         "status": "measured",
-        "valueMs": 60,
+        "valueMs": 56,
         "element": {
           "tag": "h1",
           "selector": "h1",
-          "text": "One record for every agent decision."
+          "text": "Start with one agent.Scale with confidence."
         },
         "provenance": {
           "provider": "performance-observer",

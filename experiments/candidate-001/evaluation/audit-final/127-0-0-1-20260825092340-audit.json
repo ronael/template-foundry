@@ -1,6 +1,6 @@
 {
   "candidate": {
-    "id": "127-0-0-1-20260825091059",
+    "id": "127-0-0-1-20260825092340",
     "name": "Prototype"
   },
   "standard": {
@@ -302,23 +302,23 @@
   "performance": {
     "pagesMeasured": 3,
     "transfer": {
-      "averageBytes": 150417,
-      "worstBytes": 150417,
+      "averageBytes": 150674,
+      "worstBytes": 150674,
       "worstPage": "/"
     },
     "lcp": [
       {
         "viewport": "desktop",
-        "averageMs": 89,
-        "worstMs": 144,
+        "averageMs": 96,
+        "worstMs": 160,
         "worstPage": "/",
         "measuredPages": 3,
         "notEvaluatedPages": 0
       },
       {
         "viewport": "mobile",
-        "averageMs": 60,
-        "worstMs": 64,
+        "averageMs": 68,
+        "worstMs": 92,
         "worstPage": "/",
         "measuredPages": 3,
         "notEvaluatedPages": 0

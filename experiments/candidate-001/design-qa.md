@@ -5,7 +5,7 @@ Reference direction and implementation were inspected together at the same deskt
 - `evaluation/comparisons/before-reference-vs-implementation.png`
 - `evaluation/comparisons/final-reference-vs-implementation.png`
 
-Source visual truth: `reference-direction.png` (generated direction). Final implementation evidence: `evaluation/final/127-0-0-1-20260825091059/screenshots/home-desktop.png` at a 1440×900 CSS viewport and device scale 1. Full-view images were normalized to 900px width for the combined comparison.
+Source visual truth: `reference-direction.png` (generated direction). Final implementation evidence: `evaluation/final/127-0-0-1-20260825092340/screenshots/home-desktop.png` at a 1440×900 CSS viewport and device scale 1. Full-view images were normalized to 900px width for the combined comparison.
 
 ## First comparison
 
@@ -22,6 +22,7 @@ Source visual truth: `reference-direction.png` (generated direction). Final impl
 - Replaced the disconnected indented failure path with one continuous, icon-aligned vertical stepper after direct user review.
 - Rebalanced the collaboration section after direct user review: a wider editorial column, smaller display scale, and intrinsic-height evidence panel prevent clipping and dead space.
 - Upgraded the candidate from `minimal` to `medium`: kept the navigation signature, then added coordinated section entrances, staggered repeated content, animated data bars, and an automatic trace demonstration that pauses during direct interaction.
+- Replaced pathname-only navigation matching after direct user review. Page and section locations now resolve separately, update on hash/history changes, expose `aria-current="page"` or `aria-current="location"`, and use unmistakable desktop/mobile active treatments.
 
 ## Focused evidence
 
@@ -31,6 +32,7 @@ Source visual truth: `reference-direction.png` (generated direction). Final impl
 - `evaluation/qa/navigation-mobile-open.png`: open mobile navigation state; menu remains keyboard-accessible and uses full-size targets.
 - `evaluation/qa/motion-trace-before-after.png`: the product demonstration advances from the Payments API step to Customer response on a 2.6s cadence.
 - `evaluation/qa/motion-data-settled.png`: the corrected failure panel after its chart entrance has settled.
+- `evaluation/qa/navigation-audit-20260825/`: seven current-state captures covering Platform, Docs, Solutions, Resources, Pricing, and the mobile Platform/Docs states.
 
 Focused captures were necessary because the path connectors, headline boundary, and navigation states are too small to judge reliably in the full-page comparison.
 
@@ -50,5 +52,6 @@ Focused captures were necessary because the path connectors, headline boundary, 
 - Interaction checks: initial header, compressed scroll state, progress indicator, mobile open/close state, route links, automatic trace progression, hover pause, chart entrance, and pricing-card lift were exercised with zero console errors.
 - Reduced motion: the trace remains stable and all CSS animation/transition durations collapse to `.01ms`; content remains visible and controls remain usable.
 - Capture stability: responsive viewport changes no longer trigger the mobile-menu transition; that motion starts only after a real menu interaction.
+- Navigation state: 7/7 E2E states passed, with one active item, correct semantics, working same-page anchors, browser back/forward synchronization, and zero console errors.
 
 final result: passed
