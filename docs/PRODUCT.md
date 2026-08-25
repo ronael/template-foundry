@@ -115,6 +115,12 @@ Standard audit returned `READY`. This does not prove native Framer editability,
 publication readiness, or buyer customization, so those remain explicit manual
 boundaries.
 
+Candidate production now requires a minimal motion profile: at least one
+original, purposeful navigation behavior plus a reduced-motion fallback.
+`medium` and `high` remain named future profiles, not scored claims, until they
+are calibrated on real candidates. Motion stays a subjective visual criterion;
+browser checks only verify technical behavior and accessibility.
+
 ## References
 
 Public Framer ecosystem references such as Framer Marketplace, Framer Blocks-like patterns, Damas, and Rivero may inform analysis. The project stores derived criteria and benchmark notes only. It must not copy, bundle, or redistribute proprietary template code, assets, or content.

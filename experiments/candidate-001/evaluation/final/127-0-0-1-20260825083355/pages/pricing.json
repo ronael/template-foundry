@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "id": "127-0-0-1-20260825075653-pricing",
-  "createdAt": "2026-08-25T07:56:53.196Z",
+  "id": "127-0-0-1-20260825083355-pricing",
+  "createdAt": "2026-08-25T08:33:55.195Z",
   "target": {
     "inputUrl": "http://127.0.0.1:4173/pricing",
     "finalUrl": "http://127.0.0.1:4173/pricing"
@@ -13,7 +13,7 @@
   "page": {
     "title": "Prototype",
     "status": 200,
-    "navigationMs": 552,
+    "navigationMs": 551,
     "redirects": []
   },
   "viewports": [
@@ -72,7 +72,7 @@
       "status": "measured",
       "totalRequests": 6,
       "measuredRequests": 6,
-      "transferBytes": 149081
+      "transferBytes": 149624
     },
     "resources": [
       {
@@ -85,28 +85,19 @@
         "thirdParty": false
       },
       {
-        "url": "http://127.0.0.1:4173/assets/index-C3ac9PYU.css",
+        "url": "http://127.0.0.1:4173/assets/index-BKUZV-xi.css",
         "category": "stylesheet",
         "mimeType": "text/css",
-        "transferBytes": 6177,
+        "transferBytes": 6468,
         "transferStatus": "measured",
         "fromCache": false,
         "thirdParty": false
       },
       {
-        "url": "http://127.0.0.1:4173/assets/index-az66s6SC.js",
+        "url": "http://127.0.0.1:4173/assets/index-BSNdUAhn.js",
         "category": "script",
         "mimeType": "text/javascript",
-        "transferBytes": 76044,
-        "transferStatus": "measured",
-        "fromCache": false,
-        "thirdParty": false
-      },
-      {
-        "url": "http://127.0.0.1:4173/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
-        "category": "font",
-        "mimeType": "font/woff2",
-        "transferBytes": 35248,
+        "transferBytes": 76296,
         "transferStatus": "measured",
         "fromCache": false,
         "thirdParty": false
@@ -116,6 +107,15 @@
         "category": "font",
         "mimeType": "font/woff2",
         "transferBytes": 15028,
+        "transferStatus": "measured",
+        "fromCache": false,
+        "thirdParty": false
+      },
+      {
+        "url": "http://127.0.0.1:4173/assets/archivo-latin-wght-normal-E0tuGl4L.woff2",
+        "category": "font",
+        "mimeType": "font/woff2",
+        "transferBytes": 35248,
         "transferStatus": "measured",
         "fromCache": false,
         "thirdParty": false
@@ -144,20 +144,20 @@
       {
         "category": "script",
         "count": 1,
-        "transferBytes": 76044,
+        "transferBytes": 76296,
         "largestResource": {
-          "url": "http://127.0.0.1:4173/assets/index-az66s6SC.js",
-          "transferBytes": 76044,
+          "url": "http://127.0.0.1:4173/assets/index-BSNdUAhn.js",
+          "transferBytes": 76296,
           "mimeType": "text/javascript"
         }
       },
       {
         "category": "stylesheet",
         "count": 1,
-        "transferBytes": 6177,
+        "transferBytes": 6468,
         "largestResource": {
-          "url": "http://127.0.0.1:4173/assets/index-C3ac9PYU.css",
-          "transferBytes": 6177,
+          "url": "http://127.0.0.1:4173/assets/index-BKUZV-xi.css",
+          "transferBytes": 6468,
           "mimeType": "text/css"
         }
       },
@@ -232,17 +232,17 @@
     },
     "javascript": {
       "count": 1,
-      "transferBytes": 76044,
+      "transferBytes": 76296,
       "resources": [
         {
-          "url": "http://127.0.0.1:4173/assets/index-az66s6SC.js",
-          "transferBytes": 76044,
+          "url": "http://127.0.0.1:4173/assets/index-BSNdUAhn.js",
+          "transferBytes": 76296,
           "mimeType": "text/javascript"
         }
       ]
     },
     "dom": {
-      "nodes": 237,
+      "nodes": 238,
       "maxDepth": 11
     },
     "lcp": [

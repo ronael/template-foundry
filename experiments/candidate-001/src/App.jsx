@@ -17,7 +17,7 @@ import {
   TestTube,
   X,
 } from "@phosphor-icons/react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const navItems = [
   ["Platform", "/product"],
@@ -56,13 +56,36 @@ function ButtonLink({ href, children, variant = "primary" }) {
 
 function Header() {
   const [open, setOpen] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
+  const currentPath = window.location.pathname;
+
+  useEffect(() => {
+    let frame = 0;
+    const update = () => {
+      const available = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(available > 0 ? Math.min(window.scrollY / available, 1) : 0);
+      setScrolled(window.scrollY > 24);
+      frame = 0;
+    };
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
   return (
-    <header className="site-header">
+    <header className={scrolled ? "site-header scrolled" : "site-header"} style={{ "--scroll-progress": progress }}>
       <div className="header-inner">
         <Brand />
         <nav className={open ? "nav open" : "nav"} aria-label="Primary navigation">
-          {navItems.map(([label, href]) => (
-            <a href={href} key={label} onClick={() => setOpen(false)}>{label}</a>
+          {navItems.map(([label, href], index) => (
+            <a href={href} key={label} data-index={String(index + 1).padStart(2, "0")} aria-current={href === currentPath ? "page" : undefined} onClick={() => setOpen(false)}>{label}</a>
           ))}
         </nav>
         <div className="header-actions">
@@ -73,6 +96,7 @@ function Header() {
           </button>
         </div>
       </div>
+      <span className="scroll-progress" aria-hidden="true" />
     </header>
   );
 }
@@ -119,10 +143,10 @@ function FailurePanel() {
   return (
     <div className="failure-panel">
       <div className="failure-map" role="img" aria-label="Failure path visualization">
-        <div className="map-row"><CheckCircle /><span>User request</span></div>
-        <div className="map-row indent"><CheckCircle /><span>Policy lookup</span></div>
-        <div className="map-row indent-two failed"><X /><span>Payments timeout</span></div>
-        <div className="map-row indent"><CircleNotch /><span>Fallback path</span></div>
+        <div className="map-row"><CheckCircle weight="bold" /><span>User request</span></div>
+        <div className="map-row"><CheckCircle weight="bold" /><span>Policy lookup</span></div>
+        <div className="map-row failed"><X weight="bold" /><span>Payments timeout</span></div>
+        <div className="map-row"><CircleNotch weight="bold" /><span>Fallback path</span></div>
       </div>
       <div className="case-file">
         <div className="case-title"><span>Case · Payments API timeout</span><b>Failed</b></div>

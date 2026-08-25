@@ -14,6 +14,8 @@ Keep the V0 focused: CLI, Golden Standard, benchmark metadata, candidate input, 
 
 Browser automation is infrastructure. The audit domain must remain browser-provider agnostic.
 
+Every generated template candidate must include at least a restrained, original navigation motion system with a `prefers-reduced-motion` fallback. Treat `minimal` as the current required profile; do not invent `medium` or `high` scoring thresholds until they are calibrated on real candidates.
+
 Run before finishing changes:
 
 ```bash

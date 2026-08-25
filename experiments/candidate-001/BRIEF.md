@@ -26,7 +26,7 @@ Kern is a fictional reliability platform for teams shipping production AI agents
 - Spacing: 4/8/12/18/24/32/48/72/96 rhythm.
 - Shape: 0–6px radii, one-pixel rules, minimal shadow reserved for the primary product view.
 - Components: masthead, action link, numbered rail, trace viewer, evidence panels, pricing cards, footer.
-- Motion: short positional entrance and state transitions; no essential content depends on animation.
+- Motion profile: `minimal`. Navigation compresses on scroll, exposes reading progress and indexed route states, and transitions the mobile menu. Short positional entrances and state transitions support the product; no essential content depends on animation.
 - Responsive: composition changes from editorial rail/grid to a single reading column; product evidence remains legible and interactive.
 
 ## Commercial boundary

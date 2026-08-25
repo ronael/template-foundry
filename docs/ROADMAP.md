@@ -5,6 +5,7 @@
 - Validate Candidate 001's selected design system as a native Framer build.
 - Run a real human buyer/editability test before marketplace readiness.
 - Calibrate the visual rubric on a small second candidate before changing Golden Standard weights.
+- Calibrate `medium` and `high` motion profiles after the required `minimal` navigation profile is proven on Candidate 001.
 
 ## Next
 

@@ -5,6 +5,14 @@ principles:
   qualityAndSimilarityAreSeparate: true
   subjectiveJudgmentRequiresProvenance: true
   scoresRequireActionableFindings: true
+motionPolicy:
+  requiredMinimum: minimal
+  originalNavigationMotionRequired: true
+  reducedMotionFallbackRequired: true
+  profiles:
+    minimal: One restrained navigation signature plus purposeful state transitions.
+    medium: Reserved for calibration; expected to add coordinated section and product-story motion.
+    high: Reserved for calibration; expected to add expressive art-directed motion without harming usability.
 criteria:
   hierarchy: Product and primary action are clear within the first viewport; section contrast sustains the narrative.
   typography: Type scale, measure, weight, and pairing feel intentional at every viewport.
