@@ -22,6 +22,8 @@
 - Performance collectors produce evidence; quality thresholds belong to the Golden Standard.
 - Store transfer sizes as integer bytes and durations as milliseconds. Format units only at report boundaries.
 - Use deterministic tests for domain behavior.
+- Default visual prototypes to Vite Vanilla or plain HTML/CSS/JS. Do not add a production framework, full token system, multi-page architecture, or Framer structure before the visual gates in `docs/CANDIDATE-WORKFLOW.md`.
+- Early prototypes keep only cheap invariants: semantic markup, legible contrast, visible focus, no overflow, realistic content, and a representative desktop/mobile composition.
 
 ## Test Layers
 

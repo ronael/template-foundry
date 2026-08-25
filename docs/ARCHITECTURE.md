@@ -102,6 +102,21 @@ Future evaluators should produce the same candidate evaluation shape:
 
 Those adapters should stay outside the domain. The audit engine remains deterministic for a given candidate and standard.
 
+## Candidate production boundary
+
+Candidate creation is a gated product workflow around the audit engine, not a
+new domain engine:
+
+```text
+visual prototype -> human DA_APPROVED
+  -> product-direction prototype -> human PRODUCT_DIRECTION_APPROVED
+  -> premium production -> existing inspection and audit pipeline
+```
+
+Gate records, briefs, visual references, and prototypes live with experiments.
+They do not enter scoring automatically. The audit domain does not decide taste
+and must never turn a technical score into visual approval.
+
 ## Visual Evaluation V0
 
 The first visual workflow deliberately stops short of embedding a remote model:

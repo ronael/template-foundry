@@ -115,13 +115,33 @@ Standard audit returned `READY`. This does not prove native Framer editability,
 publication readiness, or buyer customization, so those remain explicit manual
 boundaries.
 
-Candidate production now requires a minimal motion profile: at least one
-original, purposeful navigation behavior plus a reduced-motion fallback.
-The three behavioral profiles are defined in `docs/MOTION.md`; Candidate 001 now
-targets `medium`. They remain compliance labels rather than scored claims until
-each profile is calibrated on multiple real candidates. Motion stays a
-subjective visual criterion; browser checks only verify technical behavior and
-accessibility.
+Candidate 001 also exposed a process defect: too much multi-page engineering,
+token formalization, and technical QA happened before the visual direction had
+received an explicit human gate. It remains useful evidence, but it is not the
+default production sequence for future candidates.
+
+After `PRODUCT_DIRECTION_APPROVED`, candidate production requires at least the
+`minimal` motion profile: one original, purposeful navigation behavior plus a
+reduced-motion fallback. Before that gate, the visual prototype proves only one
+representative motion idea. The three behavioral profiles are defined in
+`docs/MOTION.md`; Candidate 001 targets `medium`. They remain compliance labels
+rather than scored claims until each profile is calibrated on multiple real
+candidates. Motion stays a subjective visual criterion; browser checks only
+verify technical behavior and accessibility.
+
+## Gated candidate creation
+
+Future candidates follow `docs/CANDIDATE-WORKFLOW.md`. A lightweight Vite
+Vanilla or plain HTML/CSS/JS prototype validates the hero, two or three decisive
+sections, navigation/motion idea, and representative desktop/mobile composition
+before production work begins. `DA_APPROVED` and
+`PRODUCT_DIRECTION_APPROVED` are explicit human decisions, not derived audit
+scores.
+
+The full premium-finish prompt, formal production tokens, component states,
+multi-page build, Framer translation, packaging, and exhaustive QA start only
+after both gates. Semantic HTML, legibility, visible focus, and overflow safety
+remain early constraints because they are cheap and can invalidate a direction.
 
 ## References
 

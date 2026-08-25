@@ -136,3 +136,18 @@ reference → brief → build → screenshots → subjective review → correcti
 technical audit. It is intentionally described as a web prototype, not a
 native Framer template. Generated candidates declare a behavioral profile from
 the [Motion Standard](docs/MOTION.md); Kern currently demonstrates `medium`.
+
+## Candidate creation
+
+New candidates follow the gated [Candidate Creation Workflow](docs/CANDIDATE-WORKFLOW.md):
+
+```text
+visual directions -> human selection -> lightweight HTML/CSS/JS prototype -> DA_APPROVED
+  -> product-direction prototype -> PRODUCT_DIRECTION_APPROVED
+  -> premiumization -> production -> final audit
+```
+
+Vite Vanilla is the default prototype stack. Complete tokens, reusable
+components, multi-page production, Framer translation, packaging, and the full
+[Premium Template Finish prompt](docs/prompt-finition-premium-templates.md) are
+reserved for approved directions.
