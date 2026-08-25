@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LUMEN — Festival du cinéma indépendant · Lyon, 12–19 octobre</title>
+  <meta name="description" content="LUMEN, 7e édition du festival du cinéma indépendant. 34 films, 18 pays, 6 jours de projections à Lyon. Sélection officielle, programme et billetterie.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Grain de film -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Curseur custom -->
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+  </div>
+
+  <!-- Intro : lever de rideau -->
+  <div class="intro" aria-hidden="true">
+    <div class="intro__word">
+      <span>L</span><span>U</span><span>M</span><span>E</span><span>N</span>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <header class="site-header" id="top">
+    <nav class="nav container" aria-label="Navigation principale">
+      <a class="nav__brand" href="#top" data-magnetic>
+        LUMEN<span class="nav__brand-ed">ÉD.07</span>
+      </a>
+      <ul class="nav__links" id="nav-menu">
+        <li><a href="#selection" class="nav__link">Sélection</a></li>
+        <li><a href="#programme" class="nav__link">Programme</a></li>
+        <li><a href="#jury" class="nav__link">Jury</a></li>
+        <li><a href="#billetterie" class="nav__link">Billetterie</a></li>
+        <li><a href="#faq" class="nav__link">Infos</a></li>
+        <li class="nav__links-cta"><a href="#billetterie" class="btn btn--accent btn--sm">Réserver un pass</a></li>
+      </ul>
+      <a href="#billetterie" class="btn btn--accent btn--sm nav__cta" data-magnetic>Réserver un pass</a>
+      <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Ouvrir le menu">
+        <span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <video class="hero__video" autoplay muted loop playsinline preload="metadata"
+             poster="assets/hero-poster.jpg" aria-hidden="true" tabindex="-1">
+        <source src="assets/hero-loop.mp4" type="video/mp4">
+      </video>
+      <div class="hero__beam" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <p class="hero__meta reveal">
+          <span>07<sup>e</sup> édition</span>
+          <span class="hero__meta-sep" aria-hidden="true">✺</span>
+          <span>12 — 19 octobre 2026</span>
+          <span class="hero__meta-sep" aria-hidden="true">✺</span>
+          <span>Lyon, France</span>
+        </p>
+        <h1 class="hero__title" aria-label="Lumen">
+          <span class="hero__line" aria-hidden="true">
+            <span class="hero__lt" style="--i:0">L</span><span class="hero__lt" style="--i:1">U</span><span class="hero__lt" style="--i:2">M</span><span class="hero__lt" style="--i:3">E</span><span class="hero__lt" style="--i:4">N</span>
+          </span>
+        </h1>
+        <div class="hero__row">
+          <p class="hero__sub reveal" style="--d:.55s">
+            Le festival du <em>cinéma indépendant</em> —<br>
+            les films que personne n'ose montrer, projetés comme ils le méritent&nbsp;: <em>dans le noir, ensemble.</em>
+          </p>
+          <div class="hero__actions reveal" style="--d:.7s">
+            <a href="#billetterie" class="btn btn--accent" data-magnetic>Réserver un pass</a>
+            <a href="#selection" class="btn btn--ghost" data-magnetic>Voir la sélection</a>
+          </div>
+        </div>
+        <div class="hero__badge reveal" style="--d:.85s" aria-hidden="true">
+          <svg viewBox="0 0 120 120" class="hero__badge-svg">
+            <defs>
+              <path id="badge-circle" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"></path>
+            </defs>
+            <text class="hero__badge-text">
+              <textPath href="#badge-circle">FESTIVAL DU CINÉMA INDÉPENDANT · LYON · ÉDITION 07 ·</textPath>
+            </text>
+            <circle cx="60" cy="60" r="4" class="hero__badge-dot"></circle>
+          </svg>
+        </div>
+      </div>
+      <div class="hero__scroll" aria-hidden="true">
+        <span>Défiler</span>
+        <span class="hero__scroll-line"></span>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Ouverture <i>✺</i> Compétition <i>✺</i> Nuit du court <i>✺</i> Rétrospective <i>✺</i> Rencontres <i>✺</i> Prix du public <i>✺</i>&nbsp;</span>
+        <span>Ouverture <i>✺</i> Compétition <i>✺</i> Nuit du court <i>✺</i> Rétrospective <i>✺</i> Rencontres <i>✺</i> Prix du public <i>✺</i>&nbsp;</span>
+      </div>
+    </div>
+
+    <!-- ============ MANIFESTE ============ -->
+    <section class="manifesto container" id="manifesto">
+      <p class="section-label reveal"><span class="section-label__dot"></span>Le manifeste</p>
+      <h2 class="manifesto__text reveal" style="--d:.1s">
+        Nous croyons que le cinéma ne se regarde pas sur un téléphone entre deux stations de métro.
+        Il se <em>vit</em>, dans une salle trop sombre, avec des inconnus qui retiennent leur souffle
+        <em>au même moment.</em>
+      </h2>
+      <ul class="manifesto__stats">
+        <li class="reveal" style="--d:.15s"><strong data-count="34">34</strong><span>films projetés</span></li>
+        <li class="reveal" style="--d:.25s"><strong data-count="18">18</strong><span>pays représentés</span></li>
+        <li class="reveal" style="--d:.35s"><strong data-count="6">06</strong><span>jours de festival</span></li>
+        <li class="reveal" style="--d:.45s"><strong data-count="1">01</strong><span>prix du public</span></li>
+      </ul>
+    </section>
+
+    <!-- ============ SÉLECTION ============ -->
+    <section class="section container" id="selection">
+      <header class="section__head">
+        <p class="section-label reveal"><span class="section-index">01</span>Sélection officielle</p>
+        <div class="section__head-side reveal" style="--d:.1s">
+          <p>Six films, six manières de voir le monde.<br>Compétition, rétrospective et nuit du court-métrage.</p>
+        </div>
+      </header>
+
+      <div class="films">
+        <article class="film-card reveal" style="--d:0s" data-cursor="film">
+          <div class="poster poster--1">
+            <span class="poster__img" style="background-image:url('assets/film-1.webp')" aria-hidden="true"></span>
+            <span class="poster__kicker">En compétition</span>
+            <span class="poster__title">Sous<br>les villes</span>
+            <span class="poster__foot">Un film d'Ana Ruiz</span>
+          </div>
+          <div class="film-card__info">
+            <h3>Sous les villes</h3>
+            <p>Ana Ruiz · Espagne · 1&nbsp;h&nbsp;47</p>
+            <span class="tag">Compétition</span>
+          </div>
+        </article>
+
+        <article class="film-card reveal" style="--d:.08s" data-cursor="film">
+          <div class="poster poster--2">
+            <span class="poster__img" style="background-image:url('assets/film-2.webp')" aria-hidden="true"></span>
+            <span class="poster__kicker">En compétition</span>
+            <span class="poster__title">La Dernière Séance</span>
+            <span class="poster__foot">Un film de Malick Diop</span>
+          </div>
+          <div class="film-card__info">
+            <h3>La Dernière Séance</h3>
+            <p>Malick Diop · Sénégal · 1&nbsp;h&nbsp;32</p>
+            <span class="tag">Compétition</span>
+          </div>
+        </article>
+
+        <article class="film-card reveal" style="--d:.16s" data-cursor="film">
+          <div class="poster poster--3">
+            <span class="poster__img" style="background-image:url('assets/film-3.webp')" aria-hidden="true"></span>
+            <span class="poster__kicker">En compétition</span>
+            <span class="poster__title">Hiver<br>solaire</span>
+            <span class="poster__foot">Un film de June Park</span>
+          </div>
+          <div class="film-card__info">
+            <h3>Hiver solaire</h3>
+            <p>June Park · Corée du Sud · 2&nbsp;h&nbsp;04</p>
+            <span class="tag">Compétition</span>
+          </div>
+        </article>
+
+        <article class="film-card reveal" style="--d:0s" data-cursor="film">
+          <div class="poster poster--4">
+            <span class="poster__img" style="background-image:url('assets/film-4.webp')" aria-hidden="true"></span>
+            <span class="poster__kicker">Nuit du court</span>
+            <span class="poster__title">Les Corps électriques</span>
+            <span class="poster__foot">Un film de Théo Marchand</span>
+          </div>
+          <div class="film-card__info">
+            <h3>Les Corps électriques</h3>
+            <p>Théo Marchand · France · 1&nbsp;h&nbsp;15</p>
+            <span class="tag tag--alt">Nuit du court</span>
+          </div>
+        </article>
+
+        <article class="film-card reveal" style="--d:.08s" data-cursor="film">
+          <div class="poster poster--5">
+            <span class="poster__img" style="background-image:url('assets/film-5.webp')" aria-hidden="true"></span>
+            <span class="poster__kicker">Rétrospective</span>
+            <span class="poster__title">Marée basse</span>
+            <span class="poster__foot">Un film d'Ingrid Sørensen · 1998</span>
+          </div>
+          <div class="film-card__info">
+            <h3>Marée basse</h3>
+            <p>Ingrid Sørensen · Norvège · 1&nbsp;h&nbsp;58</p>
+            <span class="tag tag--alt">Rétrospective</span>
+          </div>
+        </article>
+
+        <article class="film-card reveal" style="--d:.16s" data-cursor="film">
+          <div class="poster poster--6">
+            <span class="poster__img" style="background-image:url('assets/film-6.webp')" aria-hidden="true"></span>
+            <span class="poster__kicker">En compétition</span>
+            <span class="poster__title">Kilomètre<br>zéro</span>
+            <span class="poster__foot">Un film de Rafael Costa</span>
+          </div>
+          <div class="film-card__info">
+            <h3>Kilomètre zéro</h3>
+            <p>Rafael Costa · Brésil · 1&nbsp;h&nbsp;41</p>
+            <span class="tag">Compétition</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ PROGRAMME ============ -->
+    <section class="section section--programme" id="programme">
+      <div class="container">
+        <header class="section__head">
+          <p class="section-label reveal"><span class="section-index">02</span>Programme</p>
+          <div class="section__head-side reveal" style="--d:.1s">
+            <p>Extrait des trois premiers jours.<br>Le programme complet est remis avec chaque pass.</p>
+          </div>
+        </header>
+
+        <div class="schedule">
+          <div class="schedule__day reveal">
+            <h3 class="schedule__date"><span>Jeu.</span>12 oct. — Ouverture</h3>
+            <ul class="schedule__list">
+              <li class="slot" data-cursor="slot">
+                <span class="slot__time">18&nbsp;h&nbsp;00</span>
+                <span class="slot__film">Sous les villes <em>— avant-première</em></span>
+                <span class="slot__venue">Cinéma Le Comœdia</span>
+                <span class="slot__cat">Compétition</span>
+                <span class="slot__arrow" aria-hidden="true">→</span>
+              </li>
+              <li class="slot" data-cursor="slot">
+                <span class="slot__time">20&nbsp;h&nbsp;30</span>
+                <span class="slot__film">Cérémonie d'ouverture <em>— rencontre avec le jury</em></span>
+                <span class="slot__venue">Théâtre des Célestins</span>
+                <span class="slot__cat">Événement</span>
+                <span class="slot__arrow" aria-hidden="true">→</span>
+              </li>
+              <li class="slot" data-cursor="slot">
+                <span class="slot__time">22&nbsp;h&nbsp;00</span>
+                <span class="slot__film">Marée basse <em>— copie restaurée 4K</em></span>
+                <span class="slot__venue">Institut Lumière</span>
+                <span class="slot__cat">Rétrospective</span>
+                <span class="slot__arrow" aria-hidden="true">→</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="schedule__day reveal">
+            <h3 class="schedule__date"><span>Ven.</span>13 oct.</h3>
+            <ul class="schedule__list">
+              <li class="slot" data-cursor="slot">
+                <span class="slot__time">14&nbsp;h&nbsp;00</span>
+                <span class="slot__film">Kilomètre zéro <em>— suivi d'un échange</em></span>
+                <span class="slot__venue">Cinéma Le Comœdia</span>
+                <span class="slot__cat">Compétition</span>
+                <span class="slot__arrow" aria-hidden="true">→</span>
+              </li>
+              <li class="slot" data-cursor="slot">
+                <span class="slot__time">17&nbsp;h&nbsp;30</span>
+                <span class="slot__film">La Dernière Séance</span>
+                <span class="slot__venue">Cinéma Bellecour</span>
+                <span class="slot__cat">Compétition</span>
+                <span class="slot__arrow" aria-hidden="true">→</span>
+              </li>
+              <li class="slot" data-cursor="slot">
+                <span class="slot__time">21&nbsp;h&nbsp;00</span>
+                <span class="slot__film">Masterclass <em>— June Park, « filmer l'attente »</em></span>
+                <span class="slot__venue">Institut Lumière</span>
+                <span class="slot__cat">Rencontre</span>
+                <span class="slot__arrow" aria-hidden="true">→</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="schedule__day reveal">
+            <h3 class="schedule__date"><span>Sam.</span>14 oct.</h3>
+            <ul class="schedule__list">
+              <li class="slot" data-cursor="slot">
+                <span class="slot__time">15&nbsp;h&nbsp;00</span>
+                <span class="slot__film">Hiver solaire</span>
+                <span class="slot__venue">Cinéma Le Comœdia</span>
+                <span class="slot__cat">Compétition</span>
+                <span class="slot__arrow" aria-hidden="true">→</span>
+              </li>
+              <li class="slot" data-cursor="slot">
+                <span class="slot__time">20&nbsp;h&nbsp;00</span>
+                <span class="slot__film">Nuit du court <em>— 8 films, 1 seule nuit</em></span>
+                <span class="slot__venue">Hangar du Premier-Film</span>
+                <span class="slot__cat">Nuit du court</span>
+                <span class="slot__arrow" aria-hidden="true">→</span>
+              </li>
+              <li class="slot" data-cursor="slot">
+                <span class="slot__time">23&nbsp;h&nbsp;30</span>
+                <span class="slot__film">Projection surprise <em>— titre gardé secret</em></span>
+                <span class="slot__venue">Hangar du Premier-Film</span>
+                <span class="slot__cat">Événement</span>
+                <span class="slot__arrow" aria-hidden="true">→</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ JURY ============ -->
+    <section class="section container" id="jury">
+      <header class="section__head">
+        <p class="section-label reveal"><span class="section-index">03</span>Le jury</p>
+        <div class="section__head-side reveal" style="--d:.1s">
+          <p>Quatre regards pour décerner le Prix LUMEN<br>et le Prix du public.</p>
+        </div>
+      </header>
+
+      <ul class="jury">
+        <li class="jury__member reveal" style="--d:0s">
+          <span class="jury__mono" aria-hidden="true">SM</span>
+          <div>
+            <h3>Sofia Mercier</h3>
+            <p>Réalisatrice — Présidente du jury</p>
+          </div>
+          <span class="jury__country">France</span>
+        </li>
+        <li class="jury__member reveal" style="--d:.08s">
+          <span class="jury__mono" aria-hidden="true">KO</span>
+          <div>
+            <h3>Kwame Osei</h3>
+            <p>Directeur de la photographie</p>
+          </div>
+          <span class="jury__country">Ghana</span>
+        </li>
+        <li class="jury__member reveal" style="--d:.16s">
+          <span class="jury__mono" aria-hidden="true">LN</span>
+          <div>
+            <h3>Léa Nguyen</h3>
+            <p>Comédienne</p>
+          </div>
+          <span class="jury__country">France</span>
+        </li>
+        <li class="jury__member reveal" style="--d:.24s">
+          <span class="jury__mono" aria-hidden="true">TV</span>
+          <div>
+            <h3>Tomás Vidal</h3>
+            <p>Critique &amp; programmateur</p>
+          </div>
+          <span class="jury__country">Argentine</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ============ BILLETTERIE ============ -->
+    <section class="section section--tickets" id="billetterie">
+      <div class="container">
+        <header class="section__head">
+          <p class="section-label section-label--dark reveal"><span class="section-index">04</span>Billetterie</p>
+          <div class="section__head-side reveal" style="--d:.1s">
+            <p>Trois formules, une même promesse&nbsp;:<br>des places au plus près de l'écran.</p>
+          </div>
+        </header>
+
+        <div class="tickets">
+          <article class="ticket reveal" style="--d:0s">
+            <div class="ticket__body">
+              <p class="ticket__name">Pass Découverte</p>
+              <p class="ticket__desc">Pour une première nuit au festival. Trois séances au choix, hors cérémonies.</p>
+              <ul class="ticket__list">
+                <li>3 séances au choix</li>
+                <li>Accès aux rencontres publiques</li>
+                <li>Programme officiel offert</li>
+              </ul>
+              <a href="#" class="btn btn--ink" data-magnetic>Choisir ce pass</a>
+            </div>
+            <div class="ticket__stub">
+              <span class="ticket__price">29&nbsp;€</span>
+              <span class="ticket__barcode" aria-hidden="true"></span>
+              <span class="ticket__serial">Nº 07-D-029</span>
+            </div>
+          </article>
+
+          <article class="ticket ticket--featured reveal" style="--d:.12s">
+            <p class="ticket__flag">Le plus choisi</p>
+            <div class="ticket__body">
+              <p class="ticket__name">Pass Festival</p>
+              <p class="ticket__desc">Tout le festival, sans compter. Accès illimité aux projections et aux cérémonies.</p>
+              <ul class="ticket__list">
+                <li>Projections illimitées, 6 jours</li>
+                <li>Cérémonies d'ouverture &amp; de clôture</li>
+                <li>Priorité d'accès aux salles</li>
+                <li>Catalogue collector Éd.07</li>
+              </ul>
+              <a href="#" class="btn btn--accent" data-magnetic>Choisir ce pass</a>
+            </div>
+            <div class="ticket__stub">
+              <span class="ticket__price">79&nbsp;€</span>
+              <span class="ticket__barcode" aria-hidden="true"></span>
+              <span class="ticket__serial">Nº 07-F-079</span>
+            </div>
+          </article>
+
+          <article class="ticket reveal" style="--d:.24s">
+            <div class="ticket__body">
+              <p class="ticket__name">Accréditation Pro</p>
+              <p class="ticket__desc">Pour les professionnels du film&nbsp;: marché, rencontres et projections presse.</p>
+              <ul class="ticket__list">
+                <li>Tous les avantages du Pass Festival</li>
+                <li>Accès au marché du film</li>
+                <li>Projections presse réservées</li>
+              </ul>
+              <a href="#" class="btn btn--ink" data-magnetic>Demander l'accréditation</a>
+            </div>
+            <div class="ticket__stub">
+              <span class="ticket__price">149&nbsp;€</span>
+              <span class="ticket__barcode" aria-hidden="true"></span>
+              <span class="ticket__serial">Nº 07-P-149</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section container" id="faq">
+      <header class="section__head">
+        <p class="section-label reveal"><span class="section-index">05</span>Infos pratiques</p>
+      </header>
+      <div class="faq">
+        <details class="faq__item reveal" style="--d:0s">
+          <summary>Où se déroule le festival&nbsp;?<span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__answer"><p>Dans cinq lieux du centre de Lyon&nbsp;: le Cinéma Le Comœdia, l'Institut Lumière, le Théâtre des Célestins, le Cinéma Bellecour et le Hangar du Premier-Film. Tous sont accessibles en métro et en vélo.</p></div>
+        </details>
+        <details class="faq__item reveal" style="--d:.06s">
+          <summary>Les films sont-ils sous-titrés&nbsp;?<span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__answer"><p>Oui. Toutes les projections sont en version originale sous-titrée en français. Une séance par film est également proposée avec sous-titrage pour les publics sourds et malentendants.</p></div>
+        </details>
+        <details class="faq__item reveal" style="--d:.12s">
+          <summary>Puis-je échanger ou me faire rembourser&nbsp;?<span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__answer"><p>Les pass sont échangeables jusqu'à 48&nbsp;h avant la première séance, et remboursables jusqu'au 1<sup>er</sup> octobre. Les places à l'unité ne sont ni échangées ni remboursées.</p></div>
+        </details>
+        <details class="faq__item reveal" style="--d:.18s">
+          <summary>Comment voter pour le Prix du public&nbsp;?<span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__answer"><p>Chaque projection de la compétition se termine par un vote. Présentez votre pass à la sortie de la salle&nbsp;: un film, une voix, jusqu'au dernier jour du festival.</p></div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer" id="contact">
+      <div class="container">
+        <div class="footer__cta">
+          <p class="footer__lead reveal">À très vite,</p>
+          <p class="footer__big reveal" style="--d:.1s">dans le noir<span class="footer__big-dot">.</span></p>
+          <form class="footer__form reveal" style="--d:.2s" action="#" method="post">
+            <label class="visually-hidden" for="nl-email">Votre adresse e-mail</label>
+            <input id="nl-email" type="email" name="email" placeholder="votre@email.fr" required>
+            <button type="submit" class="btn btn--accent" data-magnetic>Être informé·e</button>
+          </form>
+          <p class="footer__form-note reveal" style="--d:.28s">Programme complet, ouverture de la billetterie, invités surprises. Un e-mail par mois, jamais plus.</p>
+        </div>
+
+        <nav class="footer__nav" aria-label="Pied de page">
+          <ul>
+            <li><a href="#selection">Sélection</a></li>
+            <li><a href="#programme">Programme</a></li>
+            <li><a href="#jury">Jury</a></li>
+          </ul>
+          <ul>
+            <li><a href="#billetterie">Billetterie</a></li>
+            <li><a href="#faq">Infos pratiques</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <ul>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Letterboxd</a></li>
+            <li><a href="#">YouTube</a></li>
+          </ul>
+        </nav>
+
+        <p class="footer__giant" aria-hidden="true">LUMEN</p>
+
+        <div class="footer__bar">
+          <p>© <span id="year">2026</span> LUMEN — Festival du cinéma indépendant, Lyon.</p>
+          <p>Template de démonstration — conçu pour Framer.</p>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
